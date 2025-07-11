@@ -1,25 +1,60 @@
-from binance.client import Client
+import requests
+from concurrent.futures import ThreadPoolExecutor, as_completed
+import time
+import logging
+from requests.adapters import HTTPAdapter
+from urllib3.util.retry import Retry
+import urllib3
 import pandas as pd
 import numpy as np
 from ta.momentum import RSIIndicator
-import time
-from concurrent.futures import ThreadPoolExecutor, as_completed
 from typing import List, Dict
 import math
 
+# Bağlantı pool'u uyarılarını gizle
+urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
+
 class CryptoScanner:
     def __init__(self, socketio=None):
-        # Binance API client - public endpoint kullanıyoruz
-        self.client = Client()
-        self.max_workers = 5  # Aynı anda çalışacak maksimum thread sayısı
-        self.socketio = socketio  # WebSocket bağlantısı
+        self.socketio = socketio
+        self.base_url = "https://api.binance.com"
+        self.max_workers = 15  # Paralel çalışacak maksimum thread sayısı
         
+        # HTTP Session ile bağlantı pool'u yönetimi
+        self.session = requests.Session()
+        
+        # Retry stratejisi
+        retry_strategy = Retry(
+            total=3,
+            status_forcelist=[429, 500, 502, 503, 504],
+            allowed_methods=["HEAD", "GET", "OPTIONS"],  # method_whitelist yerine allowed_methods
+            backoff_factor=1
+        )
+        
+        # HTTP Adapter ile connection pool boyutunu artır
+        adapter = HTTPAdapter(
+            max_retries=retry_strategy,
+            pool_connections=50,  # 10'dan 50'ye çıkar
+            pool_maxsize=100,     # 10'dan 100'e çıkar
+            pool_block=False
+        )
+        
+        self.session.mount("https://", adapter)
+        self.session.mount("http://", adapter)
+        
+        # Header ayarları
+        self.session.headers.update({
+            'User-Agent': 'CryptoScanner/1.0',
+            'Accept': 'application/json',
+            'Connection': 'keep-alive'
+        })
+
     def get_all_usdt_pairs(self, custom_list=None):
         """USDT ile biten tüm çiftleri al veya özel listeyi kullan"""
         try:
             if custom_list:
                 # Özel liste varsa, sadece geçerli USDT çiftlerini filtrele
-                exchange_info = self.client.get_exchange_info()
+                exchange_info = self.session.get(f"{self.base_url}/api/v3/exchangeInfo").json()
                 valid_symbols = {s['symbol'] for s in exchange_info['symbols'] 
                                if s['symbol'].endswith('USDT') and s['status'] == 'TRADING'}
                 
@@ -27,7 +62,7 @@ class CryptoScanner:
                 return [symbol for symbol in custom_list if symbol in valid_symbols]
             
             # Özel liste yoksa tüm USDT çiftlerini al
-            exchange_info = self.client.get_exchange_info()
+            exchange_info = self.session.get(f"{self.base_url}/api/v3/exchangeInfo").json()
             symbols = [s['symbol'] for s in exchange_info['symbols'] 
                       if s['symbol'].endswith('USDT') and s['status'] == 'TRADING']
             return symbols
@@ -110,11 +145,11 @@ class CryptoScanner:
         """1 dakikalık mumları alıp 10 dakikalık mumlara dönüştür"""
         try:
             # 1 dakikalık mumları al (10 katı kadar al çünkü 10'arlı gruplar oluşturacağız)
-            klines_1m = self.client.get_klines(
-                symbol=symbol,
-                interval='1m',
-                limit=limit * 10
-            )
+            klines_1m = self.session.get(f"{self.base_url}/api/v3/klines", params={
+                'symbol': symbol,
+                'interval': '1m',
+                'limit': limit * 10
+            }).json()
             
             if not klines_1m:
                 return []
@@ -171,11 +206,11 @@ class CryptoScanner:
                 if timeframe == '10':
                     klines = self.aggregate_10min_candles(symbol, max(rsi_length * 3, 20))
                 else:
-                    klines = self.client.get_klines(
-                        symbol=symbol,
-                        interval=binance_interval,
-                        limit=max(rsi_length * 3, 20)  # RSI ve göreceli hacim için yeterli veri
-                    )
+                    klines = self.session.get(f"{self.base_url}/api/v3/klines", params={
+                        'symbol': symbol,
+                        'interval': binance_interval,
+                        'limit': max(rsi_length * 3, 20)  # RSI ve göreceli hacim için yeterli veri
+                    }).json()
                 
                 if len(klines) >= rsi_length * 3:
                     rsi = self.calculate_rsi(klines, rsi_length)
@@ -229,7 +264,7 @@ class CryptoScanner:
                               f"Hacim: {round(volume_in_usdt, 2)} USDT, " + \
                               (f"Değişim: %{round(percentage_change, 2)}" if min_percentage_change is not None and percentage_change is not None else ""))
                 
-                time.sleep(0.02)  # Daha kısa bekleme süresi
+                time.sleep(0.01)  # Daha kısa bekleme süresi (0.02'den 0.01'e düşürüldü)
                 
             except Exception as e:
                 print(f"\nHata: {symbol} taranırken hata oluştu - {e}")
@@ -255,8 +290,11 @@ class CryptoScanner:
         if coin_list:
             print(f"- Özel Coin Listesi: {len(coin_list)} coin")
         print("\nTarama başlıyor...\n")
-        batch_size = math.ceil(total_symbols / self.max_workers)
+        
+        # Batch size'ı optimize et - daha az batch, daha hızlı işlem
+        batch_size = max(math.ceil(total_symbols / (self.max_workers * 2)), 10)  # Minimum 10 sembol per batch
         symbol_batches = [symbols[i:i + batch_size] for i in range(0, len(symbols), batch_size)]
+        
         all_results = []
         processed_count = 0
         last_progress_update = 0

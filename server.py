@@ -33,18 +33,26 @@ CORS(app, resources={
     }
 })
 
-# WebSocket desteği ekle
+# WebSocket desteği ekle - WebSocket protokol hatalarını önlemek için yapılandırma
 socketio = SocketIO(
     app,
     cors_allowed_origins="*",
     async_mode='threading',
+    # WebSocket protokol hatalarını önlemek için polling'i birincil transport yap
+    transports=['polling', 'websocket'],
     ping_timeout=60,
     ping_interval=25,
     always_connect=True,
     reconnection=True,
-    reconnection_attempts=5,
+    reconnection_attempts=20,
     reconnection_delay=1000,
-    reconnection_delay_max=5000
+    reconnection_delay_max=5000,
+    logger=False,
+    engineio_logger=False,
+    # WebSocket upgrade'i daha güvenli hale getir
+    upgrade=True,
+    compression=False,  # Compression'u devre dışı bırak
+    allow_upgrades=True
 )
 
 # CryptoScanner instance'ı oluştur
@@ -59,77 +67,172 @@ stop_auto_scan = {}
 
 def auto_scan_worker(timeframes, scan_params, client_id):
     """Otomatik tarama işlemini gerçekleştiren worker fonksiyonu"""
+    logging.info(f"AUTO SCAN WORKER BAŞLATILDI - Client: {client_id}")
     logging.info(f"Başlatılan tarama parametreleri: {scan_params}")
     logging.info(f"Seçili zaman aralıkları: {timeframes}")
     
     # Timeframe'leri integer'a çevir ve sırala
     timeframes = sorted([int(tf) for tf in timeframes])
     
+    # Son tarama zamanlarını takip et
+    last_scan_times = {tf: 0 for tf in timeframes}
+    
+    scan_count = 0
+    consecutive_errors = 0
+    max_consecutive_errors = 10  # Hata toleransını artır
+    emit_errors = 0
+    max_emit_errors = 15  # Emit hataları için ayrı sayaç
+    
     while not stop_auto_scan.get(client_id, False):
-        now = datetime.now()
-        current_minute = now.minute
-        current_second = now.second
-        
-        for timeframe in timeframes:
-            # Mum kapanışını kontrol et
-            # Örneğin 3dk için: 00,03,06,09,12,15... dakikalarda
-            if current_minute % timeframe == 0 and current_second == 0:
+        try:
+            now = datetime.now()
+            current_minute = now.minute
+            current_second = now.second
+            current_timestamp = now.timestamp()
+            
+            # Her 30 saniyede bir yaşam belirtisi gönder (emit hatalarından etkilenmesin)
+            if current_second % 30 == 0:
                 try:
-                    logging.info(f"{timeframe} dakikalık tarama başlatılıyor... Saat: {now.strftime('%H:%M:%S')}")
+                    logging.info(f"AUTO SCAN WORKER YAŞIYOR - Client: {client_id}, Saat: {now.strftime('%H:%M:%S')}")
+                    socketio.emit('auto_scan_heartbeat', {
+                        'message': f'Otomatik tarama aktif - {now.strftime("%H:%M:%S")}',
+                        'scan_count': scan_count
+                    }, room=client_id)
+                    emit_errors = 0  # Başarılı emit, emit hata sayacını sıfırla
+                except Exception as emit_error:
+                    emit_errors += 1
+                    logging.warning(f"Heartbeat gönderilemedi - Client: {client_id}, Emit Hata: {emit_errors}/{max_emit_errors}, Hata: {str(emit_error)}")
+                    # Emit hataları worker'ı durdurmaz, sadece uyarı verir
+                    if emit_errors >= max_emit_errors:
+                        logging.warning(f"Çok fazla emit hatası - Emit gönderimini geçici olarak durdur - Client: {client_id}")
+                        emit_errors = 0  # Sayacı sıfırla, devam et
+            
+            # Her timeframe için kontrol et
+            for timeframe in timeframes:
+                if stop_auto_scan.get(client_id, False):
+                    break
                     
-                    # Bir önceki mum kapanışını baz al
-                    results = scanner.scan_market(
-                        timeframe=str(timeframe),  # string'e çevir
-                        rsi_length=scan_params['rsi_length'],
-                        rsi_value=scan_params['rsi_value'],
-                        comparison=scan_params['comparison'],
-                        min_relative_volume=scan_params['min_relative_volume'],
-                        min_volume=scan_params['min_volume'],
-                        min_percentage_change=scan_params['min_percentage_change'],
-                        closing_scan=True,
-                        coin_list=scan_params['coin_list']
-                    )
-                    
-                    if results:
-                        # Sonuçları konsol formatında gönder
+                # Mum kapanışını kontrol et - timeframe'e göre dakika kontrolü
+                should_scan = False
+                
+                if timeframe == 1:
+                    # Her dakika
+                    should_scan = current_second == 0
+                elif timeframe == 3:
+                    # 0, 3, 6, 9, 12, 15, 18, 21, 24, 27, 30, 33, 36, 39, 42, 45, 48, 51, 54, 57
+                    should_scan = current_minute % 3 == 0 and current_second == 0
+                elif timeframe == 5:
+                    # 0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55
+                    should_scan = current_minute % 5 == 0 and current_second == 0
+                elif timeframe == 10:
+                    # 0, 10, 20, 30, 40, 50
+                    should_scan = current_minute % 10 == 0 and current_second == 0
+                elif timeframe == 15:
+                    # 0, 15, 30, 45
+                    should_scan = current_minute % 15 == 0 and current_second == 0
+                elif timeframe == 30:
+                    # 0, 30
+                    should_scan = current_minute % 30 == 0 and current_second == 0
+                
+                # Aynı timeframe için son taramadan en az timeframe dakika geçmiş olmalı
+                time_since_last = current_timestamp - last_scan_times[timeframe]
+                min_interval = timeframe * 60 - 10  # 10 saniye tolerans
+                
+                if should_scan and time_since_last >= min_interval:
+                    try:
+                        logging.info(f"TARAMA BAŞLATILIYOR - {timeframe} dakika, Client: {client_id}, Saat: {now.strftime('%H:%M:%S')}")
+                        last_scan_times[timeframe] = current_timestamp
+                        scan_count += 1
+                        consecutive_errors = 0  # Tarama başarılı, genel hata sayacını sıfırla
+                        
+                        # Tarama parametrelerini kopyala
+                        fast_scan_params = scan_params.copy()
+                        
+                        # Bir önceki mum kapanışını baz al
+                        results = scanner.scan_market(
+                            timeframe=str(timeframe),  # string'e çevir
+                            rsi_length=fast_scan_params['rsi_length'],
+                            rsi_value=fast_scan_params['rsi_value'],
+                            comparison=fast_scan_params['comparison'],
+                            min_relative_volume=fast_scan_params['min_relative_volume'],
+                            min_volume=fast_scan_params['min_volume'],
+                            min_percentage_change=fast_scan_params['min_percentage_change'],
+                            closing_scan=True,
+                            coin_list=fast_scan_params['coin_list']
+                        )
+                        
+                        # Sonuç mesajını hazırla
                         message = f"\n{timeframe} dakikalık tarama sonuçları ({now.strftime('%H:%M:%S')}):\n"
                         message += "-" * 50 + "\n"
                         
-                        # Aktif filtreleri belirle
-                        active_filters = {
-                            'rsi': scan_params['rsi_value'] is not None,
-                            'relative_volume': scan_params['min_relative_volume'] is not None,
-                            'volume': scan_params['min_volume'] is not None,
-                            'percentage_change': scan_params['min_percentage_change'] is not None
-                        }
+                        if results:
+                            # Aktif filtreleri belirle
+                            active_filters = {
+                                'rsi': fast_scan_params['rsi_value'] is not None,
+                                'relative_volume': fast_scan_params['min_relative_volume'] is not None,
+                                'volume': fast_scan_params['min_volume'] is not None,
+                                'percentage_change': fast_scan_params['min_percentage_change'] is not None
+                            }
+                            
+                            for result in results:
+                                coin_info = [f"Sembol: {result['symbol']}"]
+                                
+                                if active_filters['rsi'] and 'rsi' in result:
+                                    coin_info.append(f"RSI: {result['rsi']:.2f}")
+                                
+                                if active_filters['relative_volume'] and 'relative_volume' in result:
+                                    coin_info.append(f"Göreceli Hacim: {result['relative_volume']:.2f}")
+                                
+                                if active_filters['volume'] and 'volume' in result:
+                                    coin_info.append(f"Hacim: {result['volume']:.2f}")
+                                
+                                if active_filters['percentage_change'] and 'percentage_change' in result:
+                                    coin_info.append(f"Değişim: %{result['percentage_change']:.2f}")
+                                
+                                message += ", ".join(coin_info) + "\n"
+                            
+                            message += "-" * 50 + "\n"
+                            logging.info(f"TARAMA TAMAMLANDI - {timeframe} dakika, {len(results)} sonuç, Client: {client_id}")
+                        else:
+                            # Sonuç bulunamadığında
+                            message += "Filtre kriterlerine uygun coin bulunamadı.\n"
+                            message += "-" * 50 + "\n"
+                            logging.info(f"TARAMA TAMAMLANDI - {timeframe} dakika, sonuç yok, Client: {client_id}")
                         
-                        for result in results:
-                            coin_info = [f"Sembol: {result['symbol']}"]
+                        # Sonucu gönder (emit hatalarından etkilenmesin)
+                        try:
+                            socketio.emit('auto_scan_result', {'message': message, 'timeframe': str(timeframe)}, room=client_id)
+                        except Exception as emit_error:
+                            emit_errors += 1
+                            logging.warning(f"Sonuç gönderilemedi - {timeframe} dakika, Client: {client_id}, Emit Hata: {emit_errors}/{max_emit_errors}, Hata: {str(emit_error)}")
+                            # Emit hatası taramayı durdurmaz, sadece log yapar
                             
-                            if active_filters['rsi'] and 'rsi' in result:
-                                coin_info.append(f"RSI: {result['rsi']:.2f}")
-                            
-                            if active_filters['relative_volume'] and 'relative_volume' in result:
-                                coin_info.append(f"Göreceli Hacim: {result['relative_volume']:.2f}")
-                            
-                            if active_filters['volume'] and 'volume' in result:
-                                coin_info.append(f"Hacim: {result['volume']:.2f}")
-                            
-                            if active_filters['percentage_change'] and 'percentage_change' in result:
-                                coin_info.append(f"Değişim: %{result['percentage_change']:.2f}")
-                            
-                            message += ", ".join(coin_info) + "\n"
-                        
-                        message += "-" * 50 + "\n"
-                        socketio.emit('auto_scan_result', {'message': message, 'timeframe': str(timeframe)}, room=client_id)
-                        logging.info(f"{timeframe} dakikalık tarama tamamlandı. {len(results)} sonuç bulundu.")
-                except Exception as e:
-                    error_msg = f"{timeframe} dakikalık tarama hatası: {str(e)}"
-                    logging.error(error_msg)
-                    socketio.emit('auto_scan_error', {'error': error_msg}, room=client_id)
-        
-        # Her saniye kontrol et
-        time.sleep(1)
+                    except Exception as scan_error:
+                        consecutive_errors += 1
+                        logging.error(f"Tarama hatası - {timeframe} dakika, Client: {client_id}, Genel Hata: {consecutive_errors}/{max_consecutive_errors}, Hata: {str(scan_error)}")
+                        if consecutive_errors >= max_consecutive_errors:
+                            logging.error(f"Çok fazla ardışık tarama hatası - Worker durduruluyor - Client: {client_id}")
+                            break
+            
+            # Her döngüde 1 saniye bekle
+            time.sleep(1)
+            
+        except Exception as general_error:
+            consecutive_errors += 1
+            logging.error(f"Worker genel hatası - Client: {client_id}, Genel Hata: {consecutive_errors}/{max_consecutive_errors}, Hata: {str(general_error)}")
+            if consecutive_errors >= max_consecutive_errors:
+                logging.error(f"Çok fazla ardışık genel hata - Worker durduruluyor - Client: {client_id}")
+                break
+            time.sleep(2)  # Hata durumunda biraz daha bekle
+    
+    # Worker sonlandırılıyor
+    logging.info(f"AUTO SCAN WORKER SONLANDI - Client: {client_id}, Toplam tarama: {scan_count}")
+    
+    # Thread'i temizle
+    if client_id in auto_scan_threads:
+        del auto_scan_threads[client_id]
+    if client_id in stop_auto_scan:
+        del stop_auto_scan[client_id]
 
 @socketio.on('start_auto_scan')
 def handle_auto_scan(data):
@@ -140,11 +243,15 @@ def handle_auto_scan(data):
         filter_states = data.get('filterStates', {})
         
         logging.info(f"Gelen veri: {data}")
+        logging.info(f"Client bağlantı ID'si: {client_id}")
         
         # Eğer bu client için zaten çalışan bir tarama varsa, onu durdur
         if client_id in auto_scan_threads and auto_scan_threads[client_id].is_alive():
+            logging.info(f"Mevcut auto-scan thread durduruluyor - Client: {client_id}")
             stop_auto_scan[client_id] = True
-            auto_scan_threads[client_id].join()
+            auto_scan_threads[client_id].join(timeout=5)
+            if auto_scan_threads[client_id].is_alive():
+                logging.warning(f"Thread zorla sonlandırıldı - Client: {client_id}")
         
         # RSI değerini belirle (RSI1 veya RSI2'den hangisi aktifse)
         rsi_value = None
@@ -188,9 +295,48 @@ def handle_auto_scan(data):
         auto_scan_threads[client_id].daemon = True
         auto_scan_threads[client_id].start()
         
+        logging.info(f"Yeni auto-scan thread başlatıldı - Client: {client_id}, Thread ID: {auto_scan_threads[client_id].ident}")
+        
         # Başlangıç mesajı
         start_message = f'Otomatik tarama başlatıldı.\n'
         start_message += f'Seçili zaman aralıkları: {", ".join(timeframes)} dakika\n'
+        
+        # Zamanlama bilgilerini ekle
+        now = datetime.now()
+        start_message += f'Başlatılma zamanı: {now.strftime("%H:%M:%S")}\n'
+        start_message += 'Tarama zamanları:\n'
+        
+        for tf in sorted([int(t) for t in timeframes]):
+            current_minute = now.minute
+            if tf == 1:
+                next_scan = (current_minute + 1) % 60
+                start_message += f'- {tf} dk: Her dakika (bir sonraki: {next_scan:02d}. dakika)\n'
+            elif tf == 3:
+                next_scan = ((current_minute // 3) + 1) * 3
+                if next_scan >= 60:
+                    next_scan = 0
+                start_message += f'- {tf} dk: 0,3,6,9... dakikalarda (bir sonraki: {next_scan:02d}. dakika)\n'
+            elif tf == 5:
+                next_scan = ((current_minute // 5) + 1) * 5
+                if next_scan >= 60:
+                    next_scan = 0
+                start_message += f'- {tf} dk: 0,5,10,15... dakikalarda (bir sonraki: {next_scan:02d}. dakika)\n'
+            elif tf == 10:
+                next_scan = ((current_minute // 10) + 1) * 10
+                if next_scan >= 60:
+                    next_scan = 0
+                start_message += f'- {tf} dk: 0,10,20,30... dakikalarda (bir sonraki: {next_scan:02d}. dakika)\n'
+            elif tf == 15:
+                next_scan = ((current_minute // 15) + 1) * 15
+                if next_scan >= 60:
+                    next_scan = 0
+                start_message += f'- {tf} dk: 0,15,30,45 dakikalarda (bir sonraki: {next_scan:02d}. dakika)\n'
+            elif tf == 30:
+                next_scan = ((current_minute // 30) + 1) * 30
+                if next_scan >= 60:
+                    next_scan = 0
+                start_message += f'- {tf} dk: 0,30 dakikalarda (bir sonraki: {next_scan:02d}. dakika)\n'
+        
         if active_filters:
             start_message += 'Aktif filtreler:\n- ' + '\n- '.join(active_filters)
         else:
@@ -206,16 +352,44 @@ def handle_auto_scan(data):
 def handle_stop_auto_scan():
     """Otomatik taramayı durdur"""
     client_id = request.sid
+    logging.info(f"Auto-scan durdurma isteği - Client: {client_id}")
+    
     if client_id in auto_scan_threads:
         stop_auto_scan[client_id] = True
-        socketio.emit('auto_scan_stopped', {'message': 'Otomatik tarama durduruldu'}, room=client_id)
+        # Thread'in durmasını bekle
+        if auto_scan_threads[client_id].is_alive():
+            auto_scan_threads[client_id].join(timeout=10)
+            if auto_scan_threads[client_id].is_alive():
+                logging.warning(f"Auto-scan thread hala aktif - Client: {client_id}")
+            else:
+                logging.info(f"Auto-scan thread başarıyla durdu - Client: {client_id}")
+        
+        # Thread referansını temizle
+        del auto_scan_threads[client_id]
+        del stop_auto_scan[client_id]
+        
+    socketio.emit('auto_scan_stopped', {'message': 'Otomatik tarama durduruldu'}, room=client_id)
 
 @socketio.on('disconnect')
 def handle_disconnect():
-    """Client bağlantısı koptuğunda otomatik taramayı durdur"""
+    """Client bağlantısı koptuğunda - auto-scan devam etsin, sadece loglama yap"""
     client_id = request.sid
+    logging.info(f"Client bağlantısı koptu - Client: {client_id}")
+    
+    # AUTO-SCAN WORKER'I DURDURMUYORUZ!
+    # Bağlantı kopsa da worker devam etsin, bağlantı geri geldiğinde çalışmaya devam etsin
     if client_id in auto_scan_threads:
-        stop_auto_scan[client_id] = True
+        logging.info(f"Auto-scan çalışmaya devam ediyor (bağlantı kopması worker'ı durdurmaz) - Client: {client_id}")
+        # stop_auto_scan[client_id] = True  # BU SATIRI KALDIRDIK!
+        
+        # Worker thread'ini durdurmuyoruz, sadece logluyoruz
+        if auto_scan_threads[client_id].is_alive():
+            logging.info(f"Auto-scan worker aktif durumda - Client: {client_id}")
+    else:
+        logging.info(f"Bu client için aktif auto-scan bulunamadı - Client: {client_id}")
+    
+    # Temizlik yapmıyoruz, reconnection durumunda çalışmaya devam etsin
+    # Thread temizleme işlemini worker'ın kendisi yapacak
 
 @app.route('/')
 def root():

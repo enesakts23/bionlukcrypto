@@ -25,23 +25,33 @@ let selectedTimes = [];
 // Çoklu zaman aralığı için progress barları ve sonuçlar
 let multiTimeProgress = {};
 
+// Heartbeat izleme
+let lastHeartbeat = null;
+
 // Socket.IO bağlantısını başlat
 function initializeSocket() {
     if (socket) {
-        return; // Zaten bağlantı varsa yeni bağlantı kurma
+        socket.disconnect();
+        socket = null;
     }
 
     socket = io(SERVER_URL, {
-        transports: ['websocket', 'polling'],
-        reconnectionAttempts: 3,
-        timeout: 10000,
+        // Backend ile uyumlu transport sıralaması
+        transports: ['polling', 'websocket'],
+        reconnectionAttempts: 20,
+        timeout: 30000,
         reconnection: true,
-        reconnectionDelay: 3000,
+        reconnectionDelay: 1000,
         reconnectionDelayMax: 5000,
-        autoConnect: true
+        autoConnect: true,
+        forceNew: true,
+        // WebSocket upgrade ayarları
+        upgrade: true,
+        rememberUpgrade: false
     });
 
     let errorShown = false;
+    let reconnectAttempts = 0;
 
     // Bağlantı olayları
     socket.on('connect', () => {
@@ -49,23 +59,83 @@ function initializeSocket() {
         isConnected = true;
         showMessage('info', 'Sunucuya bağlanıldı');
         errorShown = false;
+        reconnectAttempts = 0;
+        
+        // Auto-scan durumunu kontrol et ve gerekirse devam ettir
+        if (isAutoScanActive) {
+            appendToConsole('\n✅ Bağlantı yeniden kuruldu. Otomatik tarama devam ediyor...\n');
+            console.log('Auto-scan aktif durumda, bağlantı yeniden kuruldu');
+        }
     });
 
-    socket.on('disconnect', () => {
-        console.log('Sunucu bağlantısı kesildi');
+    socket.on('disconnect', (reason) => {
+        console.log('Sunucu bağlantısı kesildi, sebep:', reason);
         isConnected = false;
+        
         if (!errorShown) {
-            showMessage('error', 'Sunucu bağlantısı kesildi. Lütfen sayfayı yenileyin veya daha sonra tekrar deneyin.');
+            if (reason === 'io server disconnect') {
+                showMessage('error', 'Sunucu tarafından bağlantı kesildi.');
+            } else {
+                showMessage('warning', 'Bağlantı kesildi. Yeniden bağlanmaya çalışılıyor...');
+            }
             errorShown = true;
+        }
+        
+        // Auto-scan aktifse bağlantı kesildi mesajı (ama durdurmuyoruz)
+        if (isAutoScanActive) {
+            appendToConsole(`\n⚠️ Bağlantı kesildi (${reason}). Yeniden bağlanmaya çalışılıyor...\n`);
+            console.log('Auto-scan aktif, bağlantı kesildi ama devam ediyor');
         }
     });
 
     socket.on('connect_error', (error) => {
-        console.error('Bağlantı hatası:', error);
+        reconnectAttempts++;
+        console.error('Bağlantı hatası:', error, 'Deneme:', reconnectAttempts);
         isConnected = false;
+        
         if (!errorShown) {
-            showMessage('error', 'Sunucuya bağlanılamadı. Lütfen bağlantınızı kontrol edin.');
+            if (reconnectAttempts > 10) {
+                showMessage('error', 'Sunucuya bağlanılamadı. Lütfen sayfa yenileyin.');
+            } else {
+                showMessage('warning', `Bağlantı hatası (${reconnectAttempts}/20). Yeniden deneniyor...`);
+            }
             errorShown = true;
+        }
+    });
+
+    socket.on('reconnect', (attemptNumber) => {
+        console.log('Yeniden bağlandı, deneme sayısı:', attemptNumber);
+        isConnected = true;
+        showMessage('success', 'Bağlantı yeniden kuruldu');
+        errorShown = false;
+        reconnectAttempts = 0;
+        
+        if (isAutoScanActive) {
+            appendToConsole('\n✅ Bağlantı başarıyla yeniden kuruldu. Otomatik tarama devam ediyor.\n');
+            console.log('Reconnect tamamlandı, auto-scan devam ediyor');
+        }
+    });
+
+    socket.on('reconnect_error', (error) => {
+        console.error('Yeniden bağlantı hatası:', error);
+        if (isAutoScanActive) {
+            appendToConsole(`\n⚠️ Yeniden bağlantı hatası: ${error.message || error}\n`);
+        }
+    });
+
+    socket.on('reconnect_failed', () => {
+        console.error('Yeniden bağlantı başarısız');
+        showMessage('error', 'Sunucuya bağlantı kurulamadı. Lütfen sayfayı yenileyin.');
+        
+        // Sadece burada auto-scan'i durduralım (tamamen bağlantı kurulamıyorsa)
+        if (isAutoScanActive) {
+            appendToConsole('\n❌ Bağlantı kurulamadı. Otomatik tarama durdu.\n');
+            isAutoScanActive = false;
+            const autoScanButton = document.querySelector('.auto-scan-btn');
+            if (autoScanButton) {
+                autoScanButton.textContent = 'OTOMATİK TARAMA';
+                autoScanButton.style.backgroundColor = '#4CAF50';
+            }
         }
     });
 
@@ -96,6 +166,67 @@ function initializeSocket() {
         });
     });
     // --- YENİ SONU ---
+
+    // *** OTOMATIK TARAMA EVENT LISTENER'LARI - BURAYA TAŞINDI ***
+    let lastUpdateTime = {};
+    let isFirstScan = true;
+    
+    socket.on('auto_scan_started', (data) => {
+        console.log('Auto scan started event received:', data);
+        if (isFirstScan) {
+            const consoleDiv = document.getElementById('console-output') || createConsoleDiv();
+            consoleDiv.innerHTML = ''; // Sadece ilk başlangıçta konsolu temizle
+            isFirstScan = false;
+        }
+        appendToConsole(data.message);
+        lastUpdateTime = {};
+    });
+
+    socket.on('auto_scan_result', (data) => {
+        console.log('Auto scan result received:', data);
+        if (!isAutoScanActive) return;
+        
+        // Her sonucu göster - zaman filtrelemesi kaldırıldı
+        appendToConsole(data.message, data.timeframe);
+    });
+
+    socket.on('auto_scan_error', (data) => {
+        console.log('Auto scan error received:', data);
+        appendToConsole(`\nHATA: ${data.error}\n`);
+    });
+
+    socket.on('auto_scan_stopped', (data) => {
+        console.log('Auto scan stopped event received:', data);
+        appendToConsole(`\n${data.message}\n`);
+        isAutoScanActive = false;
+        isFirstScan = true;
+        const autoScanButton = document.querySelector('.auto-scan-btn');
+        if (autoScanButton) {
+            autoScanButton.textContent = 'OTOMATİK TARAMA';
+            autoScanButton.style.backgroundColor = '#4CAF50';
+        }
+        lastUpdateTime = {};
+    });
+
+    socket.on('auto_scan_heartbeat', (data) => {
+        console.log('Auto scan heartbeat:', data);
+        // Heartbeat mesajını konsola yazmıyoruz, sadece logluyoruz
+        
+        // Auto-scan aktifse ve heartbeat alıyorsak, bu iyi bir işaret
+        if (isAutoScanActive) {
+            // Durumu kontrol et, gerekirse yeniden başlat
+            const now = Date.now();
+            if (!lastHeartbeat) {
+                lastHeartbeat = now;
+            } else {
+                const timeSinceHeartbeat = now - lastHeartbeat;
+                if (timeSinceHeartbeat > 90000) { // 90 saniyeden fazla heartbeat yoksa
+                    console.warn('Heartbeat timeout, checking auto-scan status');
+                }
+                lastHeartbeat = now;
+            }
+        }
+    });
 }
 
 // Sonuç tablosunu oluştur
@@ -813,16 +944,33 @@ document.addEventListener('DOMContentLoaded', () => {
     const autoScanButton = document.querySelector('.auto-scan-btn');
     if (autoScanButton) {
         autoScanButton.addEventListener('click', async () => {
-            if (!isConnected) {
-                socket.connect();
+            console.log('Auto-scan button clicked, isAutoScanActive:', isAutoScanActive);
+            
+            // Eğer bağlantı yoksa yeniden bağlan
+            if (!isConnected || !socket || socket.disconnected) {
+                console.log('No connection, reinitializing socket...');
+                initializeSocket();
+                // Bağlantı kurulana kadar bekle
+                await new Promise((resolve) => {
+                    const checkConnection = () => {
+                        if (isConnected) {
+                            resolve();
+                        } else {
+                            setTimeout(checkConnection, 100);
+                        }
+                    };
+                    checkConnection();
+                });
             }
 
             if (isAutoScanActive) {
                 // Taramayı durdur
+                console.log('Stopping auto-scan...');
                 socket.emit('stop_auto_scan');
                 autoScanButton.textContent = 'OTOMATİK TARAMA';
                 autoScanButton.style.backgroundColor = '#4CAF50';
                 isAutoScanActive = false;
+                lastHeartbeat = null;
                 appendToConsole('\nOtomatik tarama durduruldu.\n');
             } else {
                 // Zaman aralığı seçilmediyse uyarı ver
@@ -830,6 +978,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     showMessage('error', 'Lütfen en az bir zaman aralığı seçin!');
                     return;
                 }
+
+                console.log('Starting auto-scan with times:', selectedTimes);
 
                 // Aktif filtreleri topla
                 const filterData = {
@@ -844,78 +994,32 @@ document.addEventListener('DOMContentLoaded', () => {
                     filterStates: {...filterStates}
                 };
 
+                console.log('Filter data being sent:', filterData);
+
                 // Konsolu temizle ve başlangıç mesajını göster
                 const consoleDiv = document.getElementById('console-output') || createConsoleDiv();
                 consoleDiv.innerHTML = 'Otomatik tarama başlatılıyor...\n';
                 consoleDiv.style.display = 'block';
 
                 // Otomatik taramayı başlat
-                socket.emit('start_auto_scan', filterData);
-                autoScanButton.textContent = 'TARAMAYI DURDUR';
-                autoScanButton.style.backgroundColor = '#ff4d4d';
-                isAutoScanActive = true;
+                try {
+                    socket.emit('start_auto_scan', filterData);
+                    autoScanButton.textContent = 'TARAMAYI DURDUR';
+                    autoScanButton.style.backgroundColor = '#ff4d4d';
+                    isAutoScanActive = true;
+                    lastHeartbeat = Date.now();
+                    console.log('Auto-scan start event emitted successfully');
+                } catch (error) {
+                    console.error('Error emitting start_auto_scan:', error);
+                    showMessage('error', 'Otomatik tarama başlatılamadı. Bağlantı kontrol ediliyor...');
+                    autoScanButton.textContent = 'OTOMATİK TARAMA';
+                    autoScanButton.style.backgroundColor = '#4CAF50';
+                    isAutoScanActive = false;
+                }
             }
         });
-    }
-
-    // Socket event listeners
-    if (socket) {
-        let lastUpdateTime = {};
-        let isFirstScan = true;
-        
-        socket.on('auto_scan_started', (data) => {
-            if (isFirstScan) {
-                const consoleDiv = document.getElementById('console-output') || createConsoleDiv();
-                consoleDiv.innerHTML = ''; // Sadece ilk başlangıçta konsolu temizle
-                isFirstScan = false;
-            }
-            appendToConsole(data.message);
-            lastUpdateTime = {};
-        });
-
-        socket.on('auto_scan_result', (data) => {
-            if (!isAutoScanActive) return;
-            
-            const now = Date.now();
-            const timeframe = data.timeframe;
-            
-            // Aynı timeframe için minimum güncelleme aralığı (ms)
-            const minUpdateInterval = timeframe * 60 * 1000; // timeframe dakika cinsinden
-            
-            // Son güncellemeden bu yana yeterli süre geçti mi kontrol et
-            if (!lastUpdateTime[timeframe] || (now - lastUpdateTime[timeframe]) >= minUpdateInterval) {
-                appendToConsole(data.message, timeframe);
-                lastUpdateTime[timeframe] = now;
-            }
-        });
-
-        socket.on('auto_scan_error', (data) => {
-            appendToConsole(`\nHATA: ${data.error}\n`);
-        });
-
-        socket.on('auto_scan_stopped', (data) => {
-            appendToConsole(`\n${data.message}\n`);
-            isAutoScanActive = false;
-            isFirstScan = true;
-            const autoScanButton = document.querySelector('.auto-scan-btn');
-            if (autoScanButton) {
-                autoScanButton.textContent = 'OTOMATİK TARAMA';
-                autoScanButton.style.backgroundColor = '#4CAF50';
-            }
-            lastUpdateTime = {};
-        });
-
-        socket.on('connect', () => {
-            if (isAutoScanActive) {
-                appendToConsole('\nBağlantı yeniden kuruldu. Otomatik tarama devam ediyor...\n');
-            }
-        });
-
-        socket.on('disconnect', () => {
-            if (isAutoScanActive) {
-                appendToConsole('\nBağlantı kesildi. Yeniden bağlanmaya çalışılıyor...\n');
-            }
-        });
+    } else {
+        console.error('Auto-scan button not found!');
     }
 });
 
