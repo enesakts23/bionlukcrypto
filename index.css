@@ -125,10 +125,29 @@ body {
     text-transform: uppercase;
     letter-spacing: 1px;
     width: 100%;
+    margin-bottom: 10px;
 }
 
 .filter-btn:hover {
     background-color: #3db8df;
+}
+
+.auto-scan-btn {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    width: 100%;
+}
+
+.auto-scan-btn:hover {
+    background-color: #45a049;
 }
 
 .results {
