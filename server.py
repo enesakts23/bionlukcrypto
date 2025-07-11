@@ -1,10 +1,8 @@
-import eventlet
-eventlet.monkey_patch()
-
 from flask import Flask, request, jsonify, send_from_directory
 from flask_cors import CORS
 from crypto_scanner import CryptoScanner
 from flask_socketio import SocketIO
+from waitress import serve
 import logging
 import sys
 import os
@@ -36,7 +34,7 @@ CORS(app, resources={
 socketio = SocketIO(
     app,
     cors_allowed_origins="*",
-    async_mode='eventlet',
+    async_mode='threading',
     ping_timeout=60,
     ping_interval=25,
     always_connect=True,
