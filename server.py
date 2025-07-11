@@ -38,21 +38,21 @@ socketio = SocketIO(
     app,
     cors_allowed_origins="*",
     async_mode='threading',
-    # WebSocket protokol hatalarını önlemek için polling'i birincil transport yap
-    transports=['polling', 'websocket'],
-    ping_timeout=60,
-    ping_interval=25,
+    # WebSocket protokol hatalarını önlemek için sadece polling kullan
+    transports=['polling'],
+    ping_timeout=30,  # Azaltıldı
+    ping_interval=15,  # Azaltıldı
     always_connect=True,
     reconnection=True,
-    reconnection_attempts=20,
-    reconnection_delay=1000,
-    reconnection_delay_max=5000,
+    reconnection_attempts=10,  # Frontend ile uyumlu
+    reconnection_delay=2000,  # Frontend ile uyumlu
+    reconnection_delay_max=10000,  # Frontend ile uyumlu
     logger=False,
     engineio_logger=False,
-    # WebSocket upgrade'i daha güvenli hale getir
-    upgrade=True,
+    # WebSocket upgrade'i tamamen devre dışı bırak
+    upgrade=False,
     compression=False,  # Compression'u devre dışı bırak
-    allow_upgrades=True
+    allow_upgrades=False  # Upgrade'leri tamamen engelle
 )
 
 # CryptoScanner instance'ı oluştur
