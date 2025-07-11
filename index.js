@@ -173,6 +173,59 @@ let selectedComparison = '≥';
 // Kapanışta tarama durumu
 let isClosingScanActive = false;
 
+// Otomatik tarama durumu
+let isAutoScanActive = false;
+
+// Konsol div'i oluştur
+function createConsoleDiv() {
+    // Eğer zaten varsa, yeni oluşturma
+    let consoleDiv = document.getElementById('console-output');
+    if (consoleDiv) {
+        return consoleDiv;
+    }
+
+    consoleDiv = document.createElement('div');
+    consoleDiv.id = 'console-output';
+    consoleDiv.style.cssText = `
+        background-color: #1a1a1a;
+        color: #00ff00;
+        font-family: monospace;
+        padding: 10px;
+        margin-top: 20px;
+        border-radius: 8px;
+        height: 300px;
+        overflow-y: auto;
+        white-space: pre-wrap;
+        display: none;
+    `;
+    document.querySelector('.results-container').appendChild(consoleDiv);
+    return consoleDiv;
+}
+
+// Konsola mesaj ekle
+function appendToConsole(message, timeframe = null) {
+    const consoleDiv = document.getElementById('console-output') || createConsoleDiv();
+    consoleDiv.style.display = 'block';
+    
+    // Yeni mesajı ekle
+    const messageDiv = document.createElement('div');
+    messageDiv.textContent = message;
+    
+    // Timeframe bilgisi varsa ve yeni bir tarama sonucuysa, önceki aynı timeframe sonuçlarını temizle
+    if (timeframe) {
+        const oldResults = consoleDiv.querySelectorAll(`[data-timeframe="${timeframe}"]`);
+        oldResults.forEach(result => result.remove());
+        messageDiv.setAttribute('data-timeframe', timeframe);
+    }
+    
+    consoleDiv.appendChild(messageDiv);
+    
+    // Scroll'u en alta getir (performanslı şekilde)
+    requestAnimationFrame(() => {
+        consoleDiv.scrollTop = consoleDiv.scrollHeight;
+    });
+}
+
 // Coin listesi dosyasını işle
 document.getElementById('coinListFile').addEventListener('change', function(e) {
     const file = e.target.files[0];
@@ -510,8 +563,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 selectedTimes = selectedTimes.filter(t => t !== time);
             } else {
                 button.classList.add('active');
-                selectedTimes.push(time);
+                if (!selectedTimes.includes(time)) {
+                    selectedTimes.push(time);
+                }
             }
+            console.log('Seçili zaman aralıkları:', selectedTimes);
         });
     });
 
@@ -752,6 +808,115 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     `;
     document.head.appendChild(additionalStyle);
+
+    // Otomatik tarama butonu fonksiyonalitesi
+    const autoScanButton = document.querySelector('.auto-scan-btn');
+    if (autoScanButton) {
+        autoScanButton.addEventListener('click', async () => {
+            if (!isConnected) {
+                socket.connect();
+            }
+
+            if (isAutoScanActive) {
+                // Taramayı durdur
+                socket.emit('stop_auto_scan');
+                autoScanButton.textContent = 'OTOMATİK TARAMA';
+                autoScanButton.style.backgroundColor = '#4CAF50';
+                isAutoScanActive = false;
+                appendToConsole('\nOtomatik tarama durduruldu.\n');
+            } else {
+                // Zaman aralığı seçilmediyse uyarı ver
+                if (selectedTimes.length === 0) {
+                    showMessage('error', 'Lütfen en az bir zaman aralığı seçin!');
+                    return;
+                }
+
+                // Aktif filtreleri topla
+                const filterData = {
+                    rsi1: filterStates.rsi1 ? document.getElementById('rsi1-value').textContent : null,
+                    rsi2: filterStates.rsi2 ? document.getElementById('rsi2-value').textContent : null,
+                    comparison: selectedComparison,
+                    hacim: filterStates.hacim ? document.getElementById('hacim-value').textContent : null,
+                    volume: filterStates.volume ? document.getElementById('volume-value').textContent : null,
+                    artis: filterStates.artis ? document.getElementById('artis-value').textContent : null,
+                    times: [...selectedTimes].sort((a, b) => parseInt(a) - parseInt(b)), // Sıralı zaman aralıkları
+                    coinList: coinList,
+                    filterStates: {...filterStates}
+                };
+
+                // Konsolu temizle ve başlangıç mesajını göster
+                const consoleDiv = document.getElementById('console-output') || createConsoleDiv();
+                consoleDiv.innerHTML = 'Otomatik tarama başlatılıyor...\n';
+                consoleDiv.style.display = 'block';
+
+                // Otomatik taramayı başlat
+                socket.emit('start_auto_scan', filterData);
+                autoScanButton.textContent = 'TARAMAYI DURDUR';
+                autoScanButton.style.backgroundColor = '#ff4d4d';
+                isAutoScanActive = true;
+            }
+        });
+    }
+
+    // Socket event listeners
+    if (socket) {
+        let lastUpdateTime = {};
+        let isFirstScan = true;
+        
+        socket.on('auto_scan_started', (data) => {
+            if (isFirstScan) {
+                const consoleDiv = document.getElementById('console-output') || createConsoleDiv();
+                consoleDiv.innerHTML = ''; // Sadece ilk başlangıçta konsolu temizle
+                isFirstScan = false;
+            }
+            appendToConsole(data.message);
+            lastUpdateTime = {};
+        });
+
+        socket.on('auto_scan_result', (data) => {
+            if (!isAutoScanActive) return;
+            
+            const now = Date.now();
+            const timeframe = data.timeframe;
+            
+            // Aynı timeframe için minimum güncelleme aralığı (ms)
+            const minUpdateInterval = timeframe * 60 * 1000; // timeframe dakika cinsinden
+            
+            // Son güncellemeden bu yana yeterli süre geçti mi kontrol et
+            if (!lastUpdateTime[timeframe] || (now - lastUpdateTime[timeframe]) >= minUpdateInterval) {
+                appendToConsole(data.message, timeframe);
+                lastUpdateTime[timeframe] = now;
+            }
+        });
+
+        socket.on('auto_scan_error', (data) => {
+            appendToConsole(`\nHATA: ${data.error}\n`);
+        });
+
+        socket.on('auto_scan_stopped', (data) => {
+            appendToConsole(`\n${data.message}\n`);
+            isAutoScanActive = false;
+            isFirstScan = true;
+            const autoScanButton = document.querySelector('.auto-scan-btn');
+            if (autoScanButton) {
+                autoScanButton.textContent = 'OTOMATİK TARAMA';
+                autoScanButton.style.backgroundColor = '#4CAF50';
+            }
+            lastUpdateTime = {};
+        });
+
+        socket.on('connect', () => {
+            if (isAutoScanActive) {
+                appendToConsole('\nBağlantı yeniden kuruldu. Otomatik tarama devam ediyor...\n');
+            }
+        });
+
+        socket.on('disconnect', () => {
+            if (isAutoScanActive) {
+                appendToConsole('\nBağlantı kesildi. Yeniden bağlanmaya çalışılıyor...\n');
+            }
+        });
+    }
 });
 
 // Sayfadan ayrılırken socket bağlantısını kapat

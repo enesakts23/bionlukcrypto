@@ -4,3 +4,300 @@
 2025-07-11 13:33:52,999 - INFO -  * Running on http://10.0.0.13:5001/ (Press CTRL+C to quit)
 2025-07-11 13:34:25,519 - INFO - 127.0.0.1 - - [11/Jul/2025 13:34:25] "OPTIONS /filter HTTP/1.1" 200 -
 2025-07-11 13:34:30,046 - INFO - 127.0.0.1 - - [11/Jul/2025 13:34:30] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:44:38,188 - INFO - Server baþlatýldý - http://0.0.0.0:5001
+2025-07-11 13:44:38,202 - WARNING -  * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+2025-07-11 13:44:38,203 - INFO -  * Running on http://10.0.0.13:5001/ (Press CTRL+C to quit)
+2025-07-11 13:44:50,652 - INFO - 127.0.0.1 - - [11/Jul/2025 13:44:50] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:45:03,156 - INFO - 127.0.0.1 - - [11/Jul/2025 13:45:03] "OPTIONS /filter HTTP/1.1" 200 -
+2025-07-11 13:45:57,545 - INFO - 127.0.0.1 - - [11/Jul/2025 13:45:57] "POST /filter HTTP/1.1" 200 -
+2025-07-11 13:49:39,881 - INFO - 127.0.0.1 - - [11/Jul/2025 13:49:39] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:49:40,327 - INFO - 127.0.0.1 - - [11/Jul/2025 13:49:40] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:49:40,744 - INFO - 127.0.0.1 - - [11/Jul/2025 13:49:40] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:49:41,162 - INFO - 127.0.0.1 - - [11/Jul/2025 13:49:41] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:49:41,577 - INFO - 127.0.0.1 - - [11/Jul/2025 13:49:41] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:49:41,994 - INFO - 127.0.0.1 - - [11/Jul/2025 13:49:41] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:49:42,410 - INFO - 127.0.0.1 - - [11/Jul/2025 13:49:42] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:49:42,810 - INFO - 127.0.0.1 - - [11/Jul/2025 13:49:42] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:49:43,227 - INFO - 127.0.0.1 - - [11/Jul/2025 13:49:43] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:49:43,645 - INFO - 127.0.0.1 - - [11/Jul/2025 13:49:43] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:49:44,061 - INFO - 127.0.0.1 - - [11/Jul/2025 13:49:44] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:49:44,479 - INFO - 127.0.0.1 - - [11/Jul/2025 13:49:44] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:49:44,874 - INFO - 127.0.0.1 - - [11/Jul/2025 13:49:44] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:49:45,357 - INFO - 127.0.0.1 - - [11/Jul/2025 13:49:45] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:49:45,744 - INFO - 127.0.0.1 - - [11/Jul/2025 13:49:45] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:49:46,162 - INFO - 127.0.0.1 - - [11/Jul/2025 13:49:46] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:49:46,579 - INFO - 127.0.0.1 - - [11/Jul/2025 13:49:46] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:49:46,994 - INFO - 127.0.0.1 - - [11/Jul/2025 13:49:46] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:49:47,411 - INFO - 127.0.0.1 - - [11/Jul/2025 13:49:47] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:49:47,826 - INFO - 127.0.0.1 - - [11/Jul/2025 13:49:47] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:49:48,243 - INFO - 127.0.0.1 - - [11/Jul/2025 13:49:48] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:49:48,660 - INFO - 127.0.0.1 - - [11/Jul/2025 13:49:48] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:49:49,110 - INFO - 127.0.0.1 - - [11/Jul/2025 13:49:49] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:49:49,493 - INFO - 127.0.0.1 - - [11/Jul/2025 13:49:49] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:49:49,910 - INFO - 127.0.0.1 - - [11/Jul/2025 13:49:49] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:49:50,325 - INFO - 127.0.0.1 - - [11/Jul/2025 13:49:50] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:49:50,729 - INFO - 127.0.0.1 - - [11/Jul/2025 13:49:50] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:49:51,161 - INFO - 127.0.0.1 - - [11/Jul/2025 13:49:51] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:49:51,577 - INFO - 127.0.0.1 - - [11/Jul/2025 13:49:51] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:49:51,977 - INFO - 127.0.0.1 - - [11/Jul/2025 13:49:51] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:49:52,393 - INFO - 127.0.0.1 - - [11/Jul/2025 13:49:52] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:49:52,805 - INFO - 127.0.0.1 - - [11/Jul/2025 13:49:52] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:49:53,276 - INFO - 127.0.0.1 - - [11/Jul/2025 13:49:53] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:49:53,692 - INFO - 127.0.0.1 - - [11/Jul/2025 13:49:53] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:49:54,109 - INFO - 127.0.0.1 - - [11/Jul/2025 13:49:54] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:49:54,525 - INFO - 127.0.0.1 - - [11/Jul/2025 13:49:54] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:49:54,944 - INFO - 127.0.0.1 - - [11/Jul/2025 13:49:54] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:49:55,360 - INFO - 127.0.0.1 - - [11/Jul/2025 13:49:55] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:49:55,776 - INFO - 127.0.0.1 - - [11/Jul/2025 13:49:55] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:49:56,193 - INFO - 127.0.0.1 - - [11/Jul/2025 13:49:56] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:49:56,661 - INFO - 127.0.0.1 - - [11/Jul/2025 13:49:56] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:49:57,076 - INFO - 127.0.0.1 - - [11/Jul/2025 13:49:57] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:49:57,542 - INFO - 127.0.0.1 - - [11/Jul/2025 13:49:57] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:49:57,957 - INFO - 127.0.0.1 - - [11/Jul/2025 13:49:57] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:49:58,375 - INFO - 127.0.0.1 - - [11/Jul/2025 13:49:58] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:49:58,792 - INFO - 127.0.0.1 - - [11/Jul/2025 13:49:58] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:49:59,259 - INFO - 127.0.0.1 - - [11/Jul/2025 13:49:59] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:49:59,726 - INFO - 127.0.0.1 - - [11/Jul/2025 13:49:59] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:50:00,141 - INFO - 127.0.0.1 - - [11/Jul/2025 13:50:00] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:50:00,558 - INFO - 127.0.0.1 - - [11/Jul/2025 13:50:00] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:50:00,965 - INFO - 127.0.0.1 - - [11/Jul/2025 13:50:00] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:50:01,392 - INFO - 127.0.0.1 - - [11/Jul/2025 13:50:01] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:50:01,810 - INFO - 127.0.0.1 - - [11/Jul/2025 13:50:01] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:50:02,240 - INFO - 127.0.0.1 - - [11/Jul/2025 13:50:02] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:50:02,638 - INFO - 127.0.0.1 - - [11/Jul/2025 13:50:02] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:50:33,775 - INFO - Server baþlatýldý - http://0.0.0.0:5001
+2025-07-11 13:50:33,787 - WARNING -  * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+2025-07-11 13:50:33,787 - INFO -  * Running on http://10.0.0.13:5001/ (Press CTRL+C to quit)
+2025-07-11 13:52:46,774 - INFO - 127.0.0.1 - - [11/Jul/2025 13:52:46] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:52:47,146 - INFO - 127.0.0.1 - - [11/Jul/2025 13:52:47] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:52:47,604 - INFO - 127.0.0.1 - - [11/Jul/2025 13:52:47] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:52:47,963 - INFO - 127.0.0.1 - - [11/Jul/2025 13:52:47] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:52:48,351 - INFO - 127.0.0.1 - - [11/Jul/2025 13:52:48] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:52:48,730 - INFO - 127.0.0.1 - - [11/Jul/2025 13:52:48] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:52:49,140 - INFO - 127.0.0.1 - - [11/Jul/2025 13:52:49] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:52:49,543 - INFO - 127.0.0.1 - - [11/Jul/2025 13:52:49] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:52:49,950 - INFO - 127.0.0.1 - - [11/Jul/2025 13:52:49] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:52:50,362 - INFO - 127.0.0.1 - - [11/Jul/2025 13:52:50] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:52:50,767 - INFO - 127.0.0.1 - - [11/Jul/2025 13:52:50] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:52:51,169 - INFO - 127.0.0.1 - - [11/Jul/2025 13:52:51] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:52:51,570 - INFO - 127.0.0.1 - - [11/Jul/2025 13:52:51] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:52:51,967 - INFO - 127.0.0.1 - - [11/Jul/2025 13:52:51] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:52:52,350 - INFO - 127.0.0.1 - - [11/Jul/2025 13:52:52] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:52:52,757 - INFO - 127.0.0.1 - - [11/Jul/2025 13:52:52] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:52:53,186 - INFO - 127.0.0.1 - - [11/Jul/2025 13:52:53] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:52:53,585 - INFO - 127.0.0.1 - - [11/Jul/2025 13:52:53] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:52:53,987 - INFO - 127.0.0.1 - - [11/Jul/2025 13:52:53] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:52:54,384 - INFO - 127.0.0.1 - - [11/Jul/2025 13:52:54] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:52:54,786 - INFO - 127.0.0.1 - - [11/Jul/2025 13:52:54] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:52:55,201 - INFO - 127.0.0.1 - - [11/Jul/2025 13:52:55] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:52:55,599 - INFO - 127.0.0.1 - - [11/Jul/2025 13:52:55] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:52:56,018 - INFO - 127.0.0.1 - - [11/Jul/2025 13:52:56] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:52:56,416 - INFO - 127.0.0.1 - - [11/Jul/2025 13:52:56] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:52:56,842 - INFO - 127.0.0.1 - - [11/Jul/2025 13:52:56] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:52:57,225 - INFO - 127.0.0.1 - - [11/Jul/2025 13:52:57] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:52:57,684 - INFO - 127.0.0.1 - - [11/Jul/2025 13:52:57] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:52:58,119 - INFO - 127.0.0.1 - - [11/Jul/2025 13:52:58] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:52:58,534 - INFO - 127.0.0.1 - - [11/Jul/2025 13:52:58] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:52:58,969 - INFO - 127.0.0.1 - - [11/Jul/2025 13:52:58] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:52:59,422 - INFO - 127.0.0.1 - - [11/Jul/2025 13:52:59] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:52:59,768 - INFO - 127.0.0.1 - - [11/Jul/2025 13:52:59] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:53:00,184 - INFO - 127.0.0.1 - - [11/Jul/2025 13:53:00] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:53:00,647 - INFO - 127.0.0.1 - - [11/Jul/2025 13:53:00] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:53:01,068 - INFO - 127.0.0.1 - - [11/Jul/2025 13:53:01] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:53:01,482 - INFO - 127.0.0.1 - - [11/Jul/2025 13:53:01] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:53:01,884 - INFO - 127.0.0.1 - - [11/Jul/2025 13:53:01] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:53:02,268 - INFO - 127.0.0.1 - - [11/Jul/2025 13:53:02] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:53:02,671 - INFO - 127.0.0.1 - - [11/Jul/2025 13:53:02] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:53:03,101 - INFO - 127.0.0.1 - - [11/Jul/2025 13:53:03] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:53:03,501 - INFO - 127.0.0.1 - - [11/Jul/2025 13:53:03] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:53:03,920 - INFO - 127.0.0.1 - - [11/Jul/2025 13:53:03] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:53:04,359 - INFO - 127.0.0.1 - - [11/Jul/2025 13:53:04] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:54:45,774 - INFO - 127.0.0.1 - - [11/Jul/2025 13:54:45] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:55:19,649 - INFO - Server baþlatýldý - http://0.0.0.0:5001
+2025-07-11 13:55:19,654 - WARNING -  * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+2025-07-11 13:55:19,654 - INFO -  * Running on http://10.0.0.13:5001/ (Press CTRL+C to quit)
+2025-07-11 13:55:56,369 - INFO - 127.0.0.1 - - [11/Jul/2025 13:55:56] "OPTIONS /filter HTTP/1.1" 200 -
+2025-07-11 13:57:21,968 - INFO - 127.0.0.1 - - [11/Jul/2025 13:57:21] "POST /filter HTTP/1.1" 200 -
+2025-07-11 13:57:46,802 - INFO - 127.0.0.1 - - [11/Jul/2025 13:57:46] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:57:47,163 - INFO - 127.0.0.1 - - [11/Jul/2025 13:57:47] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:57:47,570 - INFO - 127.0.0.1 - - [11/Jul/2025 13:57:47] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:57:47,987 - INFO - 127.0.0.1 - - [11/Jul/2025 13:57:47] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:57:48,379 - INFO - 127.0.0.1 - - [11/Jul/2025 13:57:48] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:57:48,786 - INFO - 127.0.0.1 - - [11/Jul/2025 13:57:48] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:57:49,189 - INFO - 127.0.0.1 - - [11/Jul/2025 13:57:49] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:57:49,582 - INFO - 127.0.0.1 - - [11/Jul/2025 13:57:49] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:57:49,984 - INFO - 127.0.0.1 - - [11/Jul/2025 13:57:49] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:57:50,381 - INFO - 127.0.0.1 - - [11/Jul/2025 13:57:50] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:57:50,772 - INFO - 127.0.0.1 - - [11/Jul/2025 13:57:50] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:57:51,197 - INFO - 127.0.0.1 - - [11/Jul/2025 13:57:51] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:57:51,600 - INFO - 127.0.0.1 - - [11/Jul/2025 13:57:51] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:57:51,998 - INFO - 127.0.0.1 - - [11/Jul/2025 13:57:51] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:57:52,399 - INFO - 127.0.0.1 - - [11/Jul/2025 13:57:52] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:57:52,794 - INFO - 127.0.0.1 - - [11/Jul/2025 13:57:52] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:57:53,197 - INFO - 127.0.0.1 - - [11/Jul/2025 13:57:53] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:57:53,596 - INFO - 127.0.0.1 - - [11/Jul/2025 13:57:53] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:57:53,995 - INFO - 127.0.0.1 - - [11/Jul/2025 13:57:53] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:57:54,397 - INFO - 127.0.0.1 - - [11/Jul/2025 13:57:54] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:57:54,796 - INFO - 127.0.0.1 - - [11/Jul/2025 13:57:54] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:57:55,195 - INFO - 127.0.0.1 - - [11/Jul/2025 13:57:55] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:57:55,603 - INFO - 127.0.0.1 - - [11/Jul/2025 13:57:55] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:57:56,018 - INFO - 127.0.0.1 - - [11/Jul/2025 13:57:56] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:57:56,418 - INFO - 127.0.0.1 - - [11/Jul/2025 13:57:56] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:57:56,835 - INFO - 127.0.0.1 - - [11/Jul/2025 13:57:56] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:57:57,249 - INFO - 127.0.0.1 - - [11/Jul/2025 13:57:57] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:57:57,633 - INFO - 127.0.0.1 - - [11/Jul/2025 13:57:57] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:57:58,035 - INFO - 127.0.0.1 - - [11/Jul/2025 13:57:58] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:57:58,434 - INFO - 127.0.0.1 - - [11/Jul/2025 13:57:58] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:57:58,857 - INFO - 127.0.0.1 - - [11/Jul/2025 13:57:58] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:57:59,280 - INFO - 127.0.0.1 - - [11/Jul/2025 13:57:59] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:57:59,701 - INFO - 127.0.0.1 - - [11/Jul/2025 13:57:59] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:58:00,108 - INFO - 127.0.0.1 - - [11/Jul/2025 13:58:00] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:58:00,514 - INFO - 127.0.0.1 - - [11/Jul/2025 13:58:00] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:58:00,912 - INFO - 127.0.0.1 - - [11/Jul/2025 13:58:00] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:58:01,330 - INFO - 127.0.0.1 - - [11/Jul/2025 13:58:01] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:58:01,781 - INFO - 127.0.0.1 - - [11/Jul/2025 13:58:01] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:58:02,180 - INFO - 127.0.0.1 - - [11/Jul/2025 13:58:02] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:58:02,580 - INFO - 127.0.0.1 - - [11/Jul/2025 13:58:02] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:58:02,985 - INFO - 127.0.0.1 - - [11/Jul/2025 13:58:02] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:58:03,383 - INFO - 127.0.0.1 - - [11/Jul/2025 13:58:03] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:58:03,779 - INFO - 127.0.0.1 - - [11/Jul/2025 13:58:03] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:58:04,186 - INFO - 127.0.0.1 - - [11/Jul/2025 13:58:04] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:58:04,599 - INFO - 127.0.0.1 - - [11/Jul/2025 13:58:04] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:58:04,997 - INFO - 127.0.0.1 - - [11/Jul/2025 13:58:04] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:58:05,457 - INFO - 127.0.0.1 - - [11/Jul/2025 13:58:05] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:58:05,846 - INFO - 127.0.0.1 - - [11/Jul/2025 13:58:05] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:58:06,259 - INFO - 127.0.0.1 - - [11/Jul/2025 13:58:06] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:58:06,646 - INFO - 127.0.0.1 - - [11/Jul/2025 13:58:06] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:58:07,049 - INFO - 127.0.0.1 - - [11/Jul/2025 13:58:07] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:58:07,461 - INFO - 127.0.0.1 - - [11/Jul/2025 13:58:07] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:58:07,864 - INFO - 127.0.0.1 - - [11/Jul/2025 13:58:07] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:58:08,263 - INFO - 127.0.0.1 - - [11/Jul/2025 13:58:08] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:58:08,662 - INFO - 127.0.0.1 - - [11/Jul/2025 13:58:08] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:58:09,076 - INFO - 127.0.0.1 - - [11/Jul/2025 13:58:09] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:58:09,479 - INFO - 127.0.0.1 - - [11/Jul/2025 13:58:09] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:58:09,880 - INFO - 127.0.0.1 - - [11/Jul/2025 13:58:09] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:58:10,278 - INFO - 127.0.0.1 - - [11/Jul/2025 13:58:10] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:58:10,670 - INFO - 127.0.0.1 - - [11/Jul/2025 13:58:10] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:58:11,111 - INFO - 127.0.0.1 - - [11/Jul/2025 13:58:11] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:58:11,513 - INFO - 127.0.0.1 - - [11/Jul/2025 13:58:11] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:58:12,029 - INFO - 127.0.0.1 - - [11/Jul/2025 13:58:12] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:58:12,431 - INFO - 127.0.0.1 - - [11/Jul/2025 13:58:12] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:58:12,846 - INFO - 127.0.0.1 - - [11/Jul/2025 13:58:12] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:58:13,253 - INFO - 127.0.0.1 - - [11/Jul/2025 13:58:13] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:58:13,873 - INFO - 127.0.0.1 - - [11/Jul/2025 13:58:13] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:58:14,291 - INFO - 127.0.0.1 - - [11/Jul/2025 13:58:14] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:58:14,681 - INFO - 127.0.0.1 - - [11/Jul/2025 13:58:14] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 13:59:36,672 - INFO - Server baþlatýldý - http://0.0.0.0:5001
+2025-07-11 13:59:36,683 - WARNING -  * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+2025-07-11 13:59:36,683 - INFO -  * Running on http://10.0.0.13:5001/ (Press CTRL+C to quit)
+2025-07-11 14:02:46,808 - INFO - 127.0.0.1 - - [11/Jul/2025 14:02:46] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 14:03:01,466 - INFO - 127.0.0.1 - - [11/Jul/2025 14:03:01] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 14:03:13,062 - INFO - 127.0.0.1 - - [11/Jul/2025 14:03:13] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 14:07:04,603 - INFO - Server baþlatýldý - http://0.0.0.0:5001
+2025-07-11 14:07:04,611 - WARNING -  * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+2025-07-11 14:07:04,611 - INFO -  * Running on http://10.0.0.13:5001/ (Press CTRL+C to quit)
+2025-07-11 14:07:46,825 - INFO - 127.0.0.1 - - [11/Jul/2025 14:07:46] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 14:07:47,292 - INFO - 127.0.0.1 - - [11/Jul/2025 14:07:47] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 14:07:47,777 - INFO - 127.0.0.1 - - [11/Jul/2025 14:07:47] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 14:07:48,172 - INFO - 127.0.0.1 - - [11/Jul/2025 14:07:48] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 14:07:48,578 - INFO - 127.0.0.1 - - [11/Jul/2025 14:07:48] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 14:07:49,003 - INFO - 127.0.0.1 - - [11/Jul/2025 14:07:49] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 14:07:49,403 - INFO - 127.0.0.1 - - [11/Jul/2025 14:07:49] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 14:07:49,801 - INFO - 127.0.0.1 - - [11/Jul/2025 14:07:49] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 14:07:50,201 - INFO - 127.0.0.1 - - [11/Jul/2025 14:07:50] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 14:07:50,654 - INFO - 127.0.0.1 - - [11/Jul/2025 14:07:50] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 14:07:51,058 - INFO - 127.0.0.1 - - [11/Jul/2025 14:07:51] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 14:07:51,470 - INFO - 127.0.0.1 - - [11/Jul/2025 14:07:51] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 14:07:51,869 - INFO - 127.0.0.1 - - [11/Jul/2025 14:07:51] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 14:07:52,269 - INFO - 127.0.0.1 - - [11/Jul/2025 14:07:52] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 14:07:52,670 - INFO - 127.0.0.1 - - [11/Jul/2025 14:07:52] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 14:07:53,070 - INFO - 127.0.0.1 - - [11/Jul/2025 14:07:53] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 14:07:53,470 - INFO - 127.0.0.1 - - [11/Jul/2025 14:07:53] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 14:07:53,872 - INFO - 127.0.0.1 - - [11/Jul/2025 14:07:53] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 14:07:54,270 - INFO - 127.0.0.1 - - [11/Jul/2025 14:07:54] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 14:07:54,676 - INFO - 127.0.0.1 - - [11/Jul/2025 14:07:54] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 14:07:55,087 - INFO - 127.0.0.1 - - [11/Jul/2025 14:07:55] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 14:07:55,468 - INFO - 127.0.0.1 - - [11/Jul/2025 14:07:55] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 14:07:55,875 - INFO - 127.0.0.1 - - [11/Jul/2025 14:07:55] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 14:07:56,290 - INFO - 127.0.0.1 - - [11/Jul/2025 14:07:56] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 14:07:56,705 - INFO - 127.0.0.1 - - [11/Jul/2025 14:07:56] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 14:07:57,119 - INFO - 127.0.0.1 - - [11/Jul/2025 14:07:57] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 14:07:57,516 - INFO - 127.0.0.1 - - [11/Jul/2025 14:07:57] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 14:10:42,046 - INFO - Server baþlatýldý - http://0.0.0.0:5001
+2025-07-11 14:10:42,056 - WARNING -  * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+2025-07-11 14:10:42,056 - INFO -  * Running on http://10.0.0.13:5001/ (Press CTRL+C to quit)
+2025-07-11 14:11:07,724 - INFO - 127.0.0.1 - - [11/Jul/2025 14:11:07] "OPTIONS /filter HTTP/1.1" 200 -
+2025-07-11 14:11:09,864 - INFO - 127.0.0.1 - - [11/Jul/2025 14:11:09] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 14:11:27,089 - INFO - Gelen veri: {'rsi1': None, 'rsi2': '65', 'comparison': '\u2265', 'hacim': None, 'volume': None, 'artis': '0.3', 'times': ['3', '5', '10'], 'coinList': None, 'filterStates': {'rsi1': False, 'rsi2': True, 'hacim': False, 'volume': False, 'artis': True}}
+2025-07-11 14:11:27,089 - INFO - Hazýrlanan tarama parametreleri: {'rsi_length': 13, 'rsi_value': None, 'comparison': '\u2265', 'min_relative_volume': None, 'min_volume': None, 'min_percentage_change': 0.3, 'closing_scan': True, 'coin_list': None}
+2025-07-11 14:11:27,090 - INFO - Baþlatýlan tarama parametreleri: {'rsi_length': 13, 'rsi_value': None, 'comparison': '\u2265', 'min_relative_volume': None, 'min_volume': None, 'min_percentage_change': 0.3, 'closing_scan': True, 'coin_list': None}
+2025-07-11 14:12:01,238 - ERROR - Otomatik tarama hatasý: cannot schedule new futures after interpreter shutdown
+2025-07-11 14:12:06,387 - INFO - Server baþlatýldý - http://0.0.0.0:5001
+2025-07-11 14:12:06,391 - WARNING -  * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+2025-07-11 14:12:06,391 - INFO -  * Running on http://10.0.0.13:5001/ (Press CTRL+C to quit)
+2025-07-11 14:12:08,667 - INFO - 127.0.0.1 - - [11/Jul/2025 14:12:08] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 14:12:34,155 - INFO - Gelen veri: {'rsi1': None, 'rsi2': '66', 'comparison': '\u2265', 'hacim': None, 'volume': None, 'artis': '0.4', 'times': ['3', '5', '10'], 'coinList': None, 'filterStates': {'rsi1': False, 'rsi2': True, 'hacim': False, 'volume': False, 'artis': True}}
+2025-07-11 14:12:34,156 - INFO - Hazýrlanan tarama parametreleri: {'rsi_length': 13, 'rsi_value': None, 'comparison': '\u2265', 'min_relative_volume': None, 'min_volume': None, 'min_percentage_change': 0.4, 'closing_scan': True, 'coin_list': None}
+2025-07-11 14:12:34,157 - INFO - Baþlatýlan tarama parametreleri: {'rsi_length': 13, 'rsi_value': None, 'comparison': '\u2265', 'min_relative_volume': None, 'min_volume': None, 'min_percentage_change': 0.4, 'closing_scan': True, 'coin_list': None}
+2025-07-11 14:12:46,838 - INFO - 127.0.0.1 - - [11/Jul/2025 14:12:46] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 14:14:10,451 - INFO - Gelen veri: {'rsi1': None, 'rsi2': '65', 'comparison': '\u2265', 'hacim': None, 'volume': None, 'artis': None, 'times': ['3', '5', '10'], 'coinList': None, 'filterStates': {'rsi1': False, 'rsi2': True, 'hacim': False, 'volume': False, 'artis': False}}
+2025-07-11 14:14:10,452 - INFO - Hazýrlanan tarama parametreleri: {'rsi_length': 13, 'rsi_value': None, 'comparison': '\u2265', 'min_relative_volume': None, 'min_volume': None, 'min_percentage_change': None, 'closing_scan': True, 'coin_list': None}
+2025-07-11 14:14:10,452 - INFO - Baþlatýlan tarama parametreleri: {'rsi_length': 13, 'rsi_value': None, 'comparison': '\u2265', 'min_relative_volume': None, 'min_volume': None, 'min_percentage_change': None, 'closing_scan': True, 'coin_list': None}
+2025-07-11 14:14:16,451 - INFO - 127.0.0.1 - - [11/Jul/2025 14:14:16] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 14:14:28,720 - INFO - Gelen veri: {'rsi1': None, 'rsi2': None, 'comparison': '\u2265', 'hacim': None, 'volume': None, 'artis': '0.4', 'times': ['3', '5', '10'], 'coinList': None, 'filterStates': {'rsi1': False, 'rsi2': False, 'hacim': False, 'volume': False, 'artis': True}}
+2025-07-11 14:14:28,720 - INFO - Hazýrlanan tarama parametreleri: {'rsi_length': 13, 'rsi_value': None, 'comparison': '\u2265', 'min_relative_volume': None, 'min_volume': None, 'min_percentage_change': 0.4, 'closing_scan': True, 'coin_list': None}
+2025-07-11 14:14:28,721 - INFO - Baþlatýlan tarama parametreleri: {'rsi_length': 13, 'rsi_value': None, 'comparison': '\u2265', 'min_relative_volume': None, 'min_volume': None, 'min_percentage_change': 0.4, 'closing_scan': True, 'coin_list': None}
+2025-07-11 14:17:46,838 - INFO - 127.0.0.1 - - [11/Jul/2025 14:17:46] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 14:20:22,287 - INFO - 127.0.0.1 - - [11/Jul/2025 14:20:22] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 14:20:48,557 - INFO - 127.0.0.1 - - [11/Jul/2025 14:20:48] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 14:21:11,201 - INFO - 127.0.0.1 - - [11/Jul/2025 14:21:11] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 14:21:21,348 - INFO - 127.0.0.1 - - [11/Jul/2025 14:21:21] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 14:21:40,865 - INFO - Server baþlatýldý - http://0.0.0.0:5001
+2025-07-11 14:21:40,874 - WARNING -  * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+2025-07-11 14:21:40,874 - INFO -  * Running on http://10.0.0.13:5001/ (Press CTRL+C to quit)
+2025-07-11 14:22:07,518 - INFO - Gelen veri: {'rsi1': None, 'rsi2': '65', 'comparison': '\u2265', 'hacim': None, 'volume': None, 'artis': None, 'times': ['3', '5', '10'], 'coinList': None, 'filterStates': {'rsi1': False, 'rsi2': True, 'hacim': False, 'volume': False, 'artis': False}}
+2025-07-11 14:22:07,519 - INFO - Hazýrlanan tarama parametreleri: {'rsi_length': 13, 'rsi_value': 65.0, 'comparison': '\u2265', 'min_relative_volume': None, 'min_volume': None, 'min_percentage_change': None, 'closing_scan': True, 'coin_list': None}
+2025-07-11 14:22:07,520 - INFO - Baþlatýlan tarama parametreleri: {'rsi_length': 13, 'rsi_value': 65.0, 'comparison': '\u2265', 'min_relative_volume': None, 'min_volume': None, 'min_percentage_change': None, 'closing_scan': True, 'coin_list': None}
+2025-07-11 14:22:46,830 - INFO - 127.0.0.1 - - [11/Jul/2025 14:22:46] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 14:23:20,188 - INFO - 127.0.0.1 - - [11/Jul/2025 14:23:20] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 14:24:16,880 - INFO - 127.0.0.1 - - [11/Jul/2025 14:24:16] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 14:24:36,360 - INFO - Server baþlatýldý - http://0.0.0.0:5001
+2025-07-11 14:24:36,364 - WARNING -  * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+2025-07-11 14:24:36,365 - INFO -  * Running on http://10.0.0.13:5001/ (Press CTRL+C to quit)
+2025-07-11 14:24:56,623 - INFO - Gelen veri: {'rsi1': None, 'rsi2': '65', 'comparison': '\u2265', 'hacim': None, 'volume': None, 'artis': None, 'times': ['3', '5', '10'], 'coinList': None, 'filterStates': {'rsi1': False, 'rsi2': True, 'hacim': False, 'volume': False, 'artis': False}}
+2025-07-11 14:24:56,624 - INFO - Hazýrlanan tarama parametreleri: {'rsi_length': 13, 'rsi_value': 65.0, 'comparison': '\u2265', 'min_relative_volume': None, 'min_volume': None, 'min_percentage_change': None, 'closing_scan': True, 'coin_list': None}
+2025-07-11 14:24:56,624 - INFO - Baþlatýlan tarama parametreleri: {'rsi_length': 13, 'rsi_value': 65.0, 'comparison': '\u2265', 'min_relative_volume': None, 'min_volume': None, 'min_percentage_change': None, 'closing_scan': True, 'coin_list': None}
+2025-07-11 14:27:46,843 - INFO - 127.0.0.1 - - [11/Jul/2025 14:27:46] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 14:29:49,669 - INFO - 127.0.0.1 - - [11/Jul/2025 14:29:49] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 14:29:50,900 - INFO - 127.0.0.1 - - [11/Jul/2025 14:29:50] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 14:30:12,934 - INFO - 127.0.0.1 - - [11/Jul/2025 14:30:12] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 14:30:23,079 - INFO - 127.0.0.1 - - [11/Jul/2025 14:30:23] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 14:32:50,264 - INFO - Server baþlatýldý - http://0.0.0.0:5001
+2025-07-11 14:32:50,274 - WARNING -  * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+2025-07-11 14:32:50,274 - INFO -  * Running on http://10.0.0.13:5001/ (Press CTRL+C to quit)
+2025-07-11 14:32:54,744 - INFO - 127.0.0.1 - - [11/Jul/2025 14:32:54] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
+2025-07-11 14:33:19,701 - INFO - Gelen veri: {'rsi1': None, 'rsi2': '65', 'comparison': '\u2265', 'hacim': None, 'volume': None, 'artis': '0.2', 'times': ['3', '5', '10'], 'coinList': None, 'filterStates': {'rsi1': False, 'rsi2': True, 'hacim': False, 'volume': False, 'artis': True}}
+2025-07-11 14:33:19,701 - INFO - Hazýrlanan tarama parametreleri: {'rsi_length': 13, 'rsi_value': 65.0, 'comparison': '\u2265', 'min_relative_volume': None, 'min_volume': None, 'min_percentage_change': 0.2, 'closing_scan': True, 'coin_list': None}
+2025-07-11 14:33:19,702 - INFO - Baþlatýlan tarama parametreleri: {'rsi_length': 13, 'rsi_value': 65.0, 'comparison': '\u2265', 'min_relative_volume': None, 'min_volume': None, 'min_percentage_change': 0.2, 'closing_scan': True, 'coin_list': None}
+2025-07-11 14:33:19,703 - INFO - Seçili zaman aralýklarý: ['3', '5', '10']
+2025-07-11 14:35:00,775 - INFO - 5 dakikalýk tarama baþlatýlýyor... Saat: 14:35:00
+2025-07-11 14:35:27,126 - INFO - 5 dakikalýk tarama tamamlandý. 2 sonuç bulundu.
+2025-07-11 14:36:00,162 - INFO - 3 dakikalýk tarama baþlatýlýyor... Saat: 14:36:00
+2025-07-11 14:36:25,538 - INFO - 3 dakikalýk tarama tamamlandý. 1 sonuç bulundu.
+2025-07-11 14:39:00,652 - INFO - 3 dakikalýk tarama baþlatýlýyor... Saat: 14:39:00
+2025-07-11 14:39:27,305 - INFO - 3 dakikalýk tarama tamamlandý. 1 sonuç bulundu.
+2025-07-11 14:40:00,322 - INFO - 5 dakikalýk tarama baþlatýlýyor... Saat: 14:40:00
+2025-07-11 14:40:26,784 - INFO - 5 dakikalýk tarama tamamlandý. 2 sonuç bulundu.
+2025-07-11 14:40:26,785 - INFO - 10 dakikalýk tarama baþlatýlýyor... Saat: 14:40:00
+2025-07-11 14:40:57,290 - INFO - 10 dakikalýk tarama tamamlandý. 8 sonuç bulundu.
+2025-07-11 14:41:59,742 - INFO - 127.0.0.1 - - [11/Jul/2025 14:41:59] "GET /socket.io/?EIO=4&transport=websocket HTTP/1.1" 200 -
