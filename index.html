@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kripto Para Tarayıcı</title>
+    <link rel="stylesheet" href="index.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="calculator">
+            <div class="coin-list-upload">
+                <div class="upload-section">
+                    <input type="file" id="coinListFile" accept=".txt,.csv" style="display: none;">
+                    <button class="upload-btn" onclick="document.getElementById('coinListFile').click()">
+                        <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="17 8 12 3 7 8"></polyline>
+                            <line x1="12" y1="3" x2="12" y2="15"></line>
+                        </svg>
+                        Coin Listesi Yükle
+                    </button>
+                    <div class="file-info">
+                        <span id="selectedFileName" class="selected-file">Liste seçilmedi</span>
+                        <span id="coinCount" class="coin-count"></span>
+                    </div>
+                </div>
+                <div class="upload-info">
+                    <p>Desteklenen formatlar: .txt, .csv</p>
+                    <p>Her satırda bir coin sembolü olmalıdır (örn: BTCUSDT)</p>
+                </div>
+            </div>
+            <div class="filter-group">
+                <div class="filter-row">
+                    <div class="label-value">
+                        <span>RSI:</span>
+                        <span class="value" id="rsi1-value">30</span>
+                    </div>
+                    <div class="buttons">
+                        <button class="btn toggle-btn" onclick="toggleFilter('rsi1')">Aktif</button>
+                        <button class="btn" onclick="updateValue('rsi1', -1)">-</button>
+                        <button class="btn" onclick="updateValue('rsi1', 1)">+</button>
+                    </div>
+                </div>
+                <div class="divider"></div>
+                <div class="filter-row">
+                    <div class="label-value">
+                        <span>RSI:</span>
+                        <span class="value" id="rsi2-value">30</span>
+                    </div>
+                    <div class="buttons">
+                        <button class="btn toggle-btn" onclick="toggleFilter('rsi2')">Pasif</button>
+                        <button class="btn" onclick="updateValue('rsi2', -1)" disabled>-</button>
+                        <button class="btn" onclick="updateValue('rsi2', 1)" disabled>+</button>
+                        <button class="btn comparison-btn" onclick="setComparison('rsi2', '≤')" disabled>&le;</button>
+                        <button class="btn comparison-btn" onclick="setComparison('rsi2', '≥')" disabled>&ge;</button>
+                    </div>
+                </div>
+                <div class="divider"></div>
+                <div class="filter-row">
+                    <div class="label-value">
+                        <span>Göreceli Hacim:</span>
+                        <span class="value" id="hacim-value">1.0</span>
+                    </div>
+                    <div class="buttons">
+                        <button class="btn toggle-btn" onclick="toggleFilter('hacim')">Pasif</button>
+                        <button class="btn" onclick="updateValue('hacim', -0.1)" disabled>-</button>
+                        <button class="btn" onclick="updateValue('hacim', 0.1)" disabled>+</button>
+                    </div>
+                </div>
+                <div class="divider"></div>
+                <div class="filter-row">
+                    <div class="label-value">
+                        <span>Hacim (USDT):</span>
+                        <span class="value" id="volume-value">1000</span>
+                    </div>
+                    <div class="buttons">
+                        <button class="btn toggle-btn" onclick="toggleFilter('volume')">Pasif</button>
+                        <button class="btn" onclick="updateValue('volume', -100)" disabled>-</button>
+                        <button class="btn" onclick="updateValue('volume', 100)" disabled>+</button>
+                    </div>
+                </div>
+                <div class="divider"></div>
+                <div class="filter-row">
+                    <div class="label-value">
+                        <span>% Artış Koşulu:</span>
+                        <span class="value" id="artis-value">0.0</span>
+                    </div>
+                    <div class="buttons">
+                        <button class="btn toggle-btn" onclick="toggleFilter('artis')">Pasif</button>
+                        <button class="btn" onclick="updateValue('artis', -0.1)" disabled>-</button>
+                        <button class="btn" onclick="updateValue('artis', 0.1)" disabled>+</button>
+                    </div>
+                </div>
+                <div class="divider"></div>
+                <div class="filter-row">
+                    <div class="label-value">
+                        <span>Kapanışta Tara:</span>
+                    </div>
+                    <div class="buttons">
+                        <button class="btn toggle-btn" onclick="toggleClosingScan(this)">Pasif</button>
+                    </div>
+                </div>
+                <div class="divider"></div>
+                <div class="time-buttons">
+                    <button class="time-btn" data-time="1">1</button>
+                    <button class="time-btn" data-time="3">3</button>
+                    <button class="time-btn" data-time="5">5</button>
+                    <button class="time-btn" data-time="10">10</button>
+                    <button class="time-btn" data-time="15">15</button>
+                    <button class="time-btn" data-time="30">30</button>
+                </div>
+                <button class="filter-btn">FILTRELE</button>
+            </div>
+        </div>
+        <div class="results">
+            <div class="progress-bar">
+                <div class="progress" style="width: 0%"></div>
+                <span class="progress-text">0%</span>
+            </div>
+            <div class="results-container">
+                <!-- Results will be populated here -->
+            </div>
+            <div class="multi-time-results-container">
+                <!-- Çoklu zaman aralığı sonuçları burada -->
+            </div>
+        </div>
+    </div>
+    <script src="index.js"></script>
+</body>
+</html>
