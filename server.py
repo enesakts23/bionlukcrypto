@@ -439,46 +439,45 @@ def filter():
         # Gelen verileri al
         times = data.get('times', ['15'])
         comparison = data.get('comparison', '≥')
-        hacim = data.get('hacim', 1.0)
-        volume = data.get('volume', 1000)
-        artis = data.get('artis', 0.0)
         closing_scan = data.get('closingScan', False)
         coin_list = data.get('coinList')
         all_results = {}
+        
         for t in times:
             # Hangi filtreler aktif?
             filter_states = data.get('filterStates', {})
+            
+            # RSI kontrolü
             rsi1_active = filter_states.get('rsi1', False)
             rsi2_active = filter_states.get('rsi2', False)
+            rsi1_val = float(data.get('rsi1')) if rsi1_active and data.get('rsi1') is not None else None
+            rsi2_val = float(data.get('rsi2')) if rsi2_active and data.get('rsi2') is not None else None
+            rsi_value = rsi1_val if rsi1_active else (rsi2_val if rsi2_active else None)
+            
+            # Diğer filtreler
             hacim_active = filter_states.get('hacim', False)
             volume_active = filter_states.get('volume', False)
             artis_active = filter_states.get('artis', False)
-            rsi1_val = float(data.get('rsi1')) if rsi1_active and data.get('rsi1') is not None else None
-            rsi2_val = float(data.get('rsi2')) if rsi2_active and data.get('rsi2') is not None else None
+            
+            # Aktif filtrelerin değerlerini al
             hacim_val = float(data.get('hacim')) if hacim_active and data.get('hacim') is not None else None
             volume_val = float(data.get('volume')) if volume_active and data.get('volume') is not None else None
             artis_val = float(data.get('artis')) if artis_active and data.get('artis') is not None else None
-            comparison = data.get('comparison', '≥')
-            closing_scan = data.get('closingScan', False)
-            coin_list = data.get('coinList')
-            rsi_value = None
-            if rsi1_val is not None:
-                rsi_value = rsi1_val
-            elif rsi2_val is not None:
-                rsi_value = rsi2_val
-            rsi_length = 13
+            
+            # Tarama yap
             results = scanner.scan_market(
                 timeframe=t,
-                rsi_length=rsi_length,
+                rsi_length=13,
                 rsi_value=rsi_value,
                 comparison=comparison,
-                min_relative_volume=hacim_val,
-                min_volume=volume_val,
-                min_percentage_change=artis_val,
+                min_relative_volume=hacim_val if hacim_active else None,
+                min_volume=volume_val if volume_active else None,
+                min_percentage_change=artis_val if artis_active else None,
                 closing_scan=closing_scan,
                 coin_list=coin_list
             )
             all_results[t] = results
+            
         # Sonuçları kaydet
         app.config['LAST_RESULTS'] = all_results
         return jsonify({'status': 'success', 'results': all_results})

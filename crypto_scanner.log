@@ -23502,3 +23502,715 @@ KeyError: 'Session is disconnected'
 2025-07-12 15:07:31,486 - INFO - 127.0.0.1 - - [12/Jul/2025 15:07:31] "POST /socket.io/?EIO=4&transport=polling&t=PV-Y8sV&sid=ySVuR6fQsY-MJPEqAADc HTTP/1.1" 200 -
 2025-07-12 15:07:31,547 - INFO - 127.0.0.1 - - [12/Jul/2025 15:07:31] "GET /socket.io/?EIO=4&transport=polling&t=PV-Y5Ht&sid=KgziORuREXXjoh6qAACY HTTP/1.1" 200 -
 2025-07-12 15:07:31,653 - INFO - 127.0.0.1 - - [12/Jul/2025 15:07:31] "GET /socket.io/?EIO=4&transport=polling&t=PV-Y8sV.0&sid=ySVuR6fQsY-MJPEqAADc HTTP/1.1" 200 -
+2025-07-12 18:55:15,687 - INFO - Server başlatıldı - http://0.0.0.0:5001
+2025-07-12 18:55:15,694 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://192.168.0.15:5001
+2025-07-12 18:55:15,694 - INFO - [33mPress CTRL+C to quit[0m
+2025-07-12 18:55:23,020 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:23] "GET /socket.io/?EIO=4&transport=polling&t=PV_MIdw HTTP/1.1" 200 -
+2025-07-12 18:55:23,025 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:23] "POST /socket.io/?EIO=4&transport=polling&t=PV_MIeD&sid=rAu5Gb0tjKuZvojLAAAA HTTP/1.1" 200 -
+2025-07-12 18:55:23,025 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:23] "GET /socket.io/?EIO=4&transport=polling&t=PV_MIeD.0&sid=rAu5Gb0tjKuZvojLAAAA HTTP/1.1" 200 -
+2025-07-12 18:55:23,154 - INFO - Client bağlantısı koptu - Client: COe9zHzWit_4XSG0AAAB
+2025-07-12 18:55:23,155 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:23] "POST /socket.io/?EIO=4&transport=polling&t=PV_MIgG&sid=rAu5Gb0tjKuZvojLAAAA HTTP/1.1" 200 -
+2025-07-12 18:55:23,155 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:23] "POST /socket.io/?EIO=4&transport=polling&t=PV_MIgG.0&sid=rAu5Gb0tjKuZvojLAAAA HTTP/1.1" 200 -
+2025-07-12 18:55:23,399 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:23] "GET /socket.io/?EIO=4&transport=polling&t=PV_MIk1 HTTP/1.1" 200 -
+2025-07-12 18:55:23,405 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:23] "POST /socket.io/?EIO=4&transport=polling&t=PV_MIk9&sid=Iyihb89I8Zv4_ICsAAAC HTTP/1.1" 200 -
+2025-07-12 18:55:23,405 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:23] "GET /socket.io/?EIO=4&transport=polling&t=PV_MIk9.0&sid=Iyihb89I8Zv4_ICsAAAC HTTP/1.1" 200 -
+2025-07-12 18:55:23,661 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:23] "GET /socket.io/?EIO=4&transport=polling&t=PV_MIo8 HTTP/1.1" 200 -
+2025-07-12 18:55:23,665 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:23] "POST /socket.io/?EIO=4&transport=polling&t=PV_MIoE&sid=I5QnzamjGHXgIJqiAAAE HTTP/1.1" 200 -
+2025-07-12 18:55:23,666 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:23] "GET /socket.io/?EIO=4&transport=polling&t=PV_MIoE.0&sid=I5QnzamjGHXgIJqiAAAE HTTP/1.1" 200 -
+2025-07-12 18:55:23,964 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:23] "GET /socket.io/?EIO=4&transport=polling&t=PV_MIsu HTTP/1.1" 200 -
+2025-07-12 18:55:23,968 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:23] "POST /socket.io/?EIO=4&transport=polling&t=PV_MIsz&sid=W0-9C4KeetMsP7RGAAAG HTTP/1.1" 200 -
+2025-07-12 18:55:23,969 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:23] "GET /socket.io/?EIO=4&transport=polling&t=PV_MIsz.0&sid=W0-9C4KeetMsP7RGAAAG HTTP/1.1" 200 -
+2025-07-12 18:55:24,273 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:24] "GET /socket.io/?EIO=4&transport=polling&t=PV_MIxg HTTP/1.1" 200 -
+2025-07-12 18:55:24,277 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:24] "POST /socket.io/?EIO=4&transport=polling&t=PV_MIxo&sid=OJkvU9XEyMckg8fTAAAI HTTP/1.1" 200 -
+2025-07-12 18:55:24,278 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:24] "GET /socket.io/?EIO=4&transport=polling&t=PV_MIxp&sid=OJkvU9XEyMckg8fTAAAI HTTP/1.1" 200 -
+2025-07-12 18:55:24,588 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:24] "GET /socket.io/?EIO=4&transport=polling&t=PV_MJ0c HTTP/1.1" 200 -
+2025-07-12 18:55:24,592 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:24] "POST /socket.io/?EIO=4&transport=polling&t=PV_MJ0j&sid=iBd_psf44f3as3XEAAAK HTTP/1.1" 200 -
+2025-07-12 18:55:24,592 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:24] "GET /socket.io/?EIO=4&transport=polling&t=PV_MJ0j.0&sid=iBd_psf44f3as3XEAAAK HTTP/1.1" 200 -
+2025-07-12 18:55:24,802 - INFO - Client bağlantısı koptu - Client: lxtxtwtWtCRKCWxuAAAL
+2025-07-12 18:55:24,802 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:24] "POST /socket.io/?EIO=4&transport=polling&t=PV_MJ40&sid=iBd_psf44f3as3XEAAAK HTTP/1.1" 200 -
+2025-07-12 18:55:24,896 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:24] "GET /socket.io/?EIO=4&transport=polling&t=PV_MJ5M HTTP/1.1" 200 -
+2025-07-12 18:55:24,899 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:24] "POST /socket.io/?EIO=4&transport=polling&t=PV_MJ5W&sid=4ALN7KMlBDcjnGC4AAAM HTTP/1.1" 200 -
+2025-07-12 18:55:24,899 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:24] "GET /socket.io/?EIO=4&transport=polling&t=PV_MJ5X&sid=4ALN7KMlBDcjnGC4AAAM HTTP/1.1" 200 -
+2025-07-12 18:55:25,198 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:25] "GET /socket.io/?EIO=4&transport=polling&t=PV_MJA8 HTTP/1.1" 200 -
+2025-07-12 18:55:25,202 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:25] "POST /socket.io/?EIO=4&transport=polling&t=PV_MJAF&sid=HTolPOdSh5bYmJR4AAAO HTTP/1.1" 200 -
+2025-07-12 18:55:25,203 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:25] "GET /socket.io/?EIO=4&transport=polling&t=PV_MJAF.0&sid=HTolPOdSh5bYmJR4AAAO HTTP/1.1" 200 -
+2025-07-12 18:55:25,505 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:25] "GET /socket.io/?EIO=4&transport=polling&t=PV_MJEx HTTP/1.1" 200 -
+2025-07-12 18:55:25,509 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:25] "POST /socket.io/?EIO=4&transport=polling&t=PV_MJF2&sid=QBj4vaEtzXES1cnHAAAQ HTTP/1.1" 200 -
+2025-07-12 18:55:25,510 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:25] "GET /socket.io/?EIO=4&transport=polling&t=PV_MJF2.0&sid=QBj4vaEtzXES1cnHAAAQ HTTP/1.1" 200 -
+2025-07-12 18:55:25,806 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:25] "GET /socket.io/?EIO=4&transport=polling&t=PV_MJJf HTTP/1.1" 200 -
+2025-07-12 18:55:25,811 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:25] "POST /socket.io/?EIO=4&transport=polling&t=PV_MJJl&sid=HePZ6uPQuiBg76MTAAAS HTTP/1.1" 200 -
+2025-07-12 18:55:25,811 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:25] "GET /socket.io/?EIO=4&transport=polling&t=PV_MJJl.0&sid=HePZ6uPQuiBg76MTAAAS HTTP/1.1" 200 -
+2025-07-12 18:55:26,010 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:26] "GET /socket.io/?EIO=4&transport=polling&t=PV_MJMr HTTP/1.1" 200 -
+2025-07-12 18:55:26,015 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:26] "POST /socket.io/?EIO=4&transport=polling&t=PV_MJMx&sid=RTazqywzWkJx65fhAAAU HTTP/1.1" 200 -
+2025-07-12 18:55:26,015 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:26] "GET /socket.io/?EIO=4&transport=polling&t=PV_MJMx.0&sid=RTazqywzWkJx65fhAAAU HTTP/1.1" 200 -
+2025-07-12 18:55:26,214 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:26] "GET /socket.io/?EIO=4&transport=polling&t=PV_MJQ2 HTTP/1.1" 200 -
+2025-07-12 18:55:26,218 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:26] "POST /socket.io/?EIO=4&transport=polling&t=PV_MJQ7&sid=gRdsHjwrtUx15dLAAAAW HTTP/1.1" 200 -
+2025-07-12 18:55:26,218 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:26] "GET /socket.io/?EIO=4&transport=polling&t=PV_MJQ7.0&sid=gRdsHjwrtUx15dLAAAAW HTTP/1.1" 200 -
+2025-07-12 18:55:26,511 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:26] "GET /socket.io/?EIO=4&transport=polling&t=PV_MJUh HTTP/1.1" 200 -
+2025-07-12 18:55:26,515 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:26] "POST /socket.io/?EIO=4&transport=polling&t=PV_MJUm&sid=POBTvXf5oWefO77eAAAY HTTP/1.1" 200 -
+2025-07-12 18:55:26,516 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:26] "GET /socket.io/?EIO=4&transport=polling&t=PV_MJUn&sid=POBTvXf5oWefO77eAAAY HTTP/1.1" 200 -
+2025-07-12 18:55:26,730 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:26] "GET /socket.io/?EIO=4&transport=polling&t=PV_MJY4 HTTP/1.1" 200 -
+2025-07-12 18:55:26,734 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:26] "POST /socket.io/?EIO=4&transport=polling&t=PV_MJYB&sid=UhepfsTGj5_Hz9EtAAAa HTTP/1.1" 200 -
+2025-07-12 18:55:26,735 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:26] "GET /socket.io/?EIO=4&transport=polling&t=PV_MJYC&sid=UhepfsTGj5_Hz9EtAAAa HTTP/1.1" 200 -
+2025-07-12 18:55:27,034 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:27] "GET /socket.io/?EIO=4&transport=polling&t=PV_MJcr HTTP/1.1" 200 -
+2025-07-12 18:55:27,039 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:27] "POST /socket.io/?EIO=4&transport=polling&t=PV_MJcx&sid=hNwCPX-EtA2lkLhNAAAc HTTP/1.1" 200 -
+2025-07-12 18:55:27,041 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:27] "GET /socket.io/?EIO=4&transport=polling&t=PV_MJcx.0&sid=hNwCPX-EtA2lkLhNAAAc HTTP/1.1" 200 -
+2025-07-12 18:55:27,249 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:27] "GET /socket.io/?EIO=4&transport=polling&t=PV_MJgC HTTP/1.1" 200 -
+2025-07-12 18:55:27,257 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:27] "POST /socket.io/?EIO=4&transport=polling&t=PV_MJgJ&sid=0cS97ZMvMHOJYz45AAAe HTTP/1.1" 200 -
+2025-07-12 18:55:27,257 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:27] "GET /socket.io/?EIO=4&transport=polling&t=PV_MJgJ.0&sid=0cS97ZMvMHOJYz45AAAe HTTP/1.1" 200 -
+2025-07-12 18:55:27,553 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:27] "GET /socket.io/?EIO=4&transport=polling&t=PV_MJk- HTTP/1.1" 200 -
+2025-07-12 18:55:27,559 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:27] "POST /socket.io/?EIO=4&transport=polling&t=PV_MJl2&sid=NWvvA1NJKoz7e3F4AAAg HTTP/1.1" 200 -
+2025-07-12 18:55:27,559 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:27] "GET /socket.io/?EIO=4&transport=polling&t=PV_MJl3&sid=NWvvA1NJKoz7e3F4AAAg HTTP/1.1" 200 -
+2025-07-12 18:55:27,756 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:27] "GET /socket.io/?EIO=4&transport=polling&t=PV_MJo9 HTTP/1.1" 200 -
+2025-07-12 18:55:27,762 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:27] "POST /socket.io/?EIO=4&transport=polling&t=PV_MJoE&sid=wLsVbl52R4rTRf2JAAAi HTTP/1.1" 200 -
+2025-07-12 18:55:27,764 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:27] "GET /socket.io/?EIO=4&transport=polling&t=PV_MJoE.0&sid=wLsVbl52R4rTRf2JAAAi HTTP/1.1" 200 -
+2025-07-12 18:55:27,967 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:27] "GET /socket.io/?EIO=4&transport=polling&t=PV_MJrQ HTTP/1.1" 200 -
+2025-07-12 18:55:27,972 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:27] "POST /socket.io/?EIO=4&transport=polling&t=PV_MJrW&sid=1RptT_kefrwkhhWrAAAk HTTP/1.1" 200 -
+2025-07-12 18:55:27,973 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:27] "GET /socket.io/?EIO=4&transport=polling&t=PV_MJrW.0&sid=1RptT_kefrwkhhWrAAAk HTTP/1.1" 200 -
+2025-07-12 18:55:28,280 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:28] "GET /socket.io/?EIO=4&transport=polling&t=PV_MJwI HTTP/1.1" 200 -
+2025-07-12 18:55:28,286 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:28] "POST /socket.io/?EIO=4&transport=polling&t=PV_MJwQ&sid=YKpzWbvt1LASkuryAAAm HTTP/1.1" 200 -
+2025-07-12 18:55:28,286 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:28] "GET /socket.io/?EIO=4&transport=polling&t=PV_MJwQ.0&sid=YKpzWbvt1LASkuryAAAm HTTP/1.1" 200 -
+2025-07-12 18:55:28,589 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:28] "GET /socket.io/?EIO=4&transport=polling&t=PV_MJ_7 HTTP/1.1" 200 -
+2025-07-12 18:55:28,594 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:28] "POST /socket.io/?EIO=4&transport=polling&t=PV_MJ_E&sid=KboOsxnX4ynwpBlRAAAo HTTP/1.1" 200 -
+2025-07-12 18:55:28,595 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:28] "GET /socket.io/?EIO=4&transport=polling&t=PV_MJ_F&sid=KboOsxnX4ynwpBlRAAAo HTTP/1.1" 200 -
+2025-07-12 18:55:28,897 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:28] "GET /socket.io/?EIO=4&transport=polling&t=PV_MK3x HTTP/1.1" 200 -
+2025-07-12 18:55:28,902 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:28] "POST /socket.io/?EIO=4&transport=polling&t=PV_MK42&sid=yBTjGKh2TpI8QsoAAAAq HTTP/1.1" 200 -
+2025-07-12 18:55:28,902 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:28] "GET /socket.io/?EIO=4&transport=polling&t=PV_MK42.0&sid=yBTjGKh2TpI8QsoAAAAq HTTP/1.1" 200 -
+2025-07-12 18:55:29,210 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:29] "GET /socket.io/?EIO=4&transport=polling&t=PV_MK8n HTTP/1.1" 200 -
+2025-07-12 18:55:29,214 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:29] "POST /socket.io/?EIO=4&transport=polling&t=PV_MK8x&sid=rCZZmNVwS2X5SuMmAAAs HTTP/1.1" 200 -
+2025-07-12 18:55:29,215 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:29] "GET /socket.io/?EIO=4&transport=polling&t=PV_MK8y&sid=rCZZmNVwS2X5SuMmAAAs HTTP/1.1" 200 -
+2025-07-12 18:55:29,520 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:29] "GET /socket.io/?EIO=4&transport=polling&t=PV_MKDg HTTP/1.1" 200 -
+2025-07-12 18:55:29,525 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:29] "POST /socket.io/?EIO=4&transport=polling&t=PV_MKDo&sid=PCcZWpU_5QsjnV_AAAAu HTTP/1.1" 200 -
+2025-07-12 18:55:29,526 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:29] "GET /socket.io/?EIO=4&transport=polling&t=PV_MKDo.0&sid=PCcZWpU_5QsjnV_AAAAu HTTP/1.1" 200 -
+2025-07-12 18:55:29,826 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:29] "GET /socket.io/?EIO=4&transport=polling&t=PV_MKIS HTTP/1.1" 200 -
+2025-07-12 18:55:29,832 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:29] "POST /socket.io/?EIO=4&transport=polling&t=PV_MKIZ&sid=y0ph5n-23EuFB6GMAAAw HTTP/1.1" 200 -
+2025-07-12 18:55:29,832 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:29] "GET /socket.io/?EIO=4&transport=polling&t=PV_MKIa&sid=y0ph5n-23EuFB6GMAAAw HTTP/1.1" 200 -
+2025-07-12 18:55:30,136 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:30] "GET /socket.io/?EIO=4&transport=polling&t=PV_MKNK HTTP/1.1" 200 -
+2025-07-12 18:55:30,140 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:30] "POST /socket.io/?EIO=4&transport=polling&t=PV_MKNP&sid=rafTObVnOq1D7WhRAAAy HTTP/1.1" 200 -
+2025-07-12 18:55:30,141 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:30] "GET /socket.io/?EIO=4&transport=polling&t=PV_MKNP.0&sid=rafTObVnOq1D7WhRAAAy HTTP/1.1" 200 -
+2025-07-12 18:55:30,455 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:30] "GET /socket.io/?EIO=4&transport=polling&t=PV_MKSK HTTP/1.1" 200 -
+2025-07-12 18:55:30,460 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:30] "POST /socket.io/?EIO=4&transport=polling&t=PV_MKSP&sid=NstSV-b9HnRx1a9BAAA0 HTTP/1.1" 200 -
+2025-07-12 18:55:30,461 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:30] "GET /socket.io/?EIO=4&transport=polling&t=PV_MKSP.0&sid=NstSV-b9HnRx1a9BAAA0 HTTP/1.1" 200 -
+2025-07-12 18:55:30,778 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:30] "GET /socket.io/?EIO=4&transport=polling&t=PV_MKXN HTTP/1.1" 200 -
+2025-07-12 18:55:30,785 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:30] "POST /socket.io/?EIO=4&transport=polling&t=PV_MKXT&sid=hpJQ61Br8UfrdF50AAA2 HTTP/1.1" 200 -
+2025-07-12 18:55:30,785 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:30] "GET /socket.io/?EIO=4&transport=polling&t=PV_MKXT.0&sid=hpJQ61Br8UfrdF50AAA2 HTTP/1.1" 200 -
+2025-07-12 18:55:31,065 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:31] "GET /socket.io/?EIO=4&transport=polling&t=PV_MKbq HTTP/1.1" 200 -
+2025-07-12 18:55:31,069 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:31] "POST /socket.io/?EIO=4&transport=polling&t=PV_MKbw&sid=qLTePvgS-MFVK7SHAAA4 HTTP/1.1" 200 -
+2025-07-12 18:55:31,070 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:31] "GET /socket.io/?EIO=4&transport=polling&t=PV_MKbw.0&sid=qLTePvgS-MFVK7SHAAA4 HTTP/1.1" 200 -
+2025-07-12 18:55:31,375 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:31] "GET /socket.io/?EIO=4&transport=polling&t=PV_MKgf HTTP/1.1" 200 -
+2025-07-12 18:55:31,379 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:31] "POST /socket.io/?EIO=4&transport=polling&t=PV_MKgm&sid=W4anND1QQmS4CpCHAAA6 HTTP/1.1" 200 -
+2025-07-12 18:55:31,380 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:31] "GET /socket.io/?EIO=4&transport=polling&t=PV_MKgm.0&sid=W4anND1QQmS4CpCHAAA6 HTTP/1.1" 200 -
+2025-07-12 18:55:31,672 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:31] "GET /socket.io/?EIO=4&transport=polling&t=PV_MKlK HTTP/1.1" 200 -
+2025-07-12 18:55:31,678 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:31] "POST /socket.io/?EIO=4&transport=polling&t=PV_MKlP&sid=qORNkH8i0XI55yM1AAA8 HTTP/1.1" 200 -
+2025-07-12 18:55:31,679 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:31] "GET /socket.io/?EIO=4&transport=polling&t=PV_MKlQ&sid=qORNkH8i0XI55yM1AAA8 HTTP/1.1" 200 -
+2025-07-12 18:55:31,983 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:31] "GET /socket.io/?EIO=4&transport=polling&t=PV_MKqA HTTP/1.1" 200 -
+2025-07-12 18:55:31,989 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:31] "POST /socket.io/?EIO=4&transport=polling&t=PV_MKqH&sid=bGj0DtMB5nIQPpZNAAA- HTTP/1.1" 200 -
+2025-07-12 18:55:31,990 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:31] "GET /socket.io/?EIO=4&transport=polling&t=PV_MKqH.0&sid=bGj0DtMB5nIQPpZNAAA- HTTP/1.1" 200 -
+2025-07-12 18:55:32,294 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:32] "GET /socket.io/?EIO=4&transport=polling&t=PV_MKv2 HTTP/1.1" 200 -
+2025-07-12 18:55:32,299 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:32] "POST /socket.io/?EIO=4&transport=polling&t=PV_MKv7&sid=PklHzwP08aGqyzXyAABA HTTP/1.1" 200 -
+2025-07-12 18:55:32,299 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:32] "GET /socket.io/?EIO=4&transport=polling&t=PV_MKv8&sid=PklHzwP08aGqyzXyAABA HTTP/1.1" 200 -
+2025-07-12 18:55:32,606 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:32] "GET /socket.io/?EIO=4&transport=polling&t=PV_MKzv HTTP/1.1" 200 -
+2025-07-12 18:55:32,611 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:32] "POST /socket.io/?EIO=4&transport=polling&t=PV_MKz_&sid=WLMQXZwNo7JWwYxSAABC HTTP/1.1" 200 -
+2025-07-12 18:55:32,611 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:32] "GET /socket.io/?EIO=4&transport=polling&t=PV_MK-0&sid=WLMQXZwNo7JWwYxSAABC HTTP/1.1" 200 -
+2025-07-12 18:55:32,900 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:32] "GET /socket.io/?EIO=4&transport=polling&t=PV_ML2V HTTP/1.1" 200 -
+2025-07-12 18:55:32,905 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:32] "POST /socket.io/?EIO=4&transport=polling&t=PV_ML2b&sid=-ggEr6fGo-oUyYpcAABE HTTP/1.1" 200 -
+2025-07-12 18:55:32,906 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:32] "GET /socket.io/?EIO=4&transport=polling&t=PV_ML2c&sid=-ggEr6fGo-oUyYpcAABE HTTP/1.1" 200 -
+2025-07-12 18:55:33,217 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:33] "GET /socket.io/?EIO=4&transport=polling&t=PV_ML7T HTTP/1.1" 200 -
+2025-07-12 18:55:33,222 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:33] "POST /socket.io/?EIO=4&transport=polling&t=PV_ML7Z&sid=sXUppeMfPbertyLNAABG HTTP/1.1" 200 -
+2025-07-12 18:55:33,223 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:33] "GET /socket.io/?EIO=4&transport=polling&t=PV_ML7Z.0&sid=sXUppeMfPbertyLNAABG HTTP/1.1" 200 -
+2025-07-12 18:55:33,519 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:33] "GET /socket.io/?EIO=4&transport=polling&t=PV_MLCA HTTP/1.1" 200 -
+2025-07-12 18:55:33,527 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:33] "POST /socket.io/?EIO=4&transport=polling&t=PV_MLCI&sid=8f-j4KHcGrXRl5FLAABI HTTP/1.1" 200 -
+2025-07-12 18:55:33,527 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:33] "GET /socket.io/?EIO=4&transport=polling&t=PV_MLCI.0&sid=8f-j4KHcGrXRl5FLAABI HTTP/1.1" 200 -
+2025-07-12 18:55:33,813 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:33] "GET /socket.io/?EIO=4&transport=polling&t=PV_MLGm HTTP/1.1" 200 -
+2025-07-12 18:55:33,817 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:33] "POST /socket.io/?EIO=4&transport=polling&t=PV_MLGs&sid=22UgqStR_VUmQvvhAABK HTTP/1.1" 200 -
+2025-07-12 18:55:33,818 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:33] "GET /socket.io/?EIO=4&transport=polling&t=PV_MLGs.0&sid=22UgqStR_VUmQvvhAABK HTTP/1.1" 200 -
+2025-07-12 18:55:34,119 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:34] "GET /socket.io/?EIO=4&transport=polling&t=PV_MLLZ HTTP/1.1" 200 -
+2025-07-12 18:55:34,125 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:34] "POST /socket.io/?EIO=4&transport=polling&t=PV_MLLe&sid=iJ_CsyfuSwTAl66sAABM HTTP/1.1" 200 -
+2025-07-12 18:55:34,125 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:34] "GET /socket.io/?EIO=4&transport=polling&t=PV_MLLf&sid=iJ_CsyfuSwTAl66sAABM HTTP/1.1" 200 -
+2025-07-12 18:55:34,427 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:34] "GET /socket.io/?EIO=4&transport=polling&t=PV_MLQN HTTP/1.1" 200 -
+2025-07-12 18:55:34,433 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:34] "POST /socket.io/?EIO=4&transport=polling&t=PV_MLQU&sid=B8eBF0pMINGVMZjBAABO HTTP/1.1" 200 -
+2025-07-12 18:55:34,434 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:34] "GET /socket.io/?EIO=4&transport=polling&t=PV_MLQU.0&sid=B8eBF0pMINGVMZjBAABO HTTP/1.1" 200 -
+2025-07-12 18:55:34,739 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:34] "GET /socket.io/?EIO=4&transport=polling&t=PV_MLVE HTTP/1.1" 200 -
+2025-07-12 18:55:34,744 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:34] "POST /socket.io/?EIO=4&transport=polling&t=PV_MLVK&sid=_s1QKJqOuduqtzUgAABQ HTTP/1.1" 200 -
+2025-07-12 18:55:34,744 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:34] "GET /socket.io/?EIO=4&transport=polling&t=PV_MLVL&sid=_s1QKJqOuduqtzUgAABQ HTTP/1.1" 200 -
+2025-07-12 18:55:35,045 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:35] "GET /socket.io/?EIO=4&transport=polling&t=PV_MLa0 HTTP/1.1" 200 -
+2025-07-12 18:55:35,051 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:35] "POST /socket.io/?EIO=4&transport=polling&t=PV_MLa7&sid=ljmBEw3A4UMsDMnxAABS HTTP/1.1" 200 -
+2025-07-12 18:55:35,051 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:35] "GET /socket.io/?EIO=4&transport=polling&t=PV_MLa7.0&sid=ljmBEw3A4UMsDMnxAABS HTTP/1.1" 200 -
+2025-07-12 18:55:35,371 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:35] "GET /socket.io/?EIO=4&transport=polling&t=PV_MLf7 HTTP/1.1" 200 -
+2025-07-12 18:55:35,376 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:35] "POST /socket.io/?EIO=4&transport=polling&t=PV_MLfC&sid=tVBXuNNx9T0n9dBqAABU HTTP/1.1" 200 -
+2025-07-12 18:55:35,377 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:35] "GET /socket.io/?EIO=4&transport=polling&t=PV_MLfD&sid=tVBXuNNx9T0n9dBqAABU HTTP/1.1" 200 -
+2025-07-12 18:55:35,669 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:35] "GET /socket.io/?EIO=4&transport=polling&t=PV_MLjm HTTP/1.1" 200 -
+2025-07-12 18:55:35,674 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:35] "POST /socket.io/?EIO=4&transport=polling&t=PV_MLjs&sid=HyF6LxGR8Vj3wasaAABW HTTP/1.1" 200 -
+2025-07-12 18:55:35,674 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:35] "GET /socket.io/?EIO=4&transport=polling&t=PV_MLjs.0&sid=HyF6LxGR8Vj3wasaAABW HTTP/1.1" 200 -
+2025-07-12 18:55:35,990 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:35] "GET /socket.io/?EIO=4&transport=polling&t=PV_MLop HTTP/1.1" 200 -
+2025-07-12 18:55:35,995 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:35] "POST /socket.io/?EIO=4&transport=polling&t=PV_MLot&sid=wnoKqybUg_EqfV1dAABY HTTP/1.1" 200 -
+2025-07-12 18:55:35,996 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:35] "GET /socket.io/?EIO=4&transport=polling&t=PV_MLou&sid=wnoKqybUg_EqfV1dAABY HTTP/1.1" 200 -
+2025-07-12 18:55:36,290 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:36] "GET /socket.io/?EIO=4&transport=polling&t=PV_MLtU HTTP/1.1" 200 -
+2025-07-12 18:55:36,294 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:36] "POST /socket.io/?EIO=4&transport=polling&t=PV_MLtZ&sid=lMqQ2DhoCVK6RobrAABa HTTP/1.1" 200 -
+2025-07-12 18:55:36,295 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:36] "GET /socket.io/?EIO=4&transport=polling&t=PV_MLtZ.0&sid=lMqQ2DhoCVK6RobrAABa HTTP/1.1" 200 -
+2025-07-12 18:55:36,591 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:36] "GET /socket.io/?EIO=4&transport=polling&t=PV_MLyB HTTP/1.1" 200 -
+2025-07-12 18:55:36,595 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:36] "POST /socket.io/?EIO=4&transport=polling&t=PV_MLyG&sid=_bYjazoZWacVEPQkAABc HTTP/1.1" 200 -
+2025-07-12 18:55:36,596 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:36] "GET /socket.io/?EIO=4&transport=polling&t=PV_MLyG.0&sid=_bYjazoZWacVEPQkAABc HTTP/1.1" 200 -
+2025-07-12 18:55:36,908 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:36] "GET /socket.io/?EIO=4&transport=polling&t=PV_MM16 HTTP/1.1" 200 -
+2025-07-12 18:55:36,912 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:36] "POST /socket.io/?EIO=4&transport=polling&t=PV_MM1D&sid=RReb8QlXuU9o5DwHAABe HTTP/1.1" 200 -
+2025-07-12 18:55:36,913 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:36] "GET /socket.io/?EIO=4&transport=polling&t=PV_MM1D.0&sid=RReb8QlXuU9o5DwHAABe HTTP/1.1" 200 -
+2025-07-12 18:55:37,225 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:37] "GET /socket.io/?EIO=4&transport=polling&t=PV_MM66 HTTP/1.1" 200 -
+2025-07-12 18:55:37,231 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:37] "POST /socket.io/?EIO=4&transport=polling&t=PV_MM6B&sid=ew6BFhYypD7wWHcQAABg HTTP/1.1" 200 -
+2025-07-12 18:55:37,231 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:37] "GET /socket.io/?EIO=4&transport=polling&t=PV_MM6C&sid=ew6BFhYypD7wWHcQAABg HTTP/1.1" 200 -
+2025-07-12 18:55:37,533 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:37] "GET /socket.io/?EIO=4&transport=polling&t=PV_MMAu HTTP/1.1" 200 -
+2025-07-12 18:55:37,539 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:37] "POST /socket.io/?EIO=4&transport=polling&t=PV_MMA_&sid=X-wGcI1d8dN0Z5GNAABi HTTP/1.1" 200 -
+2025-07-12 18:55:37,539 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:37] "GET /socket.io/?EIO=4&transport=polling&t=PV_MMA_.0&sid=X-wGcI1d8dN0Z5GNAABi HTTP/1.1" 200 -
+2025-07-12 18:55:37,843 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:37] "GET /socket.io/?EIO=4&transport=polling&t=PV_MMFk HTTP/1.1" 200 -
+2025-07-12 18:55:37,850 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:37] "POST /socket.io/?EIO=4&transport=polling&t=PV_MMFs&sid=C3Prte1rIpsTk5nHAABk HTTP/1.1" 200 -
+2025-07-12 18:55:37,850 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:37] "GET /socket.io/?EIO=4&transport=polling&t=PV_MMFt&sid=C3Prte1rIpsTk5nHAABk HTTP/1.1" 200 -
+2025-07-12 18:55:38,025 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:38] "GET /socket.io/?EIO=4&transport=polling&t=PV_MIeI&sid=rAu5Gb0tjKuZvojLAAAA HTTP/1.1" 200 -
+2025-07-12 18:55:38,247 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:38] "GET /socket.io/?EIO=4&transport=polling&t=PV_MMM2 HTTP/1.1" 200 -
+2025-07-12 18:55:38,254 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:38] "POST /socket.io/?EIO=4&transport=polling&t=PV_MMM9&sid=fUckz3AnvDAhXppEAABm HTTP/1.1" 200 -
+2025-07-12 18:55:38,254 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:38] "GET /socket.io/?EIO=4&transport=polling&t=PV_MMM9.0&sid=fUckz3AnvDAhXppEAABm HTTP/1.1" 200 -
+2025-07-12 18:55:38,404 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:38] "GET /socket.io/?EIO=4&transport=polling&t=PV_MIkE&sid=Iyihb89I8Zv4_ICsAAAC HTTP/1.1" 200 -
+2025-07-12 18:55:38,503 - INFO - Client bağlantısı koptu - Client: yh4oxFywkrX7zMgqAABn
+2025-07-12 18:55:38,504 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:38] "POST /socket.io/?EIO=4&transport=polling&t=PV_MMP_&sid=fUckz3AnvDAhXppEAABm HTTP/1.1" 200 -
+2025-07-12 18:55:38,504 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:38] "POST /socket.io/?EIO=4&transport=polling&t=PV_MMQ1&sid=fUckz3AnvDAhXppEAABm HTTP/1.1" 200 -
+2025-07-12 18:55:38,504 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:38] "GET /socket.io/?EIO=4&transport=polling&t=PV_MMMF&sid=fUckz3AnvDAhXppEAABm HTTP/1.1" 200 -
+2025-07-12 18:55:38,665 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:38] "GET /socket.io/?EIO=4&transport=polling&t=PV_MIoI&sid=I5QnzamjGHXgIJqiAAAE HTTP/1.1" 200 -
+2025-07-12 18:55:38,969 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:38] "GET /socket.io/?EIO=4&transport=polling&t=PV_MIt2&sid=W0-9C4KeetMsP7RGAAAG HTTP/1.1" 200 -
+2025-07-12 18:55:39,279 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:39] "GET /socket.io/?EIO=4&transport=polling&t=PV_MIxt&sid=OJkvU9XEyMckg8fTAAAI HTTP/1.1" 200 -
+2025-07-12 18:55:39,591 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:39] "GET /socket.io/?EIO=4&transport=polling&t=PV_MJ0n&sid=iBd_psf44f3as3XEAAAK HTTP/1.1" 200 -
+2025-07-12 18:55:39,900 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:39] "GET /socket.io/?EIO=4&transport=polling&t=PV_MJ5a&sid=4ALN7KMlBDcjnGC4AAAM HTTP/1.1" 200 -
+2025-07-12 18:55:40,202 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:40] "GET /socket.io/?EIO=4&transport=polling&t=PV_MJAK&sid=HTolPOdSh5bYmJR4AAAO HTTP/1.1" 200 -
+2025-07-12 18:55:40,508 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:40] "GET /socket.io/?EIO=4&transport=polling&t=PV_MJF7&sid=QBj4vaEtzXES1cnHAAAQ HTTP/1.1" 200 -
+2025-07-12 18:55:40,808 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:40] "GET /socket.io/?EIO=4&transport=polling&t=PV_MJJq&sid=HePZ6uPQuiBg76MTAAAS HTTP/1.1" 200 -
+2025-07-12 18:55:41,014 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:41] "GET /socket.io/?EIO=4&transport=polling&t=PV_MJN0&sid=RTazqywzWkJx65fhAAAU HTTP/1.1" 200 -
+2025-07-12 18:55:41,220 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:41] "GET /socket.io/?EIO=4&transport=polling&t=PV_MJQB&sid=gRdsHjwrtUx15dLAAAAW HTTP/1.1" 200 -
+2025-07-12 18:55:41,517 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:41] "GET /socket.io/?EIO=4&transport=polling&t=PV_MJUq&sid=POBTvXf5oWefO77eAAAY HTTP/1.1" 200 -
+2025-07-12 18:55:41,733 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:41] "GET /socket.io/?EIO=4&transport=polling&t=PV_MJYF&sid=UhepfsTGj5_Hz9EtAAAa HTTP/1.1" 200 -
+2025-07-12 18:55:42,039 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:42] "GET /socket.io/?EIO=4&transport=polling&t=PV_MJd2&sid=hNwCPX-EtA2lkLhNAAAc HTTP/1.1" 200 -
+2025-07-12 18:55:42,255 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:42] "GET /socket.io/?EIO=4&transport=polling&t=PV_MJgQ&sid=0cS97ZMvMHOJYz45AAAe HTTP/1.1" 200 -
+2025-07-12 18:55:42,558 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:42] "GET /socket.io/?EIO=4&transport=polling&t=PV_MJl8&sid=NWvvA1NJKoz7e3F4AAAg HTTP/1.1" 200 -
+2025-07-12 18:55:42,762 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:42] "GET /socket.io/?EIO=4&transport=polling&t=PV_MJoM&sid=wLsVbl52R4rTRf2JAAAi HTTP/1.1" 200 -
+2025-07-12 18:55:42,970 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:42] "GET /socket.io/?EIO=4&transport=polling&t=PV_MJrc&sid=1RptT_kefrwkhhWrAAAk HTTP/1.1" 200 -
+2025-07-12 18:55:43,286 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:43] "GET /socket.io/?EIO=4&transport=polling&t=PV_MJwV&sid=YKpzWbvt1LASkuryAAAm HTTP/1.1" 200 -
+2025-07-12 18:55:43,594 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:43] "GET /socket.io/?EIO=4&transport=polling&t=PV_MJ_J&sid=KboOsxnX4ynwpBlRAAAo HTTP/1.1" 200 -
+2025-07-12 18:55:43,903 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:43] "GET /socket.io/?EIO=4&transport=polling&t=PV_MK47&sid=yBTjGKh2TpI8QsoAAAAq HTTP/1.1" 200 -
+2025-07-12 18:55:44,213 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:44] "GET /socket.io/?EIO=4&transport=polling&t=PV_MK90&sid=rCZZmNVwS2X5SuMmAAAs HTTP/1.1" 200 -
+2025-07-12 18:55:44,525 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:44] "GET /socket.io/?EIO=4&transport=polling&t=PV_MKDt&sid=PCcZWpU_5QsjnV_AAAAu HTTP/1.1" 200 -
+2025-07-12 18:55:44,831 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:44] "GET /socket.io/?EIO=4&transport=polling&t=PV_MKIf&sid=y0ph5n-23EuFB6GMAAAw HTTP/1.1" 200 -
+2025-07-12 18:55:45,141 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:45] "GET /socket.io/?EIO=4&transport=polling&t=PV_MKNU&sid=rafTObVnOq1D7WhRAAAy HTTP/1.1" 200 -
+2025-07-12 18:55:45,461 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:45] "GET /socket.io/?EIO=4&transport=polling&t=PV_MKST&sid=NstSV-b9HnRx1a9BAAA0 HTTP/1.1" 200 -
+2025-07-12 18:55:45,783 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:45] "GET /socket.io/?EIO=4&transport=polling&t=PV_MKXY&sid=hpJQ61Br8UfrdF50AAA2 HTTP/1.1" 200 -
+2025-07-12 18:55:46,070 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:46] "GET /socket.io/?EIO=4&transport=polling&t=PV_MKb_&sid=qLTePvgS-MFVK7SHAAA4 HTTP/1.1" 200 -
+2025-07-12 18:55:46,379 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:46] "GET /socket.io/?EIO=4&transport=polling&t=PV_MKgr&sid=W4anND1QQmS4CpCHAAA6 HTTP/1.1" 200 -
+2025-07-12 18:55:46,673 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:46] "GET /socket.io/?EIO=4&transport=polling&t=PV_MKlW&sid=qORNkH8i0XI55yM1AAA8 HTTP/1.1" 200 -
+2025-07-12 18:55:46,987 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:46] "GET /socket.io/?EIO=4&transport=polling&t=PV_MKqN&sid=bGj0DtMB5nIQPpZNAAA- HTTP/1.1" 200 -
+2025-07-12 18:55:47,300 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:47] "GET /socket.io/?EIO=4&transport=polling&t=PV_MKvC&sid=PklHzwP08aGqyzXyAABA HTTP/1.1" 200 -
+2025-07-12 18:55:47,612 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:47] "GET /socket.io/?EIO=4&transport=polling&t=PV_MK-4&sid=WLMQXZwNo7JWwYxSAABC HTTP/1.1" 200 -
+2025-07-12 18:55:47,905 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:47] "GET /socket.io/?EIO=4&transport=polling&t=PV_ML2h&sid=-ggEr6fGo-oUyYpcAABE HTTP/1.1" 200 -
+2025-07-12 18:55:48,218 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:48] "GET /socket.io/?EIO=4&transport=polling&t=PV_ML7e&sid=sXUppeMfPbertyLNAABG HTTP/1.1" 200 -
+2025-07-12 18:55:48,522 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:48] "GET /socket.io/?EIO=4&transport=polling&t=PV_MLCO&sid=8f-j4KHcGrXRl5FLAABI HTTP/1.1" 200 -
+2025-07-12 18:55:48,815 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:48] "GET /socket.io/?EIO=4&transport=polling&t=PV_MLGx&sid=22UgqStR_VUmQvvhAABK HTTP/1.1" 200 -
+2025-07-12 18:55:49,125 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:49] "GET /socket.io/?EIO=4&transport=polling&t=PV_MLLk&sid=iJ_CsyfuSwTAl66sAABM HTTP/1.1" 200 -
+2025-07-12 18:55:49,430 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:49] "GET /socket.io/?EIO=4&transport=polling&t=PV_MLQZ&sid=B8eBF0pMINGVMZjBAABO HTTP/1.1" 200 -
+2025-07-12 18:55:49,744 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:49] "GET /socket.io/?EIO=4&transport=polling&t=PV_MLVP&sid=_s1QKJqOuduqtzUgAABQ HTTP/1.1" 200 -
+2025-07-12 18:55:50,047 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:50] "GET /socket.io/?EIO=4&transport=polling&t=PV_MLaC&sid=ljmBEw3A4UMsDMnxAABS HTTP/1.1" 200 -
+2025-07-12 18:55:50,308 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:50] "GET /socket.io/?EIO=4&transport=polling&t=PV_MPIY HTTP/1.1" 200 -
+2025-07-12 18:55:50,311 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:50] "POST /socket.io/?EIO=4&transport=polling&t=PV_MPIb&sid=DSkRFrYziuKajJY1AABo HTTP/1.1" 200 -
+2025-07-12 18:55:50,311 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:50] "GET /socket.io/?EIO=4&transport=polling&t=PV_MPIb.0&sid=DSkRFrYziuKajJY1AABo HTTP/1.1" 200 -
+2025-07-12 18:55:50,375 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:50] "GET /socket.io/?EIO=4&transport=polling&t=PV_MLfH&sid=tVBXuNNx9T0n9dBqAABU HTTP/1.1" 200 -
+2025-07-12 18:55:50,518 - INFO - Client bağlantısı koptu - Client: Ayalbp8sgNUBrvoPAABp
+2025-07-12 18:55:50,519 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:50] "POST /socket.io/?EIO=4&transport=polling&t=PV_MPLq&sid=DSkRFrYziuKajJY1AABo HTTP/1.1" 200 -
+2025-07-12 18:55:50,521 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:50] "POST /socket.io/?EIO=4&transport=polling&t=PV_MPLr&sid=DSkRFrYziuKajJY1AABo HTTP/1.1" 200 -
+2025-07-12 18:55:50,521 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:50] "GET /socket.io/?EIO=4&transport=polling&t=PV_MPIf&sid=DSkRFrYziuKajJY1AABo HTTP/1.1" 200 -
+2025-07-12 18:55:50,557 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:50] "GET /socket.io/?EIO=4&transport=polling&t=PV_MPMS HTTP/1.1" 200 -
+2025-07-12 18:55:50,560 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:50] "POST /socket.io/?EIO=4&transport=polling&t=PV_MPMV&sid=WfCTKsUTuE4dotG3AABq HTTP/1.1" 200 -
+2025-07-12 18:55:50,561 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:50] "GET /socket.io/?EIO=4&transport=polling&t=PV_MPMV.0&sid=WfCTKsUTuE4dotG3AABq HTTP/1.1" 200 -
+2025-07-12 18:55:50,672 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:50] "GET /socket.io/?EIO=4&transport=polling&t=PV_MLjx&sid=HyF6LxGR8Vj3wasaAABW HTTP/1.1" 200 -
+2025-07-12 18:55:50,834 - INFO - Client bağlantısı koptu - Client: qHi1F3rGtN2J09FxAABr
+2025-07-12 18:55:50,835 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:50] "POST /socket.io/?EIO=4&transport=polling&t=PV_MPQh&sid=WfCTKsUTuE4dotG3AABq HTTP/1.1" 200 -
+2025-07-12 18:55:50,835 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:50] "POST /socket.io/?EIO=4&transport=polling&t=PV_MPQg&sid=WfCTKsUTuE4dotG3AABq HTTP/1.1" 200 -
+2025-07-12 18:55:50,835 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:50] "GET /socket.io/?EIO=4&transport=polling&t=PV_MPMX&sid=WfCTKsUTuE4dotG3AABq HTTP/1.1" 200 -
+2025-07-12 18:55:50,871 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:50] "GET /socket.io/?EIO=4&transport=polling&t=PV_MPRL HTTP/1.1" 200 -
+2025-07-12 18:55:50,874 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:50] "POST /socket.io/?EIO=4&transport=polling&t=PV_MPRO&sid=oPfarwbAzNoCsc3dAABs HTTP/1.1" 200 -
+2025-07-12 18:55:50,874 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:50] "GET /socket.io/?EIO=4&transport=polling&t=PV_MPRO.0&sid=oPfarwbAzNoCsc3dAABs HTTP/1.1" 200 -
+2025-07-12 18:55:50,992 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:50] "GET /socket.io/?EIO=4&transport=polling&t=PV_MLoy&sid=wnoKqybUg_EqfV1dAABY HTTP/1.1" 200 -
+2025-07-12 18:55:51,133 - INFO - Client bağlantısı koptu - Client: e-87jGgmPrEwWDL4AABt
+2025-07-12 18:55:51,133 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:51] "POST /socket.io/?EIO=4&transport=polling&t=PV_MPVP&sid=oPfarwbAzNoCsc3dAABs HTTP/1.1" 200 -
+2025-07-12 18:55:51,133 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:51] "POST /socket.io/?EIO=4&transport=polling&t=PV_MPVQ&sid=oPfarwbAzNoCsc3dAABs HTTP/1.1" 200 -
+2025-07-12 18:55:51,134 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:51] "GET /socket.io/?EIO=4&transport=polling&t=PV_MPRR&sid=oPfarwbAzNoCsc3dAABs HTTP/1.1" 200 -
+2025-07-12 18:55:51,157 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:51] "GET /socket.io/?EIO=4&transport=polling&t=PV_MPVq HTTP/1.1" 200 -
+2025-07-12 18:55:51,160 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:51] "POST /socket.io/?EIO=4&transport=polling&t=PV_MPVt&sid=DjrcWG8DIKHsMxcUAABu HTTP/1.1" 200 -
+2025-07-12 18:55:51,161 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:51] "GET /socket.io/?EIO=4&transport=polling&t=PV_MPVt.0&sid=DjrcWG8DIKHsMxcUAABu HTTP/1.1" 200 -
+2025-07-12 18:55:51,296 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:51] "GET /socket.io/?EIO=4&transport=polling&t=PV_MLtd&sid=lMqQ2DhoCVK6RobrAABa HTTP/1.1" 200 -
+2025-07-12 18:55:51,448 - INFO - Client bağlantısı koptu - Client: 5PXd9LMl0WCpbh9eAABv
+2025-07-12 18:55:51,448 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:51] "POST /socket.io/?EIO=4&transport=polling&t=PV_MPaM&sid=DjrcWG8DIKHsMxcUAABu HTTP/1.1" 200 -
+2025-07-12 18:55:51,450 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:51] "POST /socket.io/?EIO=4&transport=polling&t=PV_MPaN&sid=DjrcWG8DIKHsMxcUAABu HTTP/1.1" 200 -
+2025-07-12 18:55:51,450 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:51] "GET /socket.io/?EIO=4&transport=polling&t=PV_MPVv&sid=DjrcWG8DIKHsMxcUAABu HTTP/1.1" 200 -
+2025-07-12 18:55:51,480 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:51] "GET /socket.io/?EIO=4&transport=polling&t=PV_MPas HTTP/1.1" 200 -
+2025-07-12 18:55:51,483 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:51] "POST /socket.io/?EIO=4&transport=polling&t=PV_MPav&sid=ciJAixYIqkuvsJ4hAABw HTTP/1.1" 200 -
+2025-07-12 18:55:51,483 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:51] "GET /socket.io/?EIO=4&transport=polling&t=PV_MPav.0&sid=ciJAixYIqkuvsJ4hAABw HTTP/1.1" 200 -
+2025-07-12 18:55:51,593 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:51] "GET /socket.io/?EIO=4&transport=polling&t=PV_MLyL&sid=_bYjazoZWacVEPQkAABc HTTP/1.1" 200 -
+2025-07-12 18:55:51,757 - INFO - Client bağlantısı koptu - Client: 6O3LQ75jGG0JwmwjAABx
+2025-07-12 18:55:51,757 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:51] "POST /socket.io/?EIO=4&transport=polling&t=PV_MPfB&sid=ciJAixYIqkuvsJ4hAABw HTTP/1.1" 200 -
+2025-07-12 18:55:51,760 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:51] "POST /socket.io/?EIO=4&transport=polling&t=PV_MPfB.0&sid=ciJAixYIqkuvsJ4hAABw HTTP/1.1" 200 -
+2025-07-12 18:55:51,760 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:51] "GET /socket.io/?EIO=4&transport=polling&t=PV_MPay&sid=ciJAixYIqkuvsJ4hAABw HTTP/1.1" 200 -
+2025-07-12 18:55:51,795 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:51] "GET /socket.io/?EIO=4&transport=polling&t=PV_MPfn HTTP/1.1" 200 -
+2025-07-12 18:55:51,798 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:51] "POST /socket.io/?EIO=4&transport=polling&t=PV_MPfq&sid=AWfTlvWpcNfkgE1QAABy HTTP/1.1" 200 -
+2025-07-12 18:55:51,799 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:51] "GET /socket.io/?EIO=4&transport=polling&t=PV_MPfq.0&sid=AWfTlvWpcNfkgE1QAABy HTTP/1.1" 200 -
+2025-07-12 18:55:51,909 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:51] "GET /socket.io/?EIO=4&transport=polling&t=PV_MM1I&sid=RReb8QlXuU9o5DwHAABe HTTP/1.1" 200 -
+2025-07-12 18:55:52,074 - INFO - Client bağlantısı koptu - Client: TxNJH04O3eK0BppJAABz
+2025-07-12 18:55:52,074 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:52] "POST /socket.io/?EIO=4&transport=polling&t=PV_MPk5&sid=AWfTlvWpcNfkgE1QAABy HTTP/1.1" 200 -
+2025-07-12 18:55:52,076 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:52] "POST /socket.io/?EIO=4&transport=polling&t=PV_MPk6&sid=AWfTlvWpcNfkgE1QAABy HTTP/1.1" 200 -
+2025-07-12 18:55:52,076 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:52] "GET /socket.io/?EIO=4&transport=polling&t=PV_MPft&sid=AWfTlvWpcNfkgE1QAABy HTTP/1.1" 200 -
+2025-07-12 18:55:52,115 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:52] "GET /socket.io/?EIO=4&transport=polling&t=PV_MPko HTTP/1.1" 200 -
+2025-07-12 18:55:52,118 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:52] "POST /socket.io/?EIO=4&transport=polling&t=PV_MPkq&sid=Zgva_oZLvCyRw4tHAAB0 HTTP/1.1" 200 -
+2025-07-12 18:55:52,118 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:52] "GET /socket.io/?EIO=4&transport=polling&t=PV_MPkq.0&sid=Zgva_oZLvCyRw4tHAAB0 HTTP/1.1" 200 -
+2025-07-12 18:55:52,228 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:52] "GET /socket.io/?EIO=4&transport=polling&t=PV_MM6G&sid=ew6BFhYypD7wWHcQAABg HTTP/1.1" 200 -
+2025-07-12 18:55:52,383 - INFO - Client bağlantısı koptu - Client: kEc9gyZSKYPT3XEHAAB1
+2025-07-12 18:55:52,383 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:52] "POST /socket.io/?EIO=4&transport=polling&t=PV_MPow&sid=Zgva_oZLvCyRw4tHAAB0 HTTP/1.1" 200 -
+2025-07-12 18:55:52,387 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:52] "POST /socket.io/?EIO=4&transport=polling&t=PV_MPox&sid=Zgva_oZLvCyRw4tHAAB0 HTTP/1.1" 200 -
+2025-07-12 18:55:52,387 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:52] "GET /socket.io/?EIO=4&transport=polling&t=PV_MPkt&sid=Zgva_oZLvCyRw4tHAAB0 HTTP/1.1" 200 -
+2025-07-12 18:55:52,421 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:52] "GET /socket.io/?EIO=4&transport=polling&t=PV_MPpZ HTTP/1.1" 200 -
+2025-07-12 18:55:52,425 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:52] "POST /socket.io/?EIO=4&transport=polling&t=PV_MPpc&sid=cuLTDrKWbAL2FYN0AAB2 HTTP/1.1" 200 -
+2025-07-12 18:55:52,425 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:52] "GET /socket.io/?EIO=4&transport=polling&t=PV_MPpd&sid=cuLTDrKWbAL2FYN0AAB2 HTTP/1.1" 200 -
+2025-07-12 18:55:52,539 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:52] "GET /socket.io/?EIO=4&transport=polling&t=PV_MMB4&sid=X-wGcI1d8dN0Z5GNAABi HTTP/1.1" 200 -
+2025-07-12 18:55:52,686 - INFO - Client bağlantısı koptu - Client: 26q0tMkHA37FcAxlAAB3
+2025-07-12 18:55:52,686 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:52] "POST /socket.io/?EIO=4&transport=polling&t=PV_MPtg&sid=cuLTDrKWbAL2FYN0AAB2 HTTP/1.1" 200 -
+2025-07-12 18:55:52,690 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:52] "POST /socket.io/?EIO=4&transport=polling&t=PV_MPth&sid=cuLTDrKWbAL2FYN0AAB2 HTTP/1.1" 200 -
+2025-07-12 18:55:52,690 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:52] "GET /socket.io/?EIO=4&transport=polling&t=PV_MPpf&sid=cuLTDrKWbAL2FYN0AAB2 HTTP/1.1" 200 -
+2025-07-12 18:55:52,728 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:52] "GET /socket.io/?EIO=4&transport=polling&t=PV_MPuM HTTP/1.1" 200 -
+2025-07-12 18:55:52,731 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:52] "POST /socket.io/?EIO=4&transport=polling&t=PV_MPuP&sid=AKGo8v40Z3NYj9WVAAB4 HTTP/1.1" 200 -
+2025-07-12 18:55:52,732 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:52] "GET /socket.io/?EIO=4&transport=polling&t=PV_MPuQ&sid=AKGo8v40Z3NYj9WVAAB4 HTTP/1.1" 200 -
+2025-07-12 18:55:52,849 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:52] "GET /socket.io/?EIO=4&transport=polling&t=PV_MMFx&sid=C3Prte1rIpsTk5nHAABk HTTP/1.1" 200 -
+2025-07-12 18:55:53,004 - INFO - Client bağlantısı koptu - Client: ggs4Ia5DqfNclMLXAAB5
+2025-07-12 18:55:53,004 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:53] "POST /socket.io/?EIO=4&transport=polling&t=PV_MPyZ&sid=AKGo8v40Z3NYj9WVAAB4 HTTP/1.1" 200 -
+2025-07-12 18:55:53,005 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:53] "POST /socket.io/?EIO=4&transport=polling&t=PV_MPyY&sid=AKGo8v40Z3NYj9WVAAB4 HTTP/1.1" 200 -
+2025-07-12 18:55:53,005 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:53] "GET /socket.io/?EIO=4&transport=polling&t=PV_MPuS&sid=AKGo8v40Z3NYj9WVAAB4 HTTP/1.1" 200 -
+2025-07-12 18:55:53,038 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:53] "GET /socket.io/?EIO=4&transport=polling&t=PV_MPzC HTTP/1.1" 200 -
+2025-07-12 18:55:53,041 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:53] "POST /socket.io/?EIO=4&transport=polling&t=PV_MPzF&sid=nYPGHxfMSjyIXHcGAAB6 HTTP/1.1" 200 -
+2025-07-12 18:55:53,041 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:53] "GET /socket.io/?EIO=4&transport=polling&t=PV_MPzG&sid=nYPGHxfMSjyIXHcGAAB6 HTTP/1.1" 200 -
+2025-07-12 18:55:53,210 - INFO - Client bağlantısı koptu - Client: TOKZLX65T9N9Zx2NAAB7
+2025-07-12 18:55:53,211 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:53] "POST /socket.io/?EIO=4&transport=polling&t=PV_MP_o&sid=nYPGHxfMSjyIXHcGAAB6 HTTP/1.1" 200 -
+2025-07-12 18:55:53,212 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:53] "POST /socket.io/?EIO=4&transport=polling&t=PV_MP_p&sid=nYPGHxfMSjyIXHcGAAB6 HTTP/1.1" 200 -
+2025-07-12 18:55:53,213 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:53] "GET /socket.io/?EIO=4&transport=polling&t=PV_MPzI&sid=nYPGHxfMSjyIXHcGAAB6 HTTP/1.1" 200 -
+2025-07-12 18:55:53,246 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:53] "GET /socket.io/?EIO=4&transport=polling&t=PV_MQ0T HTTP/1.1" 200 -
+2025-07-12 18:55:53,249 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:53] "POST /socket.io/?EIO=4&transport=polling&t=PV_MQ0V&sid=gTwF26kSivXldcDEAAB8 HTTP/1.1" 200 -
+2025-07-12 18:55:53,249 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:53] "GET /socket.io/?EIO=4&transport=polling&t=PV_MQ0V.0&sid=gTwF26kSivXldcDEAAB8 HTTP/1.1" 200 -
+2025-07-12 18:55:53,418 - INFO - Client bağlantısı koptu - Client: 9TG2Sl2jkwyBeOzeAAB9
+2025-07-12 18:55:53,418 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:53] "POST /socket.io/?EIO=4&transport=polling&t=PV_MQ33&sid=gTwF26kSivXldcDEAAB8 HTTP/1.1" 200 -
+2025-07-12 18:55:53,419 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:53] "POST /socket.io/?EIO=4&transport=polling&t=PV_MQ34&sid=gTwF26kSivXldcDEAAB8 HTTP/1.1" 200 -
+2025-07-12 18:55:53,419 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:53] "GET /socket.io/?EIO=4&transport=polling&t=PV_MQ0Y&sid=gTwF26kSivXldcDEAAB8 HTTP/1.1" 200 -
+2025-07-12 18:55:53,451 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:53] "GET /socket.io/?EIO=4&transport=polling&t=PV_MQ3g HTTP/1.1" 200 -
+2025-07-12 18:55:53,453 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:53] "POST /socket.io/?EIO=4&transport=polling&t=PV_MQ3i&sid=AV6zF2aoSN5fjz-dAAB- HTTP/1.1" 200 -
+2025-07-12 18:55:53,454 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:53] "GET /socket.io/?EIO=4&transport=polling&t=PV_MQ3i.0&sid=AV6zF2aoSN5fjz-dAAB- HTTP/1.1" 200 -
+2025-07-12 18:55:53,627 - INFO - Client bağlantısı koptu - Client: J6ye6bL-MEQ6WktBAAB_
+2025-07-12 18:55:53,628 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:53] "POST /socket.io/?EIO=4&transport=polling&t=PV_MQ6J&sid=AV6zF2aoSN5fjz-dAAB- HTTP/1.1" 200 -
+2025-07-12 18:55:53,629 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:53] "POST /socket.io/?EIO=4&transport=polling&t=PV_MQ6K&sid=AV6zF2aoSN5fjz-dAAB- HTTP/1.1" 200 -
+2025-07-12 18:55:53,629 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:53] "GET /socket.io/?EIO=4&transport=polling&t=PV_MQ3k&sid=AV6zF2aoSN5fjz-dAAB- HTTP/1.1" 200 -
+2025-07-12 18:55:53,662 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:53] "GET /socket.io/?EIO=4&transport=polling&t=PV_MQ6z HTTP/1.1" 200 -
+2025-07-12 18:55:53,667 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:53] "POST /socket.io/?EIO=4&transport=polling&t=PV_MQ71&sid=YVpeU1EHs5K_8e1VAACA HTTP/1.1" 200 -
+2025-07-12 18:55:53,667 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:53] "GET /socket.io/?EIO=4&transport=polling&t=PV_MQ71.0&sid=YVpeU1EHs5K_8e1VAACA HTTP/1.1" 200 -
+2025-07-12 18:55:53,825 - INFO - Client bağlantısı koptu - Client: yZH05ZrJJUSzpIt9AACB
+2025-07-12 18:55:53,825 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:53] "POST /socket.io/?EIO=4&transport=polling&t=PV_MQ9U&sid=YVpeU1EHs5K_8e1VAACA HTTP/1.1" 200 -
+2025-07-12 18:55:53,826 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:53] "POST /socket.io/?EIO=4&transport=polling&t=PV_MQ9V&sid=YVpeU1EHs5K_8e1VAACA HTTP/1.1" 200 -
+2025-07-12 18:55:53,826 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:53] "GET /socket.io/?EIO=4&transport=polling&t=PV_MQ74&sid=YVpeU1EHs5K_8e1VAACA HTTP/1.1" 200 -
+2025-07-12 18:55:53,854 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:53] "GET /socket.io/?EIO=4&transport=polling&t=PV_MQ9y HTTP/1.1" 200 -
+2025-07-12 18:55:53,857 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:53] "POST /socket.io/?EIO=4&transport=polling&t=PV_MQA0&sid=RD5uCBjQgM2kseIqAACC HTTP/1.1" 200 -
+2025-07-12 18:55:53,858 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:53] "GET /socket.io/?EIO=4&transport=polling&t=PV_MQA0.0&sid=RD5uCBjQgM2kseIqAACC HTTP/1.1" 200 -
+2025-07-12 18:55:54,032 - INFO - Client bağlantısı koptu - Client: gVc-PJJe0s0BNtMYAACD
+2025-07-12 18:55:54,033 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:54] "POST /socket.io/?EIO=4&transport=polling&t=PV_MQCg&sid=RD5uCBjQgM2kseIqAACC HTTP/1.1" 200 -
+2025-07-12 18:55:54,033 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:54] "POST /socket.io/?EIO=4&transport=polling&t=PV_MQCh&sid=RD5uCBjQgM2kseIqAACC HTTP/1.1" 200 -
+2025-07-12 18:55:54,033 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:54] "GET /socket.io/?EIO=4&transport=polling&t=PV_MQA3&sid=RD5uCBjQgM2kseIqAACC HTTP/1.1" 200 -
+2025-07-12 18:55:54,066 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:54] "GET /socket.io/?EIO=4&transport=polling&t=PV_MQDH HTTP/1.1" 200 -
+2025-07-12 18:55:54,068 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:54] "POST /socket.io/?EIO=4&transport=polling&t=PV_MQDJ&sid=2GRVNJj6c97t7Qg1AACE HTTP/1.1" 200 -
+2025-07-12 18:55:54,069 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:54] "GET /socket.io/?EIO=4&transport=polling&t=PV_MQDJ.0&sid=2GRVNJj6c97t7Qg1AACE HTTP/1.1" 200 -
+2025-07-12 18:55:54,236 - INFO - Client bağlantısı koptu - Client: m4R24HwTBlC_1wndAACF
+2025-07-12 18:55:54,236 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:54] "POST /socket.io/?EIO=4&transport=polling&t=PV_MQFw&sid=2GRVNJj6c97t7Qg1AACE HTTP/1.1" 200 -
+2025-07-12 18:55:54,239 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:54] "POST /socket.io/?EIO=4&transport=polling&t=PV_MQFw.0&sid=2GRVNJj6c97t7Qg1AACE HTTP/1.1" 200 -
+2025-07-12 18:55:54,239 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:54] "GET /socket.io/?EIO=4&transport=polling&t=PV_MQDL&sid=2GRVNJj6c97t7Qg1AACE HTTP/1.1" 200 -
+2025-07-12 18:55:54,272 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:54] "GET /socket.io/?EIO=4&transport=polling&t=PV_MQGV HTTP/1.1" 200 -
+2025-07-12 18:55:54,275 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:54] "POST /socket.io/?EIO=4&transport=polling&t=PV_MQGX&sid=5YC3OJqv-w0FxvjGAACG HTTP/1.1" 200 -
+2025-07-12 18:55:54,275 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:54] "GET /socket.io/?EIO=4&transport=polling&t=PV_MQGX.0&sid=5YC3OJqv-w0FxvjGAACG HTTP/1.1" 200 -
+2025-07-12 18:55:54,441 - INFO - Client bağlantısı koptu - Client: drtzZwGZkOOSPR4iAACH
+2025-07-12 18:55:54,441 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:54] "POST /socket.io/?EIO=4&transport=polling&t=PV_MQJ6&sid=5YC3OJqv-w0FxvjGAACG HTTP/1.1" 200 -
+2025-07-12 18:55:54,443 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:54] "POST /socket.io/?EIO=4&transport=polling&t=PV_MQJ7&sid=5YC3OJqv-w0FxvjGAACG HTTP/1.1" 200 -
+2025-07-12 18:55:54,443 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:54] "GET /socket.io/?EIO=4&transport=polling&t=PV_MQGb&sid=5YC3OJqv-w0FxvjGAACG HTTP/1.1" 200 -
+2025-07-12 18:55:54,476 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:54] "GET /socket.io/?EIO=4&transport=polling&t=PV_MQJh HTTP/1.1" 200 -
+2025-07-12 18:55:54,478 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:54] "POST /socket.io/?EIO=4&transport=polling&t=PV_MQJj&sid=8dFj_tqgQrFFtigQAACI HTTP/1.1" 200 -
+2025-07-12 18:55:54,479 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:54] "GET /socket.io/?EIO=4&transport=polling&t=PV_MQJj.0&sid=8dFj_tqgQrFFtigQAACI HTTP/1.1" 200 -
+2025-07-12 18:55:54,648 - INFO - Client bağlantısı koptu - Client: o24ssRt9SI7y1CU0AACJ
+2025-07-12 18:55:54,648 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:54] "POST /socket.io/?EIO=4&transport=polling&t=PV_MQMM&sid=8dFj_tqgQrFFtigQAACI HTTP/1.1" 200 -
+2025-07-12 18:55:54,651 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:54] "POST /socket.io/?EIO=4&transport=polling&t=PV_MQMN&sid=8dFj_tqgQrFFtigQAACI HTTP/1.1" 200 -
+2025-07-12 18:55:54,651 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:54] "GET /socket.io/?EIO=4&transport=polling&t=PV_MQJm&sid=8dFj_tqgQrFFtigQAACI HTTP/1.1" 200 -
+2025-07-12 18:55:54,685 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:54] "GET /socket.io/?EIO=4&transport=polling&t=PV_MQMy HTTP/1.1" 200 -
+2025-07-12 18:55:54,687 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:54] "POST /socket.io/?EIO=4&transport=polling&t=PV_MQM-&sid=ROROQynhv3mTHbMJAACK HTTP/1.1" 200 -
+2025-07-12 18:55:54,688 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:54] "GET /socket.io/?EIO=4&transport=polling&t=PV_MQM-.0&sid=ROROQynhv3mTHbMJAACK HTTP/1.1" 200 -
+2025-07-12 18:55:54,853 - INFO - Client bağlantısı koptu - Client: AADC_l8TYjrre5kFAACL
+2025-07-12 18:55:54,854 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:54] "POST /socket.io/?EIO=4&transport=polling&t=PV_MQPX&sid=ROROQynhv3mTHbMJAACK HTTP/1.1" 200 -
+2025-07-12 18:55:54,854 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:54] "POST /socket.io/?EIO=4&transport=polling&t=PV_MQPY&sid=ROROQynhv3mTHbMJAACK HTTP/1.1" 200 -
+2025-07-12 18:55:54,855 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:54] "GET /socket.io/?EIO=4&transport=polling&t=PV_MQN1&sid=ROROQynhv3mTHbMJAACK HTTP/1.1" 200 -
+2025-07-12 18:55:54,886 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:54] "GET /socket.io/?EIO=4&transport=polling&t=PV_MQQ5 HTTP/1.1" 200 -
+2025-07-12 18:55:54,889 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:54] "POST /socket.io/?EIO=4&transport=polling&t=PV_MQQ7&sid=C59AZiCWGMmKEtTjAACM HTTP/1.1" 200 -
+2025-07-12 18:55:54,889 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:54] "GET /socket.io/?EIO=4&transport=polling&t=PV_MQQ7.0&sid=C59AZiCWGMmKEtTjAACM HTTP/1.1" 200 -
+2025-07-12 18:55:55,060 - INFO - Client bağlantısı koptu - Client: s1E2RiECOir9ku9ZAACN
+2025-07-12 18:55:55,060 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:55] "POST /socket.io/?EIO=4&transport=polling&t=PV_MQSn&sid=C59AZiCWGMmKEtTjAACM HTTP/1.1" 200 -
+2025-07-12 18:55:55,061 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:55] "POST /socket.io/?EIO=4&transport=polling&t=PV_MQSn.0&sid=C59AZiCWGMmKEtTjAACM HTTP/1.1" 200 -
+2025-07-12 18:55:55,061 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:55] "GET /socket.io/?EIO=4&transport=polling&t=PV_MQQA&sid=C59AZiCWGMmKEtTjAACM HTTP/1.1" 200 -
+2025-07-12 18:55:55,093 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:55] "GET /socket.io/?EIO=4&transport=polling&t=PV_MQTK HTTP/1.1" 200 -
+2025-07-12 18:55:55,097 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:55] "POST /socket.io/?EIO=4&transport=polling&t=PV_MQTO&sid=fu51GG3Bm6__XhpeAACO HTTP/1.1" 200 -
+2025-07-12 18:55:55,098 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:55] "GET /socket.io/?EIO=4&transport=polling&t=PV_MQTO.0&sid=fu51GG3Bm6__XhpeAACO HTTP/1.1" 200 -
+2025-07-12 18:55:55,268 - INFO - Client bağlantısı koptu - Client: yot4nnuAGDiyfecSAACP
+2025-07-12 18:55:55,269 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:55] "POST /socket.io/?EIO=4&transport=polling&t=PV_MQW0&sid=fu51GG3Bm6__XhpeAACO HTTP/1.1" 200 -
+2025-07-12 18:55:55,269 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:55] "POST /socket.io/?EIO=4&transport=polling&t=PV_MQV_&sid=fu51GG3Bm6__XhpeAACO HTTP/1.1" 200 -
+2025-07-12 18:55:55,269 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:55] "GET /socket.io/?EIO=4&transport=polling&t=PV_MQTR&sid=fu51GG3Bm6__XhpeAACO HTTP/1.1" 200 -
+2025-07-12 18:55:55,301 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:55] "GET /socket.io/?EIO=4&transport=polling&t=PV_MQWZ HTTP/1.1" 200 -
+2025-07-12 18:55:55,304 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:55] "POST /socket.io/?EIO=4&transport=polling&t=PV_MQWc&sid=qw51GH2EBkAkBQS8AACQ HTTP/1.1" 200 -
+2025-07-12 18:55:55,304 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:55] "GET /socket.io/?EIO=4&transport=polling&t=PV_MQWc.0&sid=qw51GH2EBkAkBQS8AACQ HTTP/1.1" 200 -
+2025-07-12 18:55:55,470 - INFO - Client bağlantısı koptu - Client: tHdAloqTlOnhLyBYAACR
+2025-07-12 18:55:55,471 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:55] "POST /socket.io/?EIO=4&transport=polling&t=PV_MQZB&sid=qw51GH2EBkAkBQS8AACQ HTTP/1.1" 200 -
+2025-07-12 18:55:55,471 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:55] "POST /socket.io/?EIO=4&transport=polling&t=PV_MQZB.0&sid=qw51GH2EBkAkBQS8AACQ HTTP/1.1" 200 -
+2025-07-12 18:55:55,472 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:55] "GET /socket.io/?EIO=4&transport=polling&t=PV_MQWf&sid=qw51GH2EBkAkBQS8AACQ HTTP/1.1" 200 -
+2025-07-12 18:55:55,497 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:55] "GET /socket.io/?EIO=4&transport=polling&t=PV_MQZe HTTP/1.1" 200 -
+2025-07-12 18:55:55,499 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:55] "POST /socket.io/?EIO=4&transport=polling&t=PV_MQZg&sid=WZQNk92h3Z78VaihAACS HTTP/1.1" 200 -
+2025-07-12 18:55:55,499 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:55] "GET /socket.io/?EIO=4&transport=polling&t=PV_MQZg.0&sid=WZQNk92h3Z78VaihAACS HTTP/1.1" 200 -
+2025-07-12 18:55:55,680 - INFO - Client bağlantısı koptu - Client: 3fS0Sn_whGgnzhjdAACT
+2025-07-12 18:55:55,681 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:55] "POST /socket.io/?EIO=4&transport=polling&t=PV_MQcU&sid=WZQNk92h3Z78VaihAACS HTTP/1.1" 200 -
+2025-07-12 18:55:55,682 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:55] "POST /socket.io/?EIO=4&transport=polling&t=PV_MQcV&sid=WZQNk92h3Z78VaihAACS HTTP/1.1" 200 -
+2025-07-12 18:55:55,682 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:55] "GET /socket.io/?EIO=4&transport=polling&t=PV_MQZi&sid=WZQNk92h3Z78VaihAACS HTTP/1.1" 200 -
+2025-07-12 18:55:55,715 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:55] "GET /socket.io/?EIO=4&transport=polling&t=PV_MQd1 HTTP/1.1" 200 -
+2025-07-12 18:55:55,719 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:55] "POST /socket.io/?EIO=4&transport=polling&t=PV_MQd5&sid=MuFbtS3KOqna-fqrAACU HTTP/1.1" 200 -
+2025-07-12 18:55:55,719 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:55] "GET /socket.io/?EIO=4&transport=polling&t=PV_MQd6&sid=MuFbtS3KOqna-fqrAACU HTTP/1.1" 200 -
+2025-07-12 18:55:55,887 - INFO - Client bağlantısı koptu - Client: I6ABtsBSmRURT609AACV
+2025-07-12 18:55:55,887 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:55] "POST /socket.io/?EIO=4&transport=polling&t=PV_MQfj&sid=MuFbtS3KOqna-fqrAACU HTTP/1.1" 200 -
+2025-07-12 18:55:55,890 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:55] "POST /socket.io/?EIO=4&transport=polling&t=PV_MQfj.0&sid=MuFbtS3KOqna-fqrAACU HTTP/1.1" 200 -
+2025-07-12 18:55:55,890 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:55] "GET /socket.io/?EIO=4&transport=polling&t=PV_MQd8&sid=MuFbtS3KOqna-fqrAACU HTTP/1.1" 200 -
+2025-07-12 18:55:55,923 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:55] "GET /socket.io/?EIO=4&transport=polling&t=PV_MQgH HTTP/1.1" 200 -
+2025-07-12 18:55:55,926 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:55] "POST /socket.io/?EIO=4&transport=polling&t=PV_MQgK&sid=OMigowqQfSDHtHXfAACW HTTP/1.1" 200 -
+2025-07-12 18:55:55,926 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:55] "GET /socket.io/?EIO=4&transport=polling&t=PV_MQgK.0&sid=OMigowqQfSDHtHXfAACW HTTP/1.1" 200 -
+2025-07-12 18:55:56,095 - INFO - Client bağlantısı koptu - Client: a5lIA5vzb8Jay8c-AACX
+2025-07-12 18:55:56,096 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:56] "POST /socket.io/?EIO=4&transport=polling&t=PV_MQiz&sid=OMigowqQfSDHtHXfAACW HTTP/1.1" 200 -
+2025-07-12 18:55:56,098 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:56] "POST /socket.io/?EIO=4&transport=polling&t=PV_MQiz.0&sid=OMigowqQfSDHtHXfAACW HTTP/1.1" 200 -
+2025-07-12 18:55:56,098 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:56] "GET /socket.io/?EIO=4&transport=polling&t=PV_MQgN&sid=OMigowqQfSDHtHXfAACW HTTP/1.1" 200 -
+2025-07-12 18:55:56,132 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:56] "GET /socket.io/?EIO=4&transport=polling&t=PV_MQjZ HTTP/1.1" 200 -
+2025-07-12 18:55:56,134 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:56] "POST /socket.io/?EIO=4&transport=polling&t=PV_MQjb&sid=jV9dRHVmTtJpmeqeAACY HTTP/1.1" 200 -
+2025-07-12 18:55:56,135 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:56] "GET /socket.io/?EIO=4&transport=polling&t=PV_MQjb.0&sid=jV9dRHVmTtJpmeqeAACY HTTP/1.1" 200 -
+2025-07-12 18:55:56,299 - INFO - Client bağlantısı koptu - Client: YVSKr23L15xGhmD-AACZ
+2025-07-12 18:55:56,299 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:56] "POST /socket.io/?EIO=4&transport=polling&t=PV_MQm9&sid=jV9dRHVmTtJpmeqeAACY HTTP/1.1" 200 -
+2025-07-12 18:55:56,301 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:56] "POST /socket.io/?EIO=4&transport=polling&t=PV_MQmA&sid=jV9dRHVmTtJpmeqeAACY HTTP/1.1" 200 -
+2025-07-12 18:55:56,301 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:56] "GET /socket.io/?EIO=4&transport=polling&t=PV_MQjd&sid=jV9dRHVmTtJpmeqeAACY HTTP/1.1" 200 -
+2025-07-12 18:55:56,333 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:56] "GET /socket.io/?EIO=4&transport=polling&t=PV_MQmi HTTP/1.1" 200 -
+2025-07-12 18:55:56,335 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:56] "POST /socket.io/?EIO=4&transport=polling&t=PV_MQmk&sid=8ShMSfzfdKgCf6G1AACa HTTP/1.1" 200 -
+2025-07-12 18:55:56,335 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:56] "GET /socket.io/?EIO=4&transport=polling&t=PV_MQmk.0&sid=8ShMSfzfdKgCf6G1AACa HTTP/1.1" 200 -
+2025-07-12 18:55:56,507 - INFO - Client bağlantısı koptu - Client: 3Uir9r4mGchRGL6uAACb
+2025-07-12 18:55:56,508 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:56] "POST /socket.io/?EIO=4&transport=polling&t=PV_MQpO&sid=8ShMSfzfdKgCf6G1AACa HTTP/1.1" 200 -
+2025-07-12 18:55:56,510 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:56] "POST /socket.io/?EIO=4&transport=polling&t=PV_MQpP&sid=8ShMSfzfdKgCf6G1AACa HTTP/1.1" 200 -
+2025-07-12 18:55:56,510 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:56] "GET /socket.io/?EIO=4&transport=polling&t=PV_MQmm&sid=8ShMSfzfdKgCf6G1AACa HTTP/1.1" 200 -
+2025-07-12 18:55:56,546 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:56] "GET /socket.io/?EIO=4&transport=polling&t=PV_MQp_ HTTP/1.1" 200 -
+2025-07-12 18:55:56,549 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:56] "POST /socket.io/?EIO=4&transport=polling&t=PV_MQq4&sid=6YVURZUrjebYgH9tAACc HTTP/1.1" 200 -
+2025-07-12 18:55:56,550 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:56] "GET /socket.io/?EIO=4&transport=polling&t=PV_MQq4.0&sid=6YVURZUrjebYgH9tAACc HTTP/1.1" 200 -
+2025-07-12 18:55:56,716 - INFO - Client bağlantısı koptu - Client: hulqv35snm2VNxIGAACd
+2025-07-12 18:55:56,716 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:56] "POST /socket.io/?EIO=4&transport=polling&t=PV_MQsg&sid=6YVURZUrjebYgH9tAACc HTTP/1.1" 200 -
+2025-07-12 18:55:56,718 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:56] "POST /socket.io/?EIO=4&transport=polling&t=PV_MQsg.0&sid=6YVURZUrjebYgH9tAACc HTTP/1.1" 200 -
+2025-07-12 18:55:56,718 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:56] "GET /socket.io/?EIO=4&transport=polling&t=PV_MQq6&sid=6YVURZUrjebYgH9tAACc HTTP/1.1" 200 -
+2025-07-12 18:55:56,751 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:56] "GET /socket.io/?EIO=4&transport=polling&t=PV_MQtE HTTP/1.1" 200 -
+2025-07-12 18:55:56,753 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:56] "POST /socket.io/?EIO=4&transport=polling&t=PV_MQtF&sid=sZdtRJZkTjjP21hyAACe HTTP/1.1" 200 -
+2025-07-12 18:55:56,753 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:56] "GET /socket.io/?EIO=4&transport=polling&t=PV_MQtG&sid=sZdtRJZkTjjP21hyAACe HTTP/1.1" 200 -
+2025-07-12 18:55:56,916 - INFO - Client bağlantısı koptu - Client: KHNZnqgvGn4InhrGAACf
+2025-07-12 18:55:56,916 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:56] "POST /socket.io/?EIO=4&transport=polling&t=PV_MQvm&sid=sZdtRJZkTjjP21hyAACe HTTP/1.1" 200 -
+2025-07-12 18:55:56,917 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:56] "POST /socket.io/?EIO=4&transport=polling&t=PV_MQvm.0&sid=sZdtRJZkTjjP21hyAACe HTTP/1.1" 200 -
+2025-07-12 18:55:56,917 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:56] "GET /socket.io/?EIO=4&transport=polling&t=PV_MQtI&sid=sZdtRJZkTjjP21hyAACe HTTP/1.1" 200 -
+2025-07-12 18:55:56,942 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:56] "GET /socket.io/?EIO=4&transport=polling&t=PV_MQwD HTTP/1.1" 200 -
+2025-07-12 18:55:56,945 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:56] "POST /socket.io/?EIO=4&transport=polling&t=PV_MQwF&sid=55ygYvnyXGUiuSpFAACg HTTP/1.1" 200 -
+2025-07-12 18:55:56,945 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:56] "GET /socket.io/?EIO=4&transport=polling&t=PV_MQwF.0&sid=55ygYvnyXGUiuSpFAACg HTTP/1.1" 200 -
+2025-07-12 18:55:57,131 - INFO - Client bağlantısı koptu - Client: wAAjeNj5ClPYemXJAACh
+2025-07-12 18:55:57,131 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:57] "POST /socket.io/?EIO=4&transport=polling&t=PV_MQz9&sid=55ygYvnyXGUiuSpFAACg HTTP/1.1" 200 -
+2025-07-12 18:55:57,132 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:57] "POST /socket.io/?EIO=4&transport=polling&t=PV_MQz9.0&sid=55ygYvnyXGUiuSpFAACg HTTP/1.1" 200 -
+2025-07-12 18:55:57,132 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:57] "GET /socket.io/?EIO=4&transport=polling&t=PV_MQwI&sid=55ygYvnyXGUiuSpFAACg HTTP/1.1" 200 -
+2025-07-12 18:55:57,216 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:57] "GET /socket.io/?EIO=4&transport=polling&t=PV_MQ-T HTTP/1.1" 200 -
+2025-07-12 18:55:57,221 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:57] "POST /socket.io/?EIO=4&transport=polling&t=PV_MQ-Z&sid=9KwykB1QMWXhBp6MAACi HTTP/1.1" 200 -
+2025-07-12 18:55:57,221 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:57] "GET /socket.io/?EIO=4&transport=polling&t=PV_MQ-Z.0&sid=9KwykB1QMWXhBp6MAACi HTTP/1.1" 200 -
+2025-07-12 18:55:57,434 - INFO - Client bağlantısı koptu - Client: -Nik0mxUuBVaSvxKAACj
+2025-07-12 18:55:57,434 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:57] "POST /socket.io/?EIO=4&transport=polling&t=PV_MR1u&sid=9KwykB1QMWXhBp6MAACi HTTP/1.1" 200 -
+2025-07-12 18:55:57,436 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:57] "POST /socket.io/?EIO=4&transport=polling&t=PV_MR1u.0&sid=9KwykB1QMWXhBp6MAACi HTTP/1.1" 200 -
+2025-07-12 18:55:57,436 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:57] "GET /socket.io/?EIO=4&transport=polling&t=PV_MQ-d&sid=9KwykB1QMWXhBp6MAACi HTTP/1.1" 200 -
+2025-07-12 18:55:57,523 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:57] "GET /socket.io/?EIO=4&transport=polling&t=PV_MR3G HTTP/1.1" 200 -
+2025-07-12 18:55:57,528 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:57] "POST /socket.io/?EIO=4&transport=polling&t=PV_MR3L&sid=0T42BYW_jsfv63muAACk HTTP/1.1" 200 -
+2025-07-12 18:55:57,530 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:57] "GET /socket.io/?EIO=4&transport=polling&t=PV_MR3L.0&sid=0T42BYW_jsfv63muAACk HTTP/1.1" 200 -
+2025-07-12 18:55:57,739 - INFO - Client bağlantısı koptu - Client: 29WewbkJIgej38HnAACl
+2025-07-12 18:55:57,739 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:57] "POST /socket.io/?EIO=4&transport=polling&t=PV_MR6f&sid=0T42BYW_jsfv63muAACk HTTP/1.1" 200 -
+2025-07-12 18:55:57,741 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:57] "POST /socket.io/?EIO=4&transport=polling&t=PV_MR6g&sid=0T42BYW_jsfv63muAACk HTTP/1.1" 200 -
+2025-07-12 18:55:57,741 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:57] "GET /socket.io/?EIO=4&transport=polling&t=PV_MR3Q&sid=0T42BYW_jsfv63muAACk HTTP/1.1" 200 -
+2025-07-12 18:55:57,815 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:57] "GET /socket.io/?EIO=4&transport=polling&t=PV_MR7r HTTP/1.1" 200 -
+2025-07-12 18:55:57,818 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:57] "POST /socket.io/?EIO=4&transport=polling&t=PV_MR7u&sid=7dVOs9xwrsLQLT2LAACm HTTP/1.1" 200 -
+2025-07-12 18:55:57,819 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:57] "GET /socket.io/?EIO=4&transport=polling&t=PV_MR7u.0&sid=7dVOs9xwrsLQLT2LAACm HTTP/1.1" 200 -
+2025-07-12 18:55:57,947 - INFO - Client bağlantısı koptu - Client: 5kQAJScndVEnAJZgAACn
+2025-07-12 18:55:57,948 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:57] "POST /socket.io/?EIO=4&transport=polling&t=PV_MR9u&sid=7dVOs9xwrsLQLT2LAACm HTTP/1.1" 200 -
+2025-07-12 18:55:57,948 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:57] "POST /socket.io/?EIO=4&transport=polling&t=PV_MR9u.0&sid=7dVOs9xwrsLQLT2LAACm HTTP/1.1" 200 -
+2025-07-12 18:55:57,948 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:57] "GET /socket.io/?EIO=4&transport=polling&t=PV_MR7y&sid=7dVOs9xwrsLQLT2LAACm HTTP/1.1" 200 -
+2025-07-12 18:55:58,031 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:58] "GET /socket.io/?EIO=4&transport=polling&t=PV_MRBD HTTP/1.1" 200 -
+2025-07-12 18:55:58,037 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:58] "POST /socket.io/?EIO=4&transport=polling&t=PV_MRBH&sid=1eI_Vrre_REjFaoRAACo HTTP/1.1" 200 -
+2025-07-12 18:55:58,038 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:58] "GET /socket.io/?EIO=4&transport=polling&t=PV_MRBH.0&sid=1eI_Vrre_REjFaoRAACo HTTP/1.1" 200 -
+2025-07-12 18:55:58,246 - INFO - Client bağlantısı koptu - Client: Tizj4K3vl8eyoh6xAACp
+2025-07-12 18:55:58,246 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:58] "POST /socket.io/?EIO=4&transport=polling&t=PV_MREZ&sid=1eI_Vrre_REjFaoRAACo HTTP/1.1" 200 -
+2025-07-12 18:55:58,247 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:58] "POST /socket.io/?EIO=4&transport=polling&t=PV_MREa&sid=1eI_Vrre_REjFaoRAACo HTTP/1.1" 200 -
+2025-07-12 18:55:58,248 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:58] "GET /socket.io/?EIO=4&transport=polling&t=PV_MRBN&sid=1eI_Vrre_REjFaoRAACo HTTP/1.1" 200 -
+2025-07-12 18:55:58,335 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:58] "GET /socket.io/?EIO=4&transport=polling&t=PV_MRFy HTTP/1.1" 200 -
+2025-07-12 18:55:58,338 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:58] "POST /socket.io/?EIO=4&transport=polling&t=PV_MRG1&sid=vG2RAU-qekm4KZN-AACq HTTP/1.1" 200 -
+2025-07-12 18:55:58,339 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:58] "GET /socket.io/?EIO=4&transport=polling&t=PV_MRG1.0&sid=vG2RAU-qekm4KZN-AACq HTTP/1.1" 200 -
+2025-07-12 18:55:58,555 - INFO - Client bağlantısı koptu - Client: NyGC-tkR3cafdCuvAACr
+2025-07-12 18:55:58,555 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:58] "POST /socket.io/?EIO=4&transport=polling&t=PV_MRJP&sid=vG2RAU-qekm4KZN-AACq HTTP/1.1" 200 -
+2025-07-12 18:55:58,557 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:58] "POST /socket.io/?EIO=4&transport=polling&t=PV_MRJP.0&sid=vG2RAU-qekm4KZN-AACq HTTP/1.1" 200 -
+2025-07-12 18:55:58,557 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:58] "GET /socket.io/?EIO=4&transport=polling&t=PV_MRG5&sid=vG2RAU-qekm4KZN-AACq HTTP/1.1" 200 -
+2025-07-12 18:55:58,646 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:58] "GET /socket.io/?EIO=4&transport=polling&t=PV_MRKr HTTP/1.1" 200 -
+2025-07-12 18:55:58,649 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:58] "POST /socket.io/?EIO=4&transport=polling&t=PV_MRKu&sid=8IbEkWcclWmuN1WUAACs HTTP/1.1" 200 -
+2025-07-12 18:55:58,649 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:58] "GET /socket.io/?EIO=4&transport=polling&t=PV_MRKu.0&sid=8IbEkWcclWmuN1WUAACs HTTP/1.1" 200 -
+2025-07-12 18:55:58,860 - INFO - Client bağlantısı koptu - Client: rZpmmnlCWnJZK0ftAACt
+2025-07-12 18:55:58,860 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:58] "POST /socket.io/?EIO=4&transport=polling&t=PV_MRO9&sid=8IbEkWcclWmuN1WUAACs HTTP/1.1" 200 -
+2025-07-12 18:55:58,862 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:58] "POST /socket.io/?EIO=4&transport=polling&t=PV_MROA&sid=8IbEkWcclWmuN1WUAACs HTTP/1.1" 200 -
+2025-07-12 18:55:58,862 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:58] "GET /socket.io/?EIO=4&transport=polling&t=PV_MRKy&sid=8IbEkWcclWmuN1WUAACs HTTP/1.1" 200 -
+2025-07-12 18:55:58,956 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:58] "GET /socket.io/?EIO=4&transport=polling&t=PV_MRPh HTTP/1.1" 200 -
+2025-07-12 18:55:58,958 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:58] "POST /socket.io/?EIO=4&transport=polling&t=PV_MRPj&sid=t42Dvfw6ew6JBHD-AACu HTTP/1.1" 200 -
+2025-07-12 18:55:58,959 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:58] "GET /socket.io/?EIO=4&transport=polling&t=PV_MRPj.0&sid=t42Dvfw6ew6JBHD-AACu HTTP/1.1" 200 -
+2025-07-12 18:55:59,166 - INFO - Client bağlantısı koptu - Client: wDyhWwjYHhkCCcisAACv
+2025-07-12 18:55:59,166 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:59] "POST /socket.io/?EIO=4&transport=polling&t=PV_MRSy&sid=t42Dvfw6ew6JBHD-AACu HTTP/1.1" 200 -
+2025-07-12 18:55:59,168 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:59] "POST /socket.io/?EIO=4&transport=polling&t=PV_MRSz&sid=t42Dvfw6ew6JBHD-AACu HTTP/1.1" 200 -
+2025-07-12 18:55:59,169 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:59] "GET /socket.io/?EIO=4&transport=polling&t=PV_MRPn&sid=t42Dvfw6ew6JBHD-AACu HTTP/1.1" 200 -
+2025-07-12 18:55:59,260 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:59] "GET /socket.io/?EIO=4&transport=polling&t=PV_MRUQ HTTP/1.1" 200 -
+2025-07-12 18:55:59,264 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:59] "POST /socket.io/?EIO=4&transport=polling&t=PV_MRUU&sid=EGZO70RJ-l6XYOj2AACw HTTP/1.1" 200 -
+2025-07-12 18:55:59,264 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:59] "GET /socket.io/?EIO=4&transport=polling&t=PV_MRUV&sid=EGZO70RJ-l6XYOj2AACw HTTP/1.1" 200 -
+2025-07-12 18:55:59,477 - INFO - Client bağlantısı koptu - Client: yy6M2kABOT7X-yJRAACx
+2025-07-12 18:55:59,477 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:59] "POST /socket.io/?EIO=4&transport=polling&t=PV_MRXp&sid=EGZO70RJ-l6XYOj2AACw HTTP/1.1" 200 -
+2025-07-12 18:55:59,480 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:59] "POST /socket.io/?EIO=4&transport=polling&t=PV_MRXq&sid=EGZO70RJ-l6XYOj2AACw HTTP/1.1" 200 -
+2025-07-12 18:55:59,480 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:59] "GET /socket.io/?EIO=4&transport=polling&t=PV_MRUY&sid=EGZO70RJ-l6XYOj2AACw HTTP/1.1" 200 -
+2025-07-12 18:55:59,569 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:59] "GET /socket.io/?EIO=4&transport=polling&t=PV_MRZG HTTP/1.1" 200 -
+2025-07-12 18:55:59,571 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:59] "POST /socket.io/?EIO=4&transport=polling&t=PV_MRZI&sid=mAX9GLNgWOnqn6M2AACy HTTP/1.1" 200 -
+2025-07-12 18:55:59,572 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:59] "GET /socket.io/?EIO=4&transport=polling&t=PV_MRZI.0&sid=mAX9GLNgWOnqn6M2AACy HTTP/1.1" 200 -
+2025-07-12 18:55:59,789 - INFO - Client bağlantısı koptu - Client: RYxZNewx1x39p7icAACz
+2025-07-12 18:55:59,789 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:59] "POST /socket.io/?EIO=4&transport=polling&t=PV_MRcc&sid=mAX9GLNgWOnqn6M2AACy HTTP/1.1" 200 -
+2025-07-12 18:55:59,790 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:59] "POST /socket.io/?EIO=4&transport=polling&t=PV_MRcd&sid=mAX9GLNgWOnqn6M2AACy HTTP/1.1" 200 -
+2025-07-12 18:55:59,790 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:59] "GET /socket.io/?EIO=4&transport=polling&t=PV_MRZM&sid=mAX9GLNgWOnqn6M2AACy HTTP/1.1" 200 -
+2025-07-12 18:55:59,884 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:59] "GET /socket.io/?EIO=4&transport=polling&t=PV_MReB HTTP/1.1" 200 -
+2025-07-12 18:55:59,887 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:59] "POST /socket.io/?EIO=4&transport=polling&t=PV_MReD&sid=ZXJ5Tl7mufEFzUSdAAC0 HTTP/1.1" 200 -
+2025-07-12 18:55:59,887 - INFO - 127.0.0.1 - - [12/Jul/2025 18:55:59] "GET /socket.io/?EIO=4&transport=polling&t=PV_MReE&sid=ZXJ5Tl7mufEFzUSdAAC0 HTTP/1.1" 200 -
+2025-07-12 18:56:00,092 - INFO - Client bağlantısı koptu - Client: du2_NjW1RnNz_IKyAAC1
+2025-07-12 18:56:00,092 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:00] "POST /socket.io/?EIO=4&transport=polling&t=PV_MRhQ&sid=ZXJ5Tl7mufEFzUSdAAC0 HTTP/1.1" 200 -
+2025-07-12 18:56:00,095 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:00] "POST /socket.io/?EIO=4&transport=polling&t=PV_MRhR&sid=ZXJ5Tl7mufEFzUSdAAC0 HTTP/1.1" 200 -
+2025-07-12 18:56:00,095 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:00] "GET /socket.io/?EIO=4&transport=polling&t=PV_MReG&sid=ZXJ5Tl7mufEFzUSdAAC0 HTTP/1.1" 200 -
+2025-07-12 18:56:00,184 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:00] "GET /socket.io/?EIO=4&transport=polling&t=PV_MRis HTTP/1.1" 200 -
+2025-07-12 18:56:00,188 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:00] "POST /socket.io/?EIO=4&transport=polling&t=PV_MRiw&sid=-Pfbbdc95bprr8cWAAC2 HTTP/1.1" 200 -
+2025-07-12 18:56:00,189 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:00] "GET /socket.io/?EIO=4&transport=polling&t=PV_MRix&sid=-Pfbbdc95bprr8cWAAC2 HTTP/1.1" 200 -
+2025-07-12 18:56:00,411 - INFO - Client bağlantısı koptu - Client: xZX0JzclOUlmfG0BAAC3
+2025-07-12 18:56:00,412 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:00] "POST /socket.io/?EIO=4&transport=polling&t=PV_MRmI&sid=-Pfbbdc95bprr8cWAAC2 HTTP/1.1" 200 -
+2025-07-12 18:56:00,412 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:00] "POST /socket.io/?EIO=4&transport=polling&t=PV_MRmJ&sid=-Pfbbdc95bprr8cWAAC2 HTTP/1.1" 200 -
+2025-07-12 18:56:00,413 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:00] "GET /socket.io/?EIO=4&transport=polling&t=PV_MRi-&sid=-Pfbbdc95bprr8cWAAC2 HTTP/1.1" 200 -
+2025-07-12 18:56:00,506 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:00] "GET /socket.io/?EIO=4&transport=polling&t=PV_MRnv HTTP/1.1" 200 -
+2025-07-12 18:56:00,508 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:00] "POST /socket.io/?EIO=4&transport=polling&t=PV_MRnx&sid=eWiNJlCVHwCCnHbbAAC4 HTTP/1.1" 200 -
+2025-07-12 18:56:00,508 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:00] "GET /socket.io/?EIO=4&transport=polling&t=PV_MRnx.0&sid=eWiNJlCVHwCCnHbbAAC4 HTTP/1.1" 200 -
+2025-07-12 18:56:00,712 - INFO - Client bağlantısı koptu - Client: NTyjrDMfiGRZPzaTAAC5
+2025-07-12 18:56:00,712 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:00] "POST /socket.io/?EIO=4&transport=polling&t=PV_MRr5&sid=eWiNJlCVHwCCnHbbAAC4 HTTP/1.1" 200 -
+2025-07-12 18:56:00,714 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:00] "POST /socket.io/?EIO=4&transport=polling&t=PV_MRr6&sid=eWiNJlCVHwCCnHbbAAC4 HTTP/1.1" 200 -
+2025-07-12 18:56:00,714 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:00] "GET /socket.io/?EIO=4&transport=polling&t=PV_MRn_&sid=eWiNJlCVHwCCnHbbAAC4 HTTP/1.1" 200 -
+2025-07-12 18:56:00,805 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:00] "GET /socket.io/?EIO=4&transport=polling&t=PV_MRsZ HTTP/1.1" 200 -
+2025-07-12 18:56:00,808 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:00] "POST /socket.io/?EIO=4&transport=polling&t=PV_MRsc&sid=k-OhVTSbwo7aSvTUAAC6 HTTP/1.1" 200 -
+2025-07-12 18:56:00,809 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:00] "GET /socket.io/?EIO=4&transport=polling&t=PV_MRsc.0&sid=k-OhVTSbwo7aSvTUAAC6 HTTP/1.1" 200 -
+2025-07-12 18:56:01,031 - INFO - Client bağlantısı koptu - Client: wYBwpVleq4fbzgq3AAC7
+2025-07-12 18:56:01,032 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:01] "POST /socket.io/?EIO=4&transport=polling&t=PV_MRv-&sid=k-OhVTSbwo7aSvTUAAC6 HTTP/1.1" 200 -
+2025-07-12 18:56:01,032 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:01] "POST /socket.io/?EIO=4&transport=polling&t=PV_MRv_&sid=k-OhVTSbwo7aSvTUAAC6 HTTP/1.1" 200 -
+2025-07-12 18:56:01,033 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:01] "GET /socket.io/?EIO=4&transport=polling&t=PV_MRsg&sid=k-OhVTSbwo7aSvTUAAC6 HTTP/1.1" 200 -
+2025-07-12 18:56:01,126 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:01] "GET /socket.io/?EIO=4&transport=polling&t=PV_MRxb HTTP/1.1" 200 -
+2025-07-12 18:56:01,128 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:01] "POST /socket.io/?EIO=4&transport=polling&t=PV_MRxd&sid=msHB0I31hR64N2qkAAC8 HTTP/1.1" 200 -
+2025-07-12 18:56:01,129 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:01] "GET /socket.io/?EIO=4&transport=polling&t=PV_MRxd.0&sid=msHB0I31hR64N2qkAAC8 HTTP/1.1" 200 -
+2025-07-12 18:56:01,332 - INFO - Client bağlantısı koptu - Client: YE9FbJWdedTNrHw8AAC9
+2025-07-12 18:56:01,333 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:01] "POST /socket.io/?EIO=4&transport=polling&t=PV_MR-o&sid=msHB0I31hR64N2qkAAC8 HTTP/1.1" 200 -
+2025-07-12 18:56:01,334 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:01] "POST /socket.io/?EIO=4&transport=polling&t=PV_MR-p&sid=msHB0I31hR64N2qkAAC8 HTTP/1.1" 200 -
+2025-07-12 18:56:01,335 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:01] "GET /socket.io/?EIO=4&transport=polling&t=PV_MRxh&sid=msHB0I31hR64N2qkAAC8 HTTP/1.1" 200 -
+2025-07-12 18:56:01,426 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:01] "GET /socket.io/?EIO=4&transport=polling&t=PV_MS0G HTTP/1.1" 200 -
+2025-07-12 18:56:01,430 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:01] "POST /socket.io/?EIO=4&transport=polling&t=PV_MS0K&sid=SC-RI8k3FM7zpNCkAAC- HTTP/1.1" 200 -
+2025-07-12 18:56:01,430 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:01] "GET /socket.io/?EIO=4&transport=polling&t=PV_MS0K.0&sid=SC-RI8k3FM7zpNCkAAC- HTTP/1.1" 200 -
+2025-07-12 18:56:01,650 - INFO - Client bağlantısı koptu - Client: mH1XC6mN69lB5KY9AAC_
+2025-07-12 18:56:01,650 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:01] "POST /socket.io/?EIO=4&transport=polling&t=PV_MS3k&sid=SC-RI8k3FM7zpNCkAAC- HTTP/1.1" 200 -
+2025-07-12 18:56:01,652 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:01] "POST /socket.io/?EIO=4&transport=polling&t=PV_MS3k.0&sid=SC-RI8k3FM7zpNCkAAC- HTTP/1.1" 200 -
+2025-07-12 18:56:01,653 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:01] "GET /socket.io/?EIO=4&transport=polling&t=PV_MS0P&sid=SC-RI8k3FM7zpNCkAAC- HTTP/1.1" 200 -
+2025-07-12 18:56:01,746 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:01] "GET /socket.io/?EIO=4&transport=polling&t=PV_MS5H HTTP/1.1" 200 -
+2025-07-12 18:56:01,749 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:01] "POST /socket.io/?EIO=4&transport=polling&t=PV_MS5K&sid=oaP4Dm1Uq0Ki67jVAADA HTTP/1.1" 200 -
+2025-07-12 18:56:01,750 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:01] "GET /socket.io/?EIO=4&transport=polling&t=PV_MS5K.0&sid=oaP4Dm1Uq0Ki67jVAADA HTTP/1.1" 200 -
+2025-07-12 18:56:01,951 - INFO - Client bağlantısı koptu - Client: YYCP9wgVEGDONc_eAADB
+2025-07-12 18:56:01,951 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:01] "POST /socket.io/?EIO=4&transport=polling&t=PV_MS8T&sid=oaP4Dm1Uq0Ki67jVAADA HTTP/1.1" 200 -
+2025-07-12 18:56:01,954 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:01] "POST /socket.io/?EIO=4&transport=polling&t=PV_MS8U&sid=oaP4Dm1Uq0Ki67jVAADA HTTP/1.1" 200 -
+2025-07-12 18:56:01,954 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:01] "GET /socket.io/?EIO=4&transport=polling&t=PV_MS5O&sid=oaP4Dm1Uq0Ki67jVAADA HTTP/1.1" 200 -
+2025-07-12 18:56:02,048 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:02] "GET /socket.io/?EIO=4&transport=polling&t=PV_MS9_ HTTP/1.1" 200 -
+2025-07-12 18:56:02,050 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:02] "POST /socket.io/?EIO=4&transport=polling&t=PV_MSA1&sid=Ih1ZGA5eTJVALP-wAADC HTTP/1.1" 200 -
+2025-07-12 18:56:02,050 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:02] "GET /socket.io/?EIO=4&transport=polling&t=PV_MSA1.0&sid=Ih1ZGA5eTJVALP-wAADC HTTP/1.1" 200 -
+2025-07-12 18:56:02,263 - INFO - Client bağlantısı koptu - Client: YSNONaA1pCxxXrHnAADD
+2025-07-12 18:56:02,263 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:02] "POST /socket.io/?EIO=4&transport=polling&t=PV_MSDL&sid=Ih1ZGA5eTJVALP-wAADC HTTP/1.1" 200 -
+2025-07-12 18:56:02,265 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:02] "POST /socket.io/?EIO=4&transport=polling&t=PV_MSDL.0&sid=Ih1ZGA5eTJVALP-wAADC HTTP/1.1" 200 -
+2025-07-12 18:56:02,266 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:02] "GET /socket.io/?EIO=4&transport=polling&t=PV_MSA5&sid=Ih1ZGA5eTJVALP-wAADC HTTP/1.1" 200 -
+2025-07-12 18:56:02,357 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:02] "GET /socket.io/?EIO=4&transport=polling&t=PV_MSEp HTTP/1.1" 200 -
+2025-07-12 18:56:02,360 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:02] "POST /socket.io/?EIO=4&transport=polling&t=PV_MSEs&sid=d9bUpDHXm-WMWU5LAADE HTTP/1.1" 200 -
+2025-07-12 18:56:02,360 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:02] "GET /socket.io/?EIO=4&transport=polling&t=PV_MSEs.0&sid=d9bUpDHXm-WMWU5LAADE HTTP/1.1" 200 -
+2025-07-12 18:56:02,595 - INFO - Client bağlantısı koptu - Client: B2h_HeWRiFf9UbgYAADF
+2025-07-12 18:56:02,595 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:02] "POST /socket.io/?EIO=4&transport=polling&t=PV_MSIB&sid=d9bUpDHXm-WMWU5LAADE HTTP/1.1" 200 -
+2025-07-12 18:56:02,596 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:02] "POST /socket.io/?EIO=4&transport=polling&t=PV_MSIC&sid=d9bUpDHXm-WMWU5LAADE HTTP/1.1" 200 -
+2025-07-12 18:56:02,596 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:02] "GET /socket.io/?EIO=4&transport=polling&t=PV_MSEw&sid=d9bUpDHXm-WMWU5LAADE HTTP/1.1" 200 -
+2025-07-12 18:56:02,674 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:02] "GET /socket.io/?EIO=4&transport=polling&t=PV_MSJn HTTP/1.1" 200 -
+2025-07-12 18:56:02,676 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:02] "POST /socket.io/?EIO=4&transport=polling&t=PV_MSJp&sid=O6x1ecZQWDqVmpeNAADG HTTP/1.1" 200 -
+2025-07-12 18:56:02,676 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:02] "GET /socket.io/?EIO=4&transport=polling&t=PV_MSJp.0&sid=O6x1ecZQWDqVmpeNAADG HTTP/1.1" 200 -
+2025-07-12 18:56:02,880 - INFO - Client bağlantısı koptu - Client: Kzv5-hNN_SVUyS0uAADH
+2025-07-12 18:56:02,880 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:02] "POST /socket.io/?EIO=4&transport=polling&t=PV_MSMz&sid=O6x1ecZQWDqVmpeNAADG HTTP/1.1" 200 -
+2025-07-12 18:56:02,883 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:02] "POST /socket.io/?EIO=4&transport=polling&t=PV_MSM-&sid=O6x1ecZQWDqVmpeNAADG HTTP/1.1" 200 -
+2025-07-12 18:56:02,884 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:02] "GET /socket.io/?EIO=4&transport=polling&t=PV_MSJt&sid=O6x1ecZQWDqVmpeNAADG HTTP/1.1" 200 -
+2025-07-12 18:56:02,972 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:02] "GET /socket.io/?EIO=4&transport=polling&t=PV_MSOR HTTP/1.1" 200 -
+2025-07-12 18:56:02,975 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:02] "POST /socket.io/?EIO=4&transport=polling&t=PV_MSOU&sid=1XANudxVl_FkIK-sAADI HTTP/1.1" 200 -
+2025-07-12 18:56:02,976 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:02] "GET /socket.io/?EIO=4&transport=polling&t=PV_MSOU.0&sid=1XANudxVl_FkIK-sAADI HTTP/1.1" 200 -
+2025-07-12 18:56:03,193 - INFO - Client bağlantısı koptu - Client: d8s05mf3HbIE-0jQAADJ
+2025-07-12 18:56:03,194 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:03] "POST /socket.io/?EIO=4&transport=polling&t=PV_MSRs&sid=1XANudxVl_FkIK-sAADI HTTP/1.1" 200 -
+2025-07-12 18:56:03,196 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:03] "POST /socket.io/?EIO=4&transport=polling&t=PV_MSRt&sid=1XANudxVl_FkIK-sAADI HTTP/1.1" 200 -
+2025-07-12 18:56:03,197 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:03] "GET /socket.io/?EIO=4&transport=polling&t=PV_MSOY&sid=1XANudxVl_FkIK-sAADI HTTP/1.1" 200 -
+2025-07-12 18:56:03,291 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:03] "GET /socket.io/?EIO=4&transport=polling&t=PV_MSTQ HTTP/1.1" 200 -
+2025-07-12 18:56:03,293 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:03] "POST /socket.io/?EIO=4&transport=polling&t=PV_MSTR&sid=3vTSEImNa_lTMANAAADK HTTP/1.1" 200 -
+2025-07-12 18:56:03,293 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:03] "GET /socket.io/?EIO=4&transport=polling&t=PV_MSTS&sid=3vTSEImNa_lTMANAAADK HTTP/1.1" 200 -
+2025-07-12 18:56:03,505 - INFO - Client bağlantısı koptu - Client: FmjGGd6ywxW7SCF-AADL
+2025-07-12 18:56:03,505 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:03] "POST /socket.io/?EIO=4&transport=polling&t=PV_MSWl&sid=3vTSEImNa_lTMANAAADK HTTP/1.1" 200 -
+2025-07-12 18:56:03,508 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:03] "POST /socket.io/?EIO=4&transport=polling&t=PV_MSWm&sid=3vTSEImNa_lTMANAAADK HTTP/1.1" 200 -
+2025-07-12 18:56:03,508 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:03] "GET /socket.io/?EIO=4&transport=polling&t=PV_MSTV&sid=3vTSEImNa_lTMANAAADK HTTP/1.1" 200 -
+2025-07-12 18:56:03,602 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:03] "GET /socket.io/?EIO=4&transport=polling&t=PV_MSYF HTTP/1.1" 200 -
+2025-07-12 18:56:03,605 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:03] "POST /socket.io/?EIO=4&transport=polling&t=PV_MSYK&sid=68YddKyUd4uzFYqVAADM HTTP/1.1" 200 -
+2025-07-12 18:56:03,606 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:03] "GET /socket.io/?EIO=4&transport=polling&t=PV_MSYK.0&sid=68YddKyUd4uzFYqVAADM HTTP/1.1" 200 -
+2025-07-12 18:56:03,818 - INFO - Client bağlantısı koptu - Client: WBTtPY8a1T7suluEAADN
+2025-07-12 18:56:03,818 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:03] "POST /socket.io/?EIO=4&transport=polling&t=PV_MSbe&sid=68YddKyUd4uzFYqVAADM HTTP/1.1" 200 -
+2025-07-12 18:56:03,820 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:03] "POST /socket.io/?EIO=4&transport=polling&t=PV_MSbe.0&sid=68YddKyUd4uzFYqVAADM HTTP/1.1" 200 -
+2025-07-12 18:56:03,820 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:03] "GET /socket.io/?EIO=4&transport=polling&t=PV_MSYN&sid=68YddKyUd4uzFYqVAADM HTTP/1.1" 200 -
+2025-07-12 18:56:03,909 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:03] "GET /socket.io/?EIO=4&transport=polling&t=PV_MSd4 HTTP/1.1" 200 -
+2025-07-12 18:56:03,912 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:03] "POST /socket.io/?EIO=4&transport=polling&t=PV_MSd7&sid=t2QuCfj5fTlIOkKBAADO HTTP/1.1" 200 -
+2025-07-12 18:56:03,913 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:03] "GET /socket.io/?EIO=4&transport=polling&t=PV_MSd7.0&sid=t2QuCfj5fTlIOkKBAADO HTTP/1.1" 200 -
+2025-07-12 18:56:04,133 - INFO - Client bağlantısı koptu - Client: R6jmtMmiGBKtCyz5AADP
+2025-07-12 18:56:04,134 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:04] "POST /socket.io/?EIO=4&transport=polling&t=PV_MSgS&sid=t2QuCfj5fTlIOkKBAADO HTTP/1.1" 200 -
+2025-07-12 18:56:04,134 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:04] "POST /socket.io/?EIO=4&transport=polling&t=PV_MSgU&sid=t2QuCfj5fTlIOkKBAADO HTTP/1.1" 200 -
+2025-07-12 18:56:04,134 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:04] "GET /socket.io/?EIO=4&transport=polling&t=PV_MSdB&sid=t2QuCfj5fTlIOkKBAADO HTTP/1.1" 200 -
+2025-07-12 18:56:04,228 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:04] "GET /socket.io/?EIO=4&transport=polling&t=PV_MSi2 HTTP/1.1" 200 -
+2025-07-12 18:56:04,231 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:04] "POST /socket.io/?EIO=4&transport=polling&t=PV_MSi5&sid=dTvNK--TFzpc0FPlAADQ HTTP/1.1" 200 -
+2025-07-12 18:56:04,231 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:04] "GET /socket.io/?EIO=4&transport=polling&t=PV_MSi6&sid=dTvNK--TFzpc0FPlAADQ HTTP/1.1" 200 -
+2025-07-12 18:56:04,438 - INFO - Client bağlantısı koptu - Client: OG7DhtqRL7Mpzu1fAADR
+2025-07-12 18:56:04,438 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:04] "POST /socket.io/?EIO=4&transport=polling&t=PV_MSlK&sid=dTvNK--TFzpc0FPlAADQ HTTP/1.1" 200 -
+2025-07-12 18:56:04,440 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:04] "POST /socket.io/?EIO=4&transport=polling&t=PV_MSlK.0&sid=dTvNK--TFzpc0FPlAADQ HTTP/1.1" 200 -
+2025-07-12 18:56:04,440 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:04] "GET /socket.io/?EIO=4&transport=polling&t=PV_MSi9&sid=dTvNK--TFzpc0FPlAADQ HTTP/1.1" 200 -
+2025-07-12 18:56:04,534 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:04] "GET /socket.io/?EIO=4&transport=polling&t=PV_MSmq HTTP/1.1" 200 -
+2025-07-12 18:56:04,536 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:04] "POST /socket.io/?EIO=4&transport=polling&t=PV_MSms&sid=RngkTtNYXtcFyl-IAADS HTTP/1.1" 200 -
+2025-07-12 18:56:04,536 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:04] "GET /socket.io/?EIO=4&transport=polling&t=PV_MSms.0&sid=RngkTtNYXtcFyl-IAADS HTTP/1.1" 200 -
+2025-07-12 18:56:04,747 - INFO - Client bağlantısı koptu - Client: TrKm3UGAFxUmCLcwAADT
+2025-07-12 18:56:04,747 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:04] "POST /socket.io/?EIO=4&transport=polling&t=PV_MSq9&sid=RngkTtNYXtcFyl-IAADS HTTP/1.1" 200 -
+2025-07-12 18:56:04,749 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:04] "POST /socket.io/?EIO=4&transport=polling&t=PV_MSq9.0&sid=RngkTtNYXtcFyl-IAADS HTTP/1.1" 200 -
+2025-07-12 18:56:04,749 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:04] "GET /socket.io/?EIO=4&transport=polling&t=PV_MSmw&sid=RngkTtNYXtcFyl-IAADS HTTP/1.1" 200 -
+2025-07-12 18:56:04,838 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:04] "GET /socket.io/?EIO=4&transport=polling&t=PV_MSra HTTP/1.1" 200 -
+2025-07-12 18:56:04,841 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:04] "POST /socket.io/?EIO=4&transport=polling&t=PV_MSrd&sid=3HkKjt2RPm7M2rAUAADU HTTP/1.1" 200 -
+2025-07-12 18:56:04,842 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:04] "GET /socket.io/?EIO=4&transport=polling&t=PV_MSrd.0&sid=3HkKjt2RPm7M2rAUAADU HTTP/1.1" 200 -
+2025-07-12 18:56:05,055 - INFO - Client bağlantısı koptu - Client: F16DGVMBF6xTFE0MAADV
+2025-07-12 18:56:05,056 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:05] "POST /socket.io/?EIO=4&transport=polling&t=PV_MSuy&sid=3HkKjt2RPm7M2rAUAADU HTTP/1.1" 200 -
+2025-07-12 18:56:05,058 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:05] "POST /socket.io/?EIO=4&transport=polling&t=PV_MSuz&sid=3HkKjt2RPm7M2rAUAADU HTTP/1.1" 200 -
+2025-07-12 18:56:05,059 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:05] "GET /socket.io/?EIO=4&transport=polling&t=PV_MSri&sid=3HkKjt2RPm7M2rAUAADU HTTP/1.1" 200 -
+2025-07-12 18:56:05,153 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:05] "GET /socket.io/?EIO=4&transport=polling&t=PV_MSwW HTTP/1.1" 200 -
+2025-07-12 18:56:05,155 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:05] "POST /socket.io/?EIO=4&transport=polling&t=PV_MSwY&sid=6rW1Xf83HYgLRDhDAADW HTTP/1.1" 200 -
+2025-07-12 18:56:05,155 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:05] "GET /socket.io/?EIO=4&transport=polling&t=PV_MSwY.0&sid=6rW1Xf83HYgLRDhDAADW HTTP/1.1" 200 -
+2025-07-12 18:56:05,360 - INFO - Client bağlantısı koptu - Client: Lkk8J6bxgw9ucbZ7AADX
+2025-07-12 18:56:05,360 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:05] "POST /socket.io/?EIO=4&transport=polling&t=PV_MSzl&sid=6rW1Xf83HYgLRDhDAADW HTTP/1.1" 200 -
+2025-07-12 18:56:05,362 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:05] "POST /socket.io/?EIO=4&transport=polling&t=PV_MSzl.0&sid=6rW1Xf83HYgLRDhDAADW HTTP/1.1" 200 -
+2025-07-12 18:56:05,362 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:05] "GET /socket.io/?EIO=4&transport=polling&t=PV_MSwb&sid=6rW1Xf83HYgLRDhDAADW HTTP/1.1" 200 -
+2025-07-12 18:56:05,450 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:05] "GET /socket.io/?EIO=4&transport=polling&t=PV_MS_6 HTTP/1.1" 200 -
+2025-07-12 18:56:05,454 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:05] "POST /socket.io/?EIO=4&transport=polling&t=PV_MS_C&sid=AdWVGlAC0Z1rayuEAADY HTTP/1.1" 200 -
+2025-07-12 18:56:05,455 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:05] "GET /socket.io/?EIO=4&transport=polling&t=PV_MS_C.0&sid=AdWVGlAC0Z1rayuEAADY HTTP/1.1" 200 -
+2025-07-12 18:56:05,676 - INFO - Client bağlantısı koptu - Client: oFcKRPl6jbwnFJleAADZ
+2025-07-12 18:56:05,677 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:05] "POST /socket.io/?EIO=4&transport=polling&t=PV_MT2f&sid=AdWVGlAC0Z1rayuEAADY HTTP/1.1" 200 -
+2025-07-12 18:56:05,679 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:05] "POST /socket.io/?EIO=4&transport=polling&t=PV_MT2g&sid=AdWVGlAC0Z1rayuEAADY HTTP/1.1" 200 -
+2025-07-12 18:56:05,679 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:05] "GET /socket.io/?EIO=4&transport=polling&t=PV_MS_G&sid=AdWVGlAC0Z1rayuEAADY HTTP/1.1" 200 -
+2025-07-12 18:56:05,776 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:05] "GET /socket.io/?EIO=4&transport=polling&t=PV_MT4E HTTP/1.1" 200 -
+2025-07-12 18:56:05,780 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:05] "POST /socket.io/?EIO=4&transport=polling&t=PV_MT4J&sid=2LQwiD-Z5F-fMJD8AADa HTTP/1.1" 200 -
+2025-07-12 18:56:05,781 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:05] "GET /socket.io/?EIO=4&transport=polling&t=PV_MT4J.0&sid=2LQwiD-Z5F-fMJD8AADa HTTP/1.1" 200 -
+2025-07-12 18:56:05,983 - INFO - Client bağlantısı koptu - Client: y1E31LWaSxx3BxAyAADb
+2025-07-12 18:56:05,983 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:05] "POST /socket.io/?EIO=4&transport=polling&t=PV_MT7T&sid=2LQwiD-Z5F-fMJD8AADa HTTP/1.1" 200 -
+2025-07-12 18:56:05,985 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:05] "POST /socket.io/?EIO=4&transport=polling&t=PV_MT7U&sid=2LQwiD-Z5F-fMJD8AADa HTTP/1.1" 200 -
+2025-07-12 18:56:05,986 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:05] "GET /socket.io/?EIO=4&transport=polling&t=PV_MT4N&sid=2LQwiD-Z5F-fMJD8AADa HTTP/1.1" 200 -
+2025-07-12 18:56:06,076 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:06] "GET /socket.io/?EIO=4&transport=polling&t=PV_MT8w HTTP/1.1" 200 -
+2025-07-12 18:56:06,080 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:06] "POST /socket.io/?EIO=4&transport=polling&t=PV_MT8-&sid=XbUQwKh1Jq2G0VIBAADc HTTP/1.1" 200 -
+2025-07-12 18:56:06,081 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:06] "GET /socket.io/?EIO=4&transport=polling&t=PV_MT8_&sid=XbUQwKh1Jq2G0VIBAADc HTTP/1.1" 200 -
+2025-07-12 18:56:06,296 - INFO - Client bağlantısı koptu - Client: 6ssC1W--VIMKwWb1AADd
+2025-07-12 18:56:06,296 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:06] "POST /socket.io/?EIO=4&transport=polling&t=PV_MTCM&sid=XbUQwKh1Jq2G0VIBAADc HTTP/1.1" 200 -
+2025-07-12 18:56:06,299 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:06] "POST /socket.io/?EIO=4&transport=polling&t=PV_MTCM.0&sid=XbUQwKh1Jq2G0VIBAADc HTTP/1.1" 200 -
+2025-07-12 18:56:06,299 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:06] "GET /socket.io/?EIO=4&transport=polling&t=PV_MT91&sid=XbUQwKh1Jq2G0VIBAADc HTTP/1.1" 200 -
+2025-07-12 18:56:06,394 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:06] "GET /socket.io/?EIO=4&transport=polling&t=PV_MTDv HTTP/1.1" 200 -
+2025-07-12 18:56:06,397 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:06] "POST /socket.io/?EIO=4&transport=polling&t=PV_MTDx&sid=G1ABpsJjD0jC37ybAADe HTTP/1.1" 200 -
+2025-07-12 18:56:06,397 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:06] "GET /socket.io/?EIO=4&transport=polling&t=PV_MTDy&sid=G1ABpsJjD0jC37ybAADe HTTP/1.1" 200 -
+2025-07-12 18:56:06,603 - INFO - Client bağlantısı koptu - Client: Fv0pa3G4iWjkCqFaAADf
+2025-07-12 18:56:06,604 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:06] "POST /socket.io/?EIO=4&transport=polling&t=PV_MTH9&sid=G1ABpsJjD0jC37ybAADe HTTP/1.1" 200 -
+2025-07-12 18:56:06,607 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:06] "POST /socket.io/?EIO=4&transport=polling&t=PV_MTHA&sid=G1ABpsJjD0jC37ybAADe HTTP/1.1" 200 -
+2025-07-12 18:56:06,608 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:06] "GET /socket.io/?EIO=4&transport=polling&t=PV_MTD_&sid=G1ABpsJjD0jC37ybAADe HTTP/1.1" 200 -
+2025-07-12 18:56:06,700 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:06] "GET /socket.io/?EIO=4&transport=polling&t=PV_MTIh HTTP/1.1" 200 -
+2025-07-12 18:56:06,702 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:06] "POST /socket.io/?EIO=4&transport=polling&t=PV_MTIj&sid=d2N9spld-ukXymAMAADg HTTP/1.1" 200 -
+2025-07-12 18:56:06,703 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:06] "GET /socket.io/?EIO=4&transport=polling&t=PV_MTIj.0&sid=d2N9spld-ukXymAMAADg HTTP/1.1" 200 -
+2025-07-12 18:56:06,912 - INFO - Client bağlantısı koptu - Client: S6XoEJOXesCk7enUAADh
+2025-07-12 18:56:06,912 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:06] "POST /socket.io/?EIO=4&transport=polling&t=PV_MTL-&sid=d2N9spld-ukXymAMAADg HTTP/1.1" 200 -
+2025-07-12 18:56:06,915 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:06] "POST /socket.io/?EIO=4&transport=polling&t=PV_MTL_&sid=d2N9spld-ukXymAMAADg HTTP/1.1" 200 -
+2025-07-12 18:56:06,915 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:06] "GET /socket.io/?EIO=4&transport=polling&t=PV_MTIn&sid=d2N9spld-ukXymAMAADg HTTP/1.1" 200 -
+2025-07-12 18:56:07,005 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:07] "GET /socket.io/?EIO=4&transport=polling&t=PV_MTNS HTTP/1.1" 200 -
+2025-07-12 18:56:07,008 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:07] "POST /socket.io/?EIO=4&transport=polling&t=PV_MTNV&sid=udl3MLq2y4groPcDAADi HTTP/1.1" 200 -
+2025-07-12 18:56:07,009 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:07] "GET /socket.io/?EIO=4&transport=polling&t=PV_MTNV.0&sid=udl3MLq2y4groPcDAADi HTTP/1.1" 200 -
+2025-07-12 18:56:07,229 - INFO - Client bağlantısı koptu - Client: uINoPQ8shrq2WUstAADj
+2025-07-12 18:56:07,229 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:07] "POST /socket.io/?EIO=4&transport=polling&t=PV_MTQt&sid=udl3MLq2y4groPcDAADi HTTP/1.1" 200 -
+2025-07-12 18:56:07,231 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:07] "POST /socket.io/?EIO=4&transport=polling&t=PV_MTQv&sid=udl3MLq2y4groPcDAADi HTTP/1.1" 200 -
+2025-07-12 18:56:07,231 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:07] "GET /socket.io/?EIO=4&transport=polling&t=PV_MTNY&sid=udl3MLq2y4groPcDAADi HTTP/1.1" 200 -
+2025-07-12 18:56:07,327 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:07] "GET /socket.io/?EIO=4&transport=polling&t=PV_MTSU HTTP/1.1" 200 -
+2025-07-12 18:56:07,329 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:07] "POST /socket.io/?EIO=4&transport=polling&t=PV_MTSW&sid=rkXd3JihiP2t5l5yAADk HTTP/1.1" 200 -
+2025-07-12 18:56:07,329 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:07] "GET /socket.io/?EIO=4&transport=polling&t=PV_MTSW.0&sid=rkXd3JihiP2t5l5yAADk HTTP/1.1" 200 -
+2025-07-12 18:56:07,533 - INFO - Client bağlantısı koptu - Client: P7GWk8j5sV3WHW0xAADl
+2025-07-12 18:56:07,534 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:07] "POST /socket.io/?EIO=4&transport=polling&t=PV_MTVi&sid=rkXd3JihiP2t5l5yAADk HTTP/1.1" 200 -
+2025-07-12 18:56:07,535 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:07] "POST /socket.io/?EIO=4&transport=polling&t=PV_MTVi.0&sid=rkXd3JihiP2t5l5yAADk HTTP/1.1" 200 -
+2025-07-12 18:56:07,535 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:07] "GET /socket.io/?EIO=4&transport=polling&t=PV_MTSa&sid=rkXd3JihiP2t5l5yAADk HTTP/1.1" 200 -
+2025-07-12 18:56:07,618 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:07] "GET /socket.io/?EIO=4&transport=polling&t=PV_MTX0 HTTP/1.1" 200 -
+2025-07-12 18:56:07,622 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:07] "POST /socket.io/?EIO=4&transport=polling&t=PV_MTX4&sid=oKy3VD6GtJ1tro23AADm HTTP/1.1" 200 -
+2025-07-12 18:56:07,624 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:07] "GET /socket.io/?EIO=4&transport=polling&t=PV_MTX4.0&sid=oKy3VD6GtJ1tro23AADm HTTP/1.1" 200 -
+2025-07-12 18:56:07,851 - INFO - Client bağlantısı koptu - Client: P6S1txy5W0aR90MWAADn
+2025-07-12 18:56:07,851 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:07] "POST /socket.io/?EIO=4&transport=polling&t=PV_MTab&sid=oKy3VD6GtJ1tro23AADm HTTP/1.1" 200 -
+2025-07-12 18:56:07,852 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:07] "POST /socket.io/?EIO=4&transport=polling&t=PV_MTad&sid=oKy3VD6GtJ1tro23AADm HTTP/1.1" 200 -
+2025-07-12 18:56:07,852 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:07] "GET /socket.io/?EIO=4&transport=polling&t=PV_MTX8&sid=oKy3VD6GtJ1tro23AADm HTTP/1.1" 200 -
+2025-07-12 18:56:07,946 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:07] "GET /socket.io/?EIO=4&transport=polling&t=PV_MTc9 HTTP/1.1" 200 -
+2025-07-12 18:56:07,950 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:07] "POST /socket.io/?EIO=4&transport=polling&t=PV_MTcC&sid=IVZxRNGvD88BeCtcAADo HTTP/1.1" 200 -
+2025-07-12 18:56:07,950 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:07] "GET /socket.io/?EIO=4&transport=polling&t=PV_MTcC.0&sid=IVZxRNGvD88BeCtcAADo HTTP/1.1" 200 -
+2025-07-12 18:56:08,162 - INFO - Client bağlantısı koptu - Client: 1nPTq9N5gLnucqBqAADp
+2025-07-12 18:56:08,162 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:08] "POST /socket.io/?EIO=4&transport=polling&t=PV_MTfW&sid=IVZxRNGvD88BeCtcAADo HTTP/1.1" 200 -
+2025-07-12 18:56:08,164 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:08] "POST /socket.io/?EIO=4&transport=polling&t=PV_MTfW.0&sid=IVZxRNGvD88BeCtcAADo HTTP/1.1" 200 -
+2025-07-12 18:56:08,164 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:08] "GET /socket.io/?EIO=4&transport=polling&t=PV_MTcG&sid=IVZxRNGvD88BeCtcAADo HTTP/1.1" 200 -
+2025-07-12 18:56:08,253 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:08] "GET /socket.io/?EIO=4&transport=polling&t=PV_MTgw HTTP/1.1" 200 -
+2025-07-12 18:56:08,256 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:08] "POST /socket.io/?EIO=4&transport=polling&t=PV_MTg-&sid=yAotVezX86rtN7zbAADq HTTP/1.1" 200 -
+2025-07-12 18:56:08,257 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:08] "GET /socket.io/?EIO=4&transport=polling&t=PV_MTg-.0&sid=yAotVezX86rtN7zbAADq HTTP/1.1" 200 -
+2025-07-12 18:56:08,467 - INFO - Client bağlantısı koptu - Client: 7UOJ6JTaFRwOnQN6AADr
+2025-07-12 18:56:08,468 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:08] "POST /socket.io/?EIO=4&transport=polling&t=PV_MTkI&sid=yAotVezX86rtN7zbAADq HTTP/1.1" 200 -
+2025-07-12 18:56:08,469 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:08] "POST /socket.io/?EIO=4&transport=polling&t=PV_MTkI.0&sid=yAotVezX86rtN7zbAADq HTTP/1.1" 200 -
+2025-07-12 18:56:08,469 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:08] "GET /socket.io/?EIO=4&transport=polling&t=PV_MTh2&sid=yAotVezX86rtN7zbAADq HTTP/1.1" 200 -
+2025-07-12 18:56:08,550 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:08] "GET /socket.io/?EIO=4&transport=polling&t=PV_MTlb HTTP/1.1" 200 -
+2025-07-12 18:56:08,555 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:08] "POST /socket.io/?EIO=4&transport=polling&t=PV_MTlf&sid=kaVJye6nTV4Pma4CAADs HTTP/1.1" 200 -
+2025-07-12 18:56:08,556 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:08] "GET /socket.io/?EIO=4&transport=polling&t=PV_MTlf.0&sid=kaVJye6nTV4Pma4CAADs HTTP/1.1" 200 -
+2025-07-12 18:56:08,673 - INFO - Client bağlantısı koptu - Client: r7JCfA0wKsWdg0fuAADt
+2025-07-12 18:56:08,673 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:08] "POST /socket.io/?EIO=4&transport=polling&t=PV_MTnV&sid=kaVJye6nTV4Pma4CAADs HTTP/1.1" 200 -
+2025-07-12 18:56:08,675 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:08] "POST /socket.io/?EIO=4&transport=polling&t=PV_MTnW&sid=kaVJye6nTV4Pma4CAADs HTTP/1.1" 200 -
+2025-07-12 18:56:08,675 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:08] "GET /socket.io/?EIO=4&transport=polling&t=PV_MTli&sid=kaVJye6nTV4Pma4CAADs HTTP/1.1" 200 -
+2025-07-12 18:56:08,758 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:08] "GET /socket.io/?EIO=4&transport=polling&t=PV_MTor HTTP/1.1" 200 -
+2025-07-12 18:56:08,761 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:08] "POST /socket.io/?EIO=4&transport=polling&t=PV_MTot&sid=6GWzgMVS4ZJJIZp1AADu HTTP/1.1" 200 -
+2025-07-12 18:56:08,762 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:08] "GET /socket.io/?EIO=4&transport=polling&t=PV_MTot.0&sid=6GWzgMVS4ZJJIZp1AADu HTTP/1.1" 200 -
+2025-07-12 18:56:08,876 - INFO - Client bağlantısı koptu - Client: MAuwc-Hf-3xw9I6HAADv
+2025-07-12 18:56:08,877 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:08] "POST /socket.io/?EIO=4&transport=polling&t=PV_MTqh&sid=6GWzgMVS4ZJJIZp1AADu HTTP/1.1" 200 -
+2025-07-12 18:56:08,878 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:08] "POST /socket.io/?EIO=4&transport=polling&t=PV_MTqh.0&sid=6GWzgMVS4ZJJIZp1AADu HTTP/1.1" 200 -
+2025-07-12 18:56:08,878 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:08] "GET /socket.io/?EIO=4&transport=polling&t=PV_MToy&sid=6GWzgMVS4ZJJIZp1AADu HTTP/1.1" 200 -
+2025-07-12 18:56:08,961 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:08] "GET /socket.io/?EIO=4&transport=polling&t=PV_MTr_ HTTP/1.1" 200 -
+2025-07-12 18:56:08,967 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:08] "POST /socket.io/?EIO=4&transport=polling&t=PV_MTs4&sid=lFbcaVWkuGMlqUDoAADw HTTP/1.1" 200 -
+2025-07-12 18:56:08,968 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:08] "GET /socket.io/?EIO=4&transport=polling&t=PV_MTs4.0&sid=lFbcaVWkuGMlqUDoAADw HTTP/1.1" 200 -
+2025-07-12 18:56:09,186 - INFO - Client bağlantısı koptu - Client: y8y7VSfWKiR2xDkEAADx
+2025-07-12 18:56:09,186 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:09] "POST /socket.io/?EIO=4&transport=polling&t=PV_MTvW&sid=lFbcaVWkuGMlqUDoAADw HTTP/1.1" 200 -
+2025-07-12 18:56:09,188 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:09] "POST /socket.io/?EIO=4&transport=polling&t=PV_MTvX&sid=lFbcaVWkuGMlqUDoAADw HTTP/1.1" 200 -
+2025-07-12 18:56:09,189 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:09] "GET /socket.io/?EIO=4&transport=polling&t=PV_MTs9&sid=lFbcaVWkuGMlqUDoAADw HTTP/1.1" 200 -
+2025-07-12 18:56:09,279 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:09] "GET /socket.io/?EIO=4&transport=polling&t=PV_MTwz HTTP/1.1" 200 -
+2025-07-12 18:56:09,284 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:09] "POST /socket.io/?EIO=4&transport=polling&t=PV_MTx2&sid=17np-XmTf6SRxFJWAADy HTTP/1.1" 200 -
+2025-07-12 18:56:09,284 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:09] "GET /socket.io/?EIO=4&transport=polling&t=PV_MTx2.0&sid=17np-XmTf6SRxFJWAADy HTTP/1.1" 200 -
+2025-07-12 18:56:09,367 - INFO - Client bağlantısı koptu - Client: dYLNJ0-QSUiYtqIFAADz
+2025-07-12 18:56:09,367 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:09] "POST /socket.io/?EIO=4&transport=polling&t=PV_MTyK&sid=17np-XmTf6SRxFJWAADy HTTP/1.1" 200 -
+2025-07-12 18:56:09,368 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:09] "POST /socket.io/?EIO=4&transport=polling&t=PV_MTyK.0&sid=17np-XmTf6SRxFJWAADy HTTP/1.1" 200 -
+2025-07-12 18:56:09,369 - INFO - 127.0.0.1 - - [12/Jul/2025 18:56:09] "GET /socket.io/?EIO=4&transport=polling&t=PV_MTx5&sid=17np-XmTf6SRxFJWAADy HTTP/1.1" 200 -

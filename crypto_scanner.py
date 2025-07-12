@@ -76,17 +76,11 @@ class CryptoScanner:
             if not klines:
                 return None
                 
-            # Kapanış fiyatlarını al
-            df = pd.DataFrame(klines, columns=['timestamp', 'open', 'high', 'low', 'close', 'volume', 'close_time', 
-                                             'quote_asset_volume', 'number_of_trades', 'taker_buy_base_asset_volume', 
-                                             'taker_buy_quote_asset_volume', 'ignore'])
-            
-            # Kapanış fiyatlarını float'a çevir
-            df['close'] = df['close'].astype(float)
-            df['volume'] = df['volume'].astype(float)
+            # Kapanış fiyatlarını al ve DataFrame oluştur
+            close_prices = pd.Series([float(k[4]) for k in klines])
             
             # RSI hesapla
-            rsi = RSIIndicator(close=df['close'], window=length)
+            rsi = RSIIndicator(close=close_prices, window=length)
             return rsi.rsi().iloc[-1]  # Son RSI değerini döndür
             
         except Exception as e:
@@ -99,19 +93,14 @@ class CryptoScanner:
             if not klines or len(klines) < lookback:
                 return None
                 
-            # Veriyi DataFrame'e çevir
-            df = pd.DataFrame(klines, columns=['timestamp', 'open', 'high', 'low', 'close', 'volume', 'close_time', 
-                                             'quote_asset_volume', 'number_of_trades', 'taker_buy_base_asset_volume', 
-                                             'taker_buy_quote_asset_volume', 'ignore'])
-            
-            # Hacimleri float'a çevir
-            df['volume'] = df['volume'].astype(float)
+            # Hacimleri al
+            volumes = pd.Series([float(k[5]) for k in klines])
             
             # Son hacim
-            current_volume = df['volume'].iloc[-1]
+            current_volume = volumes.iloc[-1]
             
             # Son 20 mumun ortalama hacmi
-            avg_volume = df['volume'].iloc[-lookback:-1].mean()
+            avg_volume = volumes.iloc[-lookback:-1].mean()
             
             # Göreceli hacim (son hacim / ortalama hacim)
             relative_volume = current_volume / avg_volume if avg_volume > 0 else 0
@@ -155,13 +144,16 @@ class CryptoScanner:
                 return []
             
             # DataFrame'e çevir
-            df = pd.DataFrame(klines_1m, columns=['timestamp', 'open', 'high', 'low', 'close', 'volume', 'close_time', 
-                                                'quote_asset_volume', 'number_of_trades', 'taker_buy_base_asset_volume', 
-                                                'taker_buy_quote_asset_volume', 'ignore'])
+            df = pd.DataFrame(klines_1m)
+            
+            # Sütun isimlerini ayarla
+            df.columns = ['timestamp', 'open', 'high', 'low', 'close', 'volume', 'close_time', 
+                         'quote_asset_volume', 'number_of_trades', 'taker_buy_base_asset_volume', 
+                         'taker_buy_quote_asset_volume', 'ignore']
             
             # Veri tiplerini düzelt
             for col in ['open', 'high', 'low', 'close', 'volume']:
-                df[col] = df[col].astype(float)
+                df[col] = pd.to_numeric(df[col], errors='coerce')
             
             # 10'ar dakikalık gruplar oluştur
             df['group'] = df.index // 10
@@ -213,135 +205,168 @@ class CryptoScanner:
                     }).json()
                 
                 if len(klines) >= rsi_length * 3:
-                    rsi = self.calculate_rsi(klines, rsi_length)
-                    relative_volume = self.calculate_relative_volume(klines)
-                    percentage_change = self.calculate_percentage_change(klines)
-                    
-                    # Son mumun hacmini USDT'ye çevir
-                    last_volume = float(klines[-1][5])  # Coin hacmi
-                    last_price = float(klines[-1][4])   # Kapanış fiyatı
-                    volume_in_usdt = last_volume * last_price  # USDT cinsinden hacim
-                    
-                    # Koşulları kontrol et
+                    # Sadece gerekli hesaplamaları yap
+                    result = {'symbol': symbol}
                     condition_met = True
-                    # RSI sadece aktifse kontrol edilecek
+                    
+                    # RSI kontrolü
                     if rsi_value is not None:
+                        rsi = self.calculate_rsi(klines, rsi_length)
                         if rsi is None:
                             condition_met = False
                         elif comparison == '≥':
                             condition_met = condition_met and (rsi >= float(rsi_value))
                         elif comparison == '≤':
                             condition_met = condition_met and (rsi <= float(rsi_value))
-                    # Diğer filtreler de sadece aktifse kontrol edilecek
-                    if min_relative_volume is not None:
+                        if condition_met and rsi is not None:
+                            result['rsi'] = float(rsi)
+                    
+                    # Göreceli hacim kontrolü
+                    if condition_met and min_relative_volume is not None and min_relative_volume > 0:
+                        relative_volume = self.calculate_relative_volume(klines)
                         if relative_volume is None or relative_volume < min_relative_volume:
                             condition_met = False
-                    if min_volume is not None:
+                        elif relative_volume is not None:
+                            result['relative_volume'] = float(relative_volume)
+                    
+                    # Hacim kontrolü
+                    if condition_met and min_volume is not None and min_volume > 0:
+                        last_volume = float(klines[-1][5])  # Coin hacmi
+                        last_price = float(klines[-1][4])   # Kapanış fiyatı
+                        volume_in_usdt = last_volume * last_price  # USDT cinsinden hacim
                         if volume_in_usdt < min_volume:
                             condition_met = False
-                    if min_percentage_change is not None:
+                        else:
+                            result['volume'] = float(volume_in_usdt)
+                    
+                    # Yüzde değişim kontrolü
+                    if condition_met and min_percentage_change is not None and min_percentage_change > 0:
+                        percentage_change = self.calculate_percentage_change(klines)
                         if percentage_change is None or percentage_change < min_percentage_change:
                             condition_met = False
+                        elif percentage_change is not None:
+                            result['percentage_change'] = float(percentage_change)
                     
                     if condition_met:
-                        result = {
-                            'symbol': symbol,
-                            'volume': round(volume_in_usdt, 2)
-                        }
-                        if rsi_value is not None and rsi is not None:
-                            result['rsi'] = round(rsi, 2)
-                        if min_relative_volume is not None and relative_volume is not None:
-                            result['relative_volume'] = round(relative_volume, 2)
-                        if min_percentage_change is not None and percentage_change is not None:
-                            result['percentage_change'] = round(percentage_change, 2)
                         results.append(result)
-                        # Eşleşen coini ilgili zaman aralığına özel event ile gönder
-                        if self.socketio:
-                            self.socketio.emit(f'match_found_{timeframe}', result)
-                        print(f"\nEşleşme Bulundu! {symbol} -> " + \
-                              (f"RSI: {round(rsi, 2)}, " if rsi_value is not None and rsi is not None else "") + \
-                              (f"Göreceli Hacim: {round(relative_volume, 2)}, " if min_relative_volume is not None and relative_volume is not None else "") + \
-                              f"Hacim: {round(volume_in_usdt, 2)} USDT, " + \
-                              (f"Değişim: %{round(percentage_change, 2)}" if min_percentage_change is not None and percentage_change is not None else ""))
-                
-                time.sleep(0.01)  # Daha kısa bekleme süresi (0.02'den 0.01'e düşürüldü)
-                
+            
             except Exception as e:
-                print(f"\nHata: {symbol} taranırken hata oluştu - {e}")
+                print(f"\nHata ({symbol}): {str(e)}")
                 continue
-                
+        
         return results
 
-    def scan_market(self, timeframe, rsi_length, rsi_value, comparison, min_relative_volume=0, min_volume=0, min_percentage_change=0, closing_scan=False, coin_list=None):
-        """Piyasayı paralel olarak tara ve RSI koşulunu sağlayan çiftleri bul"""
-        symbols = self.get_all_usdt_pairs(coin_list)
-        total_symbols = len(symbols)
-        if not symbols:
-            return []
-        print(f"\nToplam {total_symbols} coin taranacak")
-        print("Tarama Ayarları:")
-        print(f"- Zaman Aralığı: {timeframe} dakika")
-        print(f"- RSI Periyodu: {rsi_length}")
-        print(f"- RSI Değeri: {rsi_value}")
-        print(f"- Karşılaştırma: {comparison}")
-        print(f"- Minimum Göreceli Hacim: {min_relative_volume}")
-        print(f"- Minimum Hacim: {min_volume} USDT")
-        print(f"- Minimum Yüzde Değişim: %{min_percentage_change}")
-        if coin_list:
-            print(f"- Özel Coin Listesi: {len(coin_list)} coin")
-        print("\nTarama başlıyor...\n")
-        
-        # Batch size'ı optimize et - daha az batch, daha hızlı işlem
-        batch_size = max(math.ceil(total_symbols / (self.max_workers * 2)), 10)  # Minimum 10 sembol per batch
-        symbol_batches = [symbols[i:i + batch_size] for i in range(0, len(symbols), batch_size)]
-        
-        all_results = []
-        processed_count = 0
-        last_progress_update = 0
-        with ThreadPoolExecutor(max_workers=self.max_workers) as executor:
-            future_to_batch = {
-                executor.submit(
-                    self.process_symbol_batch, 
-                    batch, 
-                    timeframe, 
-                    rsi_length, 
-                    rsi_value, 
-                    comparison,
-                    min_relative_volume,
-                    min_volume,
-                    min_percentage_change
-                ): batch for batch in symbol_batches
-            }
-            for future in as_completed(future_to_batch):
-                batch = future_to_batch[future]
-                processed_count += len(batch)
-                try:
+    def scan_market(self, timeframe, rsi_length, rsi_value, comparison, min_relative_volume=None, min_volume=None, min_percentage_change=None, closing_scan=False, coin_list=None):
+        """Tüm piyasayı tara ve kriterlere uyan coinleri bul"""
+        try:
+            # Taranacak sembolleri al
+            symbols = self.get_all_usdt_pairs(coin_list)
+            total_symbols = len(symbols)
+            
+            print(f"\n{'='*80}")
+            print(f"Tarama Başlatıldı - {time.strftime('%H:%M:%S')}")
+            print(f"{'='*80}")
+            print(f"Toplam {total_symbols} coin taranacak")
+            print("\nTarama Ayarları:")
+            print(f"- Zaman Aralığı: {timeframe} dakika")
+            
+            # Aktif filtreleri belirle
+            active_filters = []
+            header_columns = ['Sembol']
+            if rsi_value is not None:
+                active_filters.append(('RSI', f"RSI Periyodu: {rsi_length}\nRSI Değeri: {rsi_value}\nKarşılaştırma: {comparison}"))
+                header_columns.append('RSI')
+            if min_relative_volume is not None:
+                active_filters.append(('Göreceli Hacim', f"Minimum Göreceli Hacim: {min_relative_volume}"))
+                header_columns.append('Göreceli Hacim')
+            if min_volume is not None:
+                active_filters.append(('Hacim', f"Minimum Hacim: {min_volume} USDT"))
+                header_columns.append('Hacim (USDT)')
+            if min_percentage_change is not None:
+                active_filters.append(('Değişim', f"Minimum Yüzde Değişim: %{min_percentage_change}"))
+                header_columns.append('Değişim (%)')
+            
+            # Aktif filtreleri yazdır
+            for _, filter_info in active_filters:
+                print(f"- {filter_info}")
+            
+            header_columns.append('Saat')
+            print(f"\n{'='*80}")
+            
+            # Sonuçları sakla
+            all_results = []
+            
+            # Sembolleri gruplara böl
+            batch_size = 20
+            symbol_batches = [symbols[i:i + batch_size] for i in range(0, len(symbols), batch_size)]
+            
+            with ThreadPoolExecutor(max_workers=self.max_workers) as executor:
+                future_to_batch = {
+                    executor.submit(
+                        self.process_symbol_batch, 
+                        batch, timeframe, rsi_length, rsi_value, comparison,
+                        min_relative_volume, min_volume, min_percentage_change
+                    ): batch for batch in symbol_batches
+                }
+                
+                completed = 0
+                for future in as_completed(future_to_batch):
                     batch_results = future.result()
                     all_results.extend(batch_results)
-                    current_progress = round(processed_count/total_symbols*100, 1)
-                    if current_progress - last_progress_update >= 1:
-                        progress = {
-                            'current': processed_count,
-                            'total': total_symbols,
-                            'percentage': current_progress
-                        }
-                        if self.socketio:
-                            self.socketio.emit(f'scan_progress_{timeframe}', progress)
-                            last_progress_update = current_progress
-                    print(f"\rİlerleme: {processed_count}/{total_symbols} "
-                          f"({round(processed_count/total_symbols*100, 1)}%)", end="")
-                except Exception as e:
-                    print(f"\nHata: Batch işlenirken hata oluştu - {e}")
-        if self.socketio:
-            self.socketio.emit(f'scan_progress_{timeframe}', {
-                'current': total_symbols,
-                'total': total_symbols,
-                'percentage': 100
-            })
-        print(f"\n\nTarama tamamlandı! {len(all_results)} coin bulundu.")
-        if self.socketio:
-            self.socketio.emit(f'scan_completed_{timeframe}', {
-                'total_matches': len(all_results),
-                'timeframe': timeframe
-            })
-        return all_results 
+                    completed += len(future_to_batch[future])
+                    
+                    # İlerleme durumunu göster
+                    progress = (completed / total_symbols) * 100
+                    print(f"\rİlerleme: {completed}/{total_symbols} ({progress:.1f}%)", end="", flush=True)
+            
+            print("\n")  # İlerleme çubuğundan sonra yeni satır
+            
+            if all_results:
+                # Tablo başlığını yazdır
+                print(f"{'='*100}")
+                header_format = ""
+                for col in header_columns[:-1]:  # Son sütun (Saat) hariç
+                    if col == 'Sembol':
+                        header_format += f"{col:<12} "
+                    elif col == 'RSI':
+                        header_format += f"{col:>7} "
+                    else:
+                        header_format += f"{col:>14} "
+                header_format += f"{'Saat':>8}"
+                print(header_format)
+                print(f"{'-'*100}")
+                
+                # Her sonucu tablo formatında yazdır
+                for result in all_results:
+                    values = [result['symbol']]
+                    format_str = "{:<12} "
+                    
+                    if 'RSI' in header_columns:
+                        values.append(f"{result.get('rsi', 0):>7.2f}")
+                        format_str += "{} "
+                    if 'Hacim (USDT)' in header_columns:
+                        values.append(f"{result.get('volume', 0):>14,.2f}")
+                        format_str += "{} "
+                    if 'Göreceli Hacim' in header_columns:
+                        values.append(f"{result.get('relative_volume', 0):>14.2f}")
+                        format_str += "{} "
+                    if 'Değişim (%)' in header_columns:
+                        values.append(f"{result.get('percentage_change', 0):>11.2f}%")
+                        format_str += "{:>3} "
+                    
+                    values.append(time.strftime('%H:%M:%S'))
+                    format_str += "{:>8}"
+                    
+                    print(format_str.format(*values))
+                
+                print(f"{'='*100}")
+                print(f"\nTarama tamamlandı! {len(all_results)} coin bulundu. - {time.strftime('%H:%M:%S')}")
+                print(f"{'='*100}\n")
+            else:
+                print("\nKriterlere uygun coin bulunamadı.")
+            
+            return all_results
+            
+        except Exception as e:
+            print(f"Tarama hatası: {e}")
+            return [] 
