@@ -10,6 +10,30 @@ import threading
 import time
 from datetime import datetime
 from werkzeug.middleware.proxy_fix import ProxyFix
+import requests  # Telegram API için requests kütüphanesi
+
+# Telegram Bot Konfigürasyonu
+TELEGRAM_BOT_TOKEN = "8136016388:AAEfuAAaFPTBIGWReXzsta3C1VrA7lgkM80"
+TELEGRAM_CHANNEL_ID = "@kriptotaramaoto"  # Telegram kanal ID'si
+
+def send_telegram_message(message):
+    """Telegram kanalına mesaj gönderen yardımcı fonksiyon"""
+    if not TELEGRAM_CHANNEL_ID:
+        logging.warning("Telegram kanal ID'si ayarlanmamış!")
+        return
+        
+    try:
+        url = f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/sendMessage"
+        data = {
+            "chat_id": TELEGRAM_CHANNEL_ID,
+            "text": message,
+            "parse_mode": "HTML"  # HTML formatında mesaj gönderimi
+        }
+        response = requests.post(url, json=data)
+        response.raise_for_status()  # HTTP hatalarını kontrol et
+        logging.info(f"Telegram mesajı başarıyla gönderildi: {message[:50]}...")
+    except Exception as e:
+        logging.error(f"Telegram mesajı gönderilemedi: {str(e)}")
 
 # Loglama ayarları
 logging.basicConfig(
@@ -165,6 +189,10 @@ def auto_scan_worker(timeframes, scan_params, client_id):
                         message = f"\n{timeframe} dakikalık tarama sonuçları ({now.strftime('%H:%M:%S')}):\n"
                         message += "-" * 50 + "\n"
                         
+                        # Telegram için özel mesaj formatı
+                        telegram_message = f"🔍 <b>{timeframe} Dakikalık Tarama Sonuçları</b>\n"
+                        telegram_message += f"⏰ <i>{now.strftime('%H:%M:%S')}</i>\n\n"
+                        
                         if results:
                             # Aktif filtreleri belirle
                             active_filters = {
@@ -174,30 +202,56 @@ def auto_scan_worker(timeframes, scan_params, client_id):
                                 'percentage_change': fast_scan_params['min_percentage_change'] is not None
                             }
                             
+                            # Filtre bilgilerini Telegram mesajına ekle
+                            telegram_message += "<b>🎯 Aktif Filtreler:</b>\n"
+                            if active_filters['rsi']:
+                                telegram_message += f"• RSI {fast_scan_params['comparison']} {fast_scan_params['rsi_value']}\n"
+                            if active_filters['relative_volume']:
+                                telegram_message += f"• Göreceli Hacim > {fast_scan_params['min_relative_volume']}\n"
+                            if active_filters['volume']:
+                                telegram_message += f"• Hacim > {fast_scan_params['min_volume']}\n"
+                            if active_filters['percentage_change']:
+                                telegram_message += f"• Değişim > %{fast_scan_params['min_percentage_change']}\n"
+                            telegram_message += "\n<b>📊 Sonuçlar:</b>\n"
+                            
                             for result in results:
                                 coin_info = [f"Sembol: {result['symbol']}"]
+                                telegram_coin_info = [f"💰 <b>{result['symbol']}</b>"]
                                 
                                 if active_filters['rsi'] and 'rsi' in result:
                                     coin_info.append(f"RSI: {result['rsi']:.2f}")
+                                    telegram_coin_info.append(f"RSI: {result['rsi']:.2f}")
                                 
                                 if active_filters['relative_volume'] and 'relative_volume' in result:
                                     coin_info.append(f"Göreceli Hacim: {result['relative_volume']:.2f}")
+                                    telegram_coin_info.append(f"Göreceli Hacim: {result['relative_volume']:.2f}x")
                                 
                                 if active_filters['volume'] and 'volume' in result:
                                     coin_info.append(f"Hacim: {result['volume']:.2f}")
+                                    telegram_coin_info.append(f"Hacim: {result['volume']:.2f}")
                                 
                                 if active_filters['percentage_change'] and 'percentage_change' in result:
                                     coin_info.append(f"Değişim: %{result['percentage_change']:.2f}")
+                                    telegram_coin_info.append(f"Değişim: %{result['percentage_change']:.2f}")
                                 
                                 message += ", ".join(coin_info) + "\n"
+                                telegram_message += " | ".join(telegram_coin_info) + "\n"
                             
                             message += "-" * 50 + "\n"
+                            telegram_message += f"\n🎯 Toplam {len(results)} coin bulundu."
                             logging.info(f"TARAMA TAMAMLANDI - {timeframe} dakika, {len(results)} sonuç, Client: {client_id}")
+                            
+                            # Telegram'a gönder
+                            send_telegram_message(telegram_message)
                         else:
                             # Sonuç bulunamadığında
                             message += "Filtre kriterlerine uygun coin bulunamadı.\n"
                             message += "-" * 50 + "\n"
+                            telegram_message += "❌ Filtre kriterlerine uygun coin bulunamadı."
                             logging.info(f"TARAMA TAMAMLANDI - {timeframe} dakika, sonuç yok, Client: {client_id}")
+                            
+                            # Telegram'a gönder
+                            send_telegram_message(telegram_message)
                         
                         # Sonucu gönder (emit hatalarından etkilenmesin)
                         try:
