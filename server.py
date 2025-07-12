@@ -354,42 +354,67 @@ def handle_stop_auto_scan():
     client_id = request.sid
     logging.info(f"Auto-scan durdurma isteği - Client: {client_id}")
     
-    if client_id in auto_scan_threads:
+    try:
+        # Önce stop sinyali gönder
         stop_auto_scan[client_id] = True
-        # Thread'in durmasını bekle
-        if auto_scan_threads[client_id].is_alive():
-            auto_scan_threads[client_id].join(timeout=10)
-            if auto_scan_threads[client_id].is_alive():
-                logging.warning(f"Auto-scan thread hala aktif - Client: {client_id}")
-            else:
-                logging.info(f"Auto-scan thread başarıyla durdu - Client: {client_id}")
         
-        # Thread referansını temizle
-        del auto_scan_threads[client_id]
-        del stop_auto_scan[client_id]
+        # Thread varsa ve çalışıyorsa dur
+        if client_id in auto_scan_threads:
+            thread = auto_scan_threads[client_id]
+            if thread and thread.is_alive():
+                thread.join(timeout=5)  # 5 saniye bekle
+                if thread.is_alive():
+                    logging.warning(f"Thread durdurulamadı - Client: {client_id}")
+            
+            # Thread referansını temizle
+            del auto_scan_threads[client_id]
         
-    socketio.emit('auto_scan_stopped', {'message': 'Otomatik tarama durduruldu'}, room=client_id)
+        # Stop sinyalini temizle
+        if client_id in stop_auto_scan:
+            del stop_auto_scan[client_id]
+            
+        # Client'a bildir
+        socketio.emit('auto_scan_stopped', {'message': 'Otomatik tarama durduruldu'}, room=client_id)
+        logging.info(f"Auto-scan başarıyla durduruldu - Client: {client_id}")
+        
+    except Exception as e:
+        logging.error(f"Auto-scan durdurma hatası - Client: {client_id}, Hata: {str(e)}")
+        # Hata olsa bile temizlik yap
+        if client_id in auto_scan_threads:
+            del auto_scan_threads[client_id]
+        if client_id in stop_auto_scan:
+            del stop_auto_scan[client_id]
+        # Hatayı client'a bildir
+        socketio.emit('auto_scan_error', {'error': 'Tarama durdurulurken hata oluştu'}, room=client_id)
 
 @socketio.on('disconnect')
 def handle_disconnect():
-    """Client bağlantısı koptuğunda - auto-scan devam etsin, sadece loglama yap"""
+    """Client bağlantısı koptuğunda çalışır"""
     client_id = request.sid
     logging.info(f"Client bağlantısı koptu - Client: {client_id}")
     
-    # AUTO-SCAN WORKER'I DURDURMUYORUZ!
-    # Bağlantı kopsa da worker devam etsin, bağlantı geri geldiğinde çalışmaya devam etsin
-    if client_id in auto_scan_threads:
-        logging.info(f"Auto-scan çalışmaya devam ediyor (bağlantı kopması worker'ı durdurmaz) - Client: {client_id}")
-        # stop_auto_scan[client_id] = True  # BU SATIRI KALDIRDIK!
-        
-        # Worker thread'ini durdurmuyoruz, sadece logluyoruz
-        if auto_scan_threads[client_id].is_alive():
-            logging.info(f"Auto-scan worker aktif durumda - Client: {client_id}")
-    else:
-        logging.info(f"Bu client için aktif auto-scan bulunamadı - Client: {client_id}")
-    
-    # Temizlik yapmıyoruz, reconnection durumunda çalışmaya devam etsin
-    # Thread temizleme işlemini worker'ın kendisi yapacak
+    try:
+        # Aktif tarama varsa durdur
+        if client_id in auto_scan_threads:
+            stop_auto_scan[client_id] = True
+            thread = auto_scan_threads[client_id]
+            if thread and thread.is_alive():
+                thread.join(timeout=3)  # 3 saniye bekle
+            
+            # Thread referansını temizle
+            del auto_scan_threads[client_id]
+            
+        # Stop sinyalini temizle
+        if client_id in stop_auto_scan:
+            del stop_auto_scan[client_id]
+            
+    except Exception as e:
+        logging.error(f"Disconnect cleanup hatası - Client: {client_id}, Hata: {str(e)}")
+        # Hata olsa bile temizlik yapmaya çalış
+        if client_id in auto_scan_threads:
+            del auto_scan_threads[client_id]
+        if client_id in stop_auto_scan:
+            del stop_auto_scan[client_id]
 
 @app.route('/')
 def root():
