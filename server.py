@@ -88,6 +88,7 @@ last_scan_results = []
 # Otomatik tarama için global değişkenler
 auto_scan_threads = {}
 stop_auto_scan = {}
+active_scan_params = {}  # Her client için aktif tarama parametrelerini sakla
 
 def auto_scan_worker(timeframes, scan_params, client_id):
     """Otomatik tarama işlemini gerçekleştiren worker fonksiyonu"""
@@ -299,13 +300,20 @@ def handle_auto_scan(data):
         logging.info(f"Gelen veri: {data}")
         logging.info(f"Client bağlantı ID'si: {client_id}")
         
-        # Eğer bu client için zaten çalışan bir tarama varsa, onu durdur
-        if client_id in auto_scan_threads and auto_scan_threads[client_id].is_alive():
-            logging.info(f"Mevcut auto-scan thread durduruluyor - Client: {client_id}")
+        # Önce mevcut taramayı tamamen durdur ve temizle
+        if client_id in auto_scan_threads:
+            logging.info(f"Mevcut tarama durduruluyor - Client: {client_id}")
             stop_auto_scan[client_id] = True
-            auto_scan_threads[client_id].join(timeout=5)
-            if auto_scan_threads[client_id].is_alive():
-                logging.warning(f"Thread zorla sonlandırıldı - Client: {client_id}")
+            thread = auto_scan_threads[client_id]
+            if thread and thread.is_alive():
+                thread.join(timeout=5)
+            
+            # Thread referanslarını temizle
+            del auto_scan_threads[client_id]
+            if client_id in stop_auto_scan:
+                del stop_auto_scan[client_id]
+            
+            logging.info(f"Eski tarama durduruldu - Client: {client_id}")
         
         # RSI değerini belirle (RSI1 veya RSI2'den hangisi aktifse)
         rsi_value = None
@@ -326,8 +334,21 @@ def handle_auto_scan(data):
             'coin_list': data.get('coinList')
         }
         
+        # Yeni parametreleri sakla (eski parametreleri üzerine yaz)
+        active_scan_params[client_id] = {
+            'times': timeframes,
+            'filterStates': filter_states,
+            'rsi1': data.get('rsi1'),
+            'rsi2': data.get('rsi2'),
+            'comparison': data.get('comparison', '≥'),
+            'hacim': data.get('hacim'),
+            'volume': data.get('volume'),
+            'artis': data.get('artis'),
+            'coinList': data.get('coinList')
+        }
+        
         # Log parametreleri
-        logging.info(f"Hazırlanan tarama parametreleri: {scan_params}")
+        logging.info(f"Hazırlanan yeni tarama parametreleri: {scan_params}")
         
         # Aktif filtreleri belirle
         active_filters = []
@@ -349,7 +370,7 @@ def handle_auto_scan(data):
         auto_scan_threads[client_id].daemon = True
         auto_scan_threads[client_id].start()
         
-        logging.info(f"Yeni auto-scan thread başlatıldı - Client: {client_id}, Thread ID: {auto_scan_threads[client_id].ident}")
+        logging.info(f"Yeni tarama başlatıldı - Client: {client_id}, Thread ID: {auto_scan_threads[client_id].ident}")
         
         # Başlangıç mesajı
         start_message = f'Otomatik tarama başlatıldı.\n'
@@ -396,7 +417,11 @@ def handle_auto_scan(data):
         else:
             start_message += 'Hiçbir filtre seçilmedi'
             
-        socketio.emit('auto_scan_started', {'message': start_message}, room=client_id)
+        socketio.emit('auto_scan_started', {
+            'message': start_message,
+            'is_running': True,
+            'params': active_scan_params[client_id]  # Yeni parametreleri gönder
+        }, room=client_id)
         
     except Exception as e:
         logging.error(f"Otomatik tarama başlatma hatası: {str(e)}")
@@ -422,6 +447,10 @@ def handle_stop_auto_scan():
             
             # Thread referansını temizle
             del auto_scan_threads[client_id]
+            
+            # Parametreleri temizle
+            if client_id in active_scan_params:
+                del active_scan_params[client_id]
         
         # Stop sinyalini temizle
         if client_id in stop_auto_scan:
@@ -447,28 +476,9 @@ def handle_disconnect():
     client_id = request.sid
     logging.info(f"Client bağlantısı koptu - Client: {client_id}")
     
-    try:
-        # Aktif tarama varsa durdur
-        if client_id in auto_scan_threads:
-            stop_auto_scan[client_id] = True
-            thread = auto_scan_threads[client_id]
-            if thread and thread.is_alive():
-                thread.join(timeout=3)  # 3 saniye bekle
-            
-            # Thread referansını temizle
-            del auto_scan_threads[client_id]
-            
-        # Stop sinyalini temizle
-        if client_id in stop_auto_scan:
-            del stop_auto_scan[client_id]
-            
-    except Exception as e:
-        logging.error(f"Disconnect cleanup hatası - Client: {client_id}, Hata: {str(e)}")
-        # Hata olsa bile temizlik yapmaya çalış
-        if client_id in auto_scan_threads:
-            del auto_scan_threads[client_id]
-        if client_id in stop_auto_scan:
-            del stop_auto_scan[client_id]
+    # Artık client disconnect olduğunda taramayı durdurmuyoruz
+    # Sadece log tutuyoruz
+    logging.info(f"Client {client_id} bağlantısı koptu ama tarama devam ediyor")
 
 @app.route('/')
 def root():
@@ -546,10 +556,21 @@ def last_results():
 
 @socketio.on('connect')
 def handle_connect():
-    """Client bağlandığında son sonuçları gönder"""
-    if last_scan_results:
-        for result in last_scan_results:
-            socketio.emit('match_found', result, room=request.sid)
+    """Client bağlandığında son durumu senkronize et"""
+    client_id = request.sid
+    logging.info(f"Yeni client bağlandı - Client: {client_id}")
+    
+    # Eğer bu client için aktif bir tarama varsa, durumu bildir
+    if client_id in auto_scan_threads and auto_scan_threads[client_id].is_alive():
+        # Son parametreleri al
+        params = active_scan_params.get(client_id, {})
+        
+        socketio.emit('auto_scan_started', {
+            'message': 'Mevcut otomatik tarama devam ediyor',
+            'is_running': True,
+            'params': params  # Son parametreleri gönder
+        }, room=client_id)
+        logging.info(f"Client {client_id} yeniden bağlandı, mevcut tarama durumu ve parametreler gönderildi")
 
 def main():
     try:

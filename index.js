@@ -154,6 +154,70 @@ function initializeSocket() {
     socket.on('auto_scan_started', (data) => {
         console.log('Auto scan started:', data);
         isAutoScanActive = true;
+        
+        // Eğer mevcut tarama devam ediyorsa buton durumunu güncelle
+        if (data.is_running) {
+            const autoScanButton = document.querySelector('.auto-scan-btn');
+            if (autoScanButton) {
+                autoScanButton.textContent = 'TARAMAYI DURDUR';
+                autoScanButton.style.backgroundColor = '#ff4d4d';
+            }
+            
+            // Eğer önceki parametreler varsa, UI'ı güncelle
+            if (data.params) {
+                const params = data.params;
+                
+                // Zaman aralıklarını seç
+                selectedTimes = [...params.times];
+                const timeButtons = document.querySelectorAll('.time-btn');
+                timeButtons.forEach(button => {
+                    const time = button.getAttribute('data-time');
+                    button.classList.toggle('active', selectedTimes.includes(time));
+                });
+                
+                // Filtre durumlarını güncelle
+                Object.keys(params.filterStates).forEach(id => {
+                    filterStates[id] = params.filterStates[id];
+                    const button = document.querySelector(`button[onclick="toggleFilter('${id}')"]`);
+                    if (button) {
+                        button.textContent = filterStates[id] ? 'Aktif' : 'Pasif';
+                        button.classList.toggle('active', filterStates[id]);
+                        const row = button.closest('.filter-row');
+                        if (row) row.classList.toggle('active', filterStates[id]);
+                        
+                        // Değer butonlarını aktif/pasif yap
+                        const valueButtons = document.querySelectorAll(`button[onclick^="updateValue('${id}'"]`);
+                        valueButtons.forEach(btn => {
+                            btn.disabled = !filterStates[id];
+                        });
+                    }
+                });
+                
+                // Değerleri güncelle
+                if (params.rsi1) document.getElementById('rsi1-value').textContent = params.rsi1;
+                if (params.rsi2) document.getElementById('rsi2-value').textContent = params.rsi2;
+                if (params.hacim) document.getElementById('hacim-value').textContent = params.hacim;
+                if (params.volume) document.getElementById('volume-value').textContent = params.volume;
+                if (params.artis) document.getElementById('artis-value').textContent = params.artis;
+                
+                // Karşılaştırma operatörünü güncelle
+                if (params.comparison) {
+                    selectedComparison = params.comparison;
+                    const comparisonButtons = document.querySelectorAll('.comparison-btn');
+                    comparisonButtons.forEach(button => {
+                        button.classList.toggle('active', button.textContent === selectedComparison);
+                    });
+                }
+                
+                // Coin listesini güncelle
+                if (params.coinList) {
+                    coinList = params.coinList;
+                    document.getElementById('coinCount').textContent = `${coinList.length} coin yüklendi`;
+                }
+            }
+            
+            showMessage('info', 'Mevcut otomatik tarama devam ediyor');
+        }
     });
 
     socket.on('auto_scan_stopped', (data) => {
@@ -962,6 +1026,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 console.log('=== STARTING AUTO-SCAN ===');
                 console.log('Starting auto-scan with times:', selectedTimes);
 
+                // Yeni parametreleri hazırla
                 const filterData = {
                     rsi1: filterStates.rsi1 ? document.getElementById('rsi1-value').textContent : null,
                     rsi2: filterStates.rsi2 ? document.getElementById('rsi2-value').textContent : null,
@@ -974,17 +1039,20 @@ document.addEventListener('DOMContentLoaded', () => {
                     filterStates: {...filterStates}
                 };
 
-                console.log('Filter data being sent:', filterData);
+                console.log('Starting new scan with parameters:', filterData);
 
                 try {
-                    socket.emit('start_auto_scan', filterData);
+                    // Önce buton durumunu güncelle (hemen geri bildirim)
                     autoScanButton.textContent = 'TARAMAYI DURDUR';
                     autoScanButton.style.backgroundColor = '#ff4d4d';
                     isAutoScanActive = true;
-                    showMessage('success', 'Otomatik tarama başlatıldı');
+                    
+                    // Yeni taramayı başlat (eski tarama otomatik olarak durdurulacak)
+                    socket.emit('start_auto_scan', filterData);
+                    showMessage('success', 'Yeni parametrelerle tarama başlatıldı');
                 } catch (error) {
-                    console.error('Error emitting start_auto_scan:', error);
-                    showMessage('error', 'Otomatik tarama başlatılamadı');
+                    console.error('Error starting new scan:', error);
+                    showMessage('error', 'Yeni tarama başlatılamadı');
                     autoScanButton.textContent = 'OTOMATİK TARAMA';
                     autoScanButton.style.backgroundColor = '#4CAF50';
                     isAutoScanActive = false;
