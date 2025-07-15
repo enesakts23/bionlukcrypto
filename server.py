@@ -41,54 +41,28 @@ def send_telegram_message(message):
         
     try:
         # Mesajı parçalara böl (maksimum 30 coin her mesajda)
-        if message.startswith("🔍"):  # Tarama sonuçları mesajı
-            # Header kısmını ayır (ilk 3 satır)
-            lines = message.split("\n")
-            header = "\n".join(lines[:3])
-            filters = ""
-            results = []
-            
-            # Filtreler ve sonuçları ayır
-            for line in lines[3:]:
-                if line.startswith("🎯 Aktif Filtreler:"):
-                    filters = line
-                elif line.startswith("📊 Sonuçlar:"):
-                    continue
-                elif line.startswith("💰"):  # Coin sonucu
-                    results.append(line)
-                elif line.startswith("🎯 Toplam"):  # Son satır
-                    continue
-            
-            # Sonuçları 30'ar coinlik gruplara böl
-            chunk_size = 30
-            result_chunks = [results[i:i + chunk_size] for i in range(0, len(results), chunk_size)]
-            
-            # Her chunk için mesaj oluştur ve gönder
-            for i, chunk in enumerate(result_chunks, 1):
-                chunk_message = f"{header}\n\n"
-                if i == 1:  # İlk mesajda filtreleri göster
-                    chunk_message += f"{filters}\n\n"
-                chunk_message += "📊 Sonuçlar (Bölüm {}/{}):".format(i, len(result_chunks))
-                chunk_message += "\n" + "\n".join(chunk)
-                chunk_message += f"\n\n🎯 Bu bölümde {len(chunk)} coin, toplam {len(results)} coin bulundu."
-                
-                url = f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/sendMessage"
-                data = {
-                    "chat_id": TELEGRAM_CHANNEL_ID,
-                    "text": chunk_message,
-                    "parse_mode": "HTML"
-                }
-                response = requests.post(url, json=data)
-                
-                if response.status_code != 200:
-                    logging.error(f"Telegram API hata kodu: {response.status_code}")
-                    logging.error(f"Telegram API yanıtı: {response.text}")
-                    
-                # Mesajlar arası 1 saniye bekle
-                if i < len(result_chunks):
-                    time.sleep(1)
-                    
-        else:  # Normal mesajlar için
+        lines = message.split("\n")
+        header_lines = []
+        result_lines = []
+        footer_lines = []
+        
+        # Mesajı bölümlere ayır
+        in_results = False
+        for line in lines:
+            if line.startswith("📊 Sonuçlar"):
+                in_results = True
+                header_lines.append(line)
+            elif line.startswith("🎯 Bu bölümde"):
+                in_results = False
+                footer_lines.append(line)
+            elif in_results and line.startswith("💰"):
+                result_lines.append(line)
+            else:
+                if not in_results:
+                    header_lines.append(line)
+        
+        # Eğer sonuç yoksa, tüm mesajı tek parça olarak gönder
+        if not result_lines:
             url = f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/sendMessage"
             data = {
                 "chat_id": TELEGRAM_CHANNEL_ID,
@@ -96,13 +70,58 @@ def send_telegram_message(message):
                 "parse_mode": "HTML"
             }
             response = requests.post(url, json=data)
-            
             if response.status_code != 200:
                 logging.error(f"Telegram API hata kodu: {response.status_code}")
                 logging.error(f"Telegram API yanıtı: {response.text}")
+            return
+            
+        # Sonuçları gruplara böl
+        chunk_size = 30
+        result_chunks = [result_lines[i:i + chunk_size] for i in range(0, len(result_lines), chunk_size)]
+        
+        # Her grup için mesaj oluştur ve gönder
+        for i, chunk in enumerate(result_chunks, 1):
+            # Header'ı ekle
+            chunk_message = "\n".join(header_lines) + "\n"
+            
+            # Bölüm bilgisini ekle
+            if len(result_chunks) > 1:
+                chunk_message += f"(Bölüm {i}/{len(result_chunks)})\n"
+            
+            # Sonuçları ekle
+            chunk_message += "\n".join(chunk) + "\n"
+            
+            # Footer'ı ekle (son chunk için)
+            if i == len(result_chunks):
+                chunk_message += "\n" + "\n".join(footer_lines)
+            else:
+                chunk_message += f"\n🎯 Bu bölümde {len(chunk)} coin bulundu (Devamı var...)"
+            
+            # Mesajı gönder
+            url = f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/sendMessage"
+            data = {
+                "chat_id": TELEGRAM_CHANNEL_ID,
+                "text": chunk_message,
+                "parse_mode": "HTML"
+            }
+            
+            try:
+                response = requests.post(url, json=data)
+                if response.status_code != 200:
+                    logging.error(f"Telegram API hata kodu: {response.status_code}")
+                    logging.error(f"Telegram API yanıtı: {response.text}")
+                    continue
+                
+                # Mesajlar arası 1 saniye bekle
+                if i < len(result_chunks):
+                    time.sleep(1)
+                    
+            except Exception as e:
+                logging.error(f"Telegram mesajı gönderilirken hata oluştu (Bölüm {i}): {str(e)}")
+                continue
             
     except Exception as e:
-        logging.error(f"Telegram mesajı gönderilirken hata oluştu: {str(e)}")
+        logging.error(f"Telegram mesajı hazırlanırken hata oluştu: {str(e)}")
         logging.exception("Tam hata detayı:")
 
 # Loglama ayarları
@@ -185,7 +204,7 @@ def auto_scan_worker(timeframes, scan_params, client_id):
             current_second = now.second
             current_timestamp = now.timestamp()
             
-            # Her 30 saniyede bir yaşam belirtisi gönder (emit hatalarından etkilenmesin)
+            # Her 30 saniyede bir yaşam belirtisi gönder
             if current_second % 30 == 0:
                 try:
                     logging.info(f"AUTO SCAN WORKER YAŞIYOR - Client: {client_id}, Saat: {now.strftime('%H:%M:%S')}")
@@ -193,43 +212,35 @@ def auto_scan_worker(timeframes, scan_params, client_id):
                         'message': f'Otomatik tarama aktif - {now.strftime("%H:%M:%S")}',
                         'scan_count': scan_count
                     }, room=client_id)
-                    emit_errors = 0  # Başarılı emit, emit hata sayacını sıfırla
+                    emit_errors = 0
                 except Exception as emit_error:
                     emit_errors += 1
                     logging.warning(f"Heartbeat gönderilemedi - Client: {client_id}, Emit Hata: {emit_errors}/{max_emit_errors}, Hata: {str(emit_error)}")
-                    # Emit hataları worker'ı durdurmaz, sadece uyarı verir
                     if emit_errors >= max_emit_errors:
                         logging.warning(f"Çok fazla emit hatası - Emit gönderimini geçici olarak durdur - Client: {client_id}")
-                        emit_errors = 0  # Sayacı sıfırla, devam et
+                        emit_errors = 0
             
             # Her timeframe için kontrol et
             for timeframe in timeframes:
                 if stop_auto_scan.get(client_id, False):
                     break
                     
-                # Mum kapanışını kontrol et - timeframe'e göre dakika kontrolü
+                # Mum kapanışını kontrol et
                 should_scan = False
                 
                 if timeframe == 1:
-                    # Her dakika
                     should_scan = current_second == 0
                 elif timeframe == 3:
-                    # 0, 3, 6, 9, 12, 15, 18, 21, 24, 27, 30, 33, 36, 39, 42, 45, 48, 51, 54, 57
                     should_scan = current_minute % 3 == 0 and current_second == 0
                 elif timeframe == 5:
-                    # 0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55
                     should_scan = current_minute % 5 == 0 and current_second == 0
                 elif timeframe == 10:
-                    # 0, 10, 20, 30, 40, 50
                     should_scan = current_minute % 10 == 0 and current_second == 0
                 elif timeframe == 15:
-                    # 0, 15, 30, 45
                     should_scan = current_minute % 15 == 0 and current_second == 0
                 elif timeframe == 30:
-                    # 0, 30
                     should_scan = current_minute % 30 == 0 and current_second == 0
                 
-                # Aynı timeframe için son taramadan en az timeframe dakika geçmiş olmalı
                 time_since_last = current_timestamp - last_scan_times[timeframe]
                 min_interval = timeframe * 60 - 10  # 10 saniye tolerans
                 
@@ -238,51 +249,65 @@ def auto_scan_worker(timeframes, scan_params, client_id):
                         logging.info(f"TARAMA BAŞLATILIYOR - {timeframe} dakika, Client: {client_id}, Saat: {now.strftime('%H:%M:%S')}")
                         last_scan_times[timeframe] = current_timestamp
                         scan_count += 1
-                        consecutive_errors = 0  # Tarama başarılı, genel hata sayacını sıfırla
+                        consecutive_errors = 0
                         
                         # Tarama parametrelerini kopyala
-                        fast_scan_params = scan_params.copy()
+                        current_scan_params = scan_params.copy()
                         
-                        # Bir önceki mum kapanışını baz al
                         results = scanner.scan_market(
-                            timeframe=str(timeframe),  # string'e çevir
-                            rsi_length=fast_scan_params['rsi_length'],
-                            rsi_value=fast_scan_params['rsi_value'],
-                            comparison=fast_scan_params['comparison'],
-                            min_relative_volume=fast_scan_params['min_relative_volume'],
-                            min_volume=fast_scan_params['min_volume'],
-                            min_percentage_change=fast_scan_params['min_percentage_change'],
+                            timeframe=str(timeframe),
+                            rsi_length=current_scan_params['rsi_length'],
+                            rsi_value=current_scan_params['rsi_value'],
+                            comparison=current_scan_params['comparison'],
+                            min_relative_volume=current_scan_params['min_relative_volume'],
+                            min_volume=current_scan_params['min_volume'],
+                            min_percentage_change=current_scan_params['min_percentage_change'],
                             closing_scan=True,
-                            coin_list=fast_scan_params['coin_list']
+                            coin_list=current_scan_params['coin_list']
                         )
                         
-                        # Sonuç mesajını hazırla
-                        message = f"\n{timeframe} dakikalık tarama sonuçları ({now.strftime('%H:%M:%S')}):\n"
-                        message += "-" * 50 + "\n"
-                        
-                        # Telegram için özel mesaj formatı
+                        # Telegram mesajını hazırla
                         telegram_message = f"🔍 <b>{timeframe} Dakikalık Tarama Sonuçları</b>\n"
                         telegram_message += f"⏰ <i>{now.strftime('%H:%M:%S')}</i>\n\n"
                         
+                        # Aktif filtreleri belirle
+                        active_filters = {
+                            'rsi': current_scan_params['rsi_value'] is not None,
+                            'relative_volume': current_scan_params['min_relative_volume'] is not None,
+                            'volume': current_scan_params['min_volume'] is not None,
+                            'percentage_change': current_scan_params['min_percentage_change'] is not None
+                        }
+                        
+                        # Filtre bilgilerini ekle
+                        telegram_message += "🎯 Aktif Filtreler:\n"
+                        filters_added = False
+                        
+                        if active_filters['rsi']:
+                            telegram_message += f"• RSI Periyodu: {current_scan_params['rsi_length']}\n"
+                            telegram_message += f"• RSI {current_scan_params['comparison']} {current_scan_params['rsi_value']}\n"
+                            filters_added = True
+                        if active_filters['relative_volume']:
+                            telegram_message += f"• Göreceli Hacim ≥ {current_scan_params['min_relative_volume']}x\n"
+                            filters_added = True
+                        if active_filters['volume']:
+                            telegram_message += f"• Minimum Hacim ≥ {current_scan_params['min_volume']} USDT\n"
+                            filters_added = True
+                        if active_filters['percentage_change']:
+                            telegram_message += f"• Minimum Değişim ≥ %{current_scan_params['min_percentage_change']}\n"
+                            filters_added = True
+                        
+                        if not filters_added:
+                            telegram_message += "• Filtre seçilmedi\n"
+                        
+                        # Tarama parametrelerini ekle
+                        telegram_message += "\n📊 Tarama Parametreleri:\n"
+                        telegram_message += f"• Zaman Dilimi: {timeframe} dakika\n"
+                        if current_scan_params['coin_list']:
+                            telegram_message += f"• Liste Modu: Özel Liste ({len(current_scan_params['coin_list'])} coin)\n"
+                        else:
+                            telegram_message += "• Liste Modu: Tüm Coinler\n"
+                        
                         if results:
-                            # Aktif filtreleri belirle
-                            active_filters = {
-                                'rsi': fast_scan_params['rsi_value'] is not None,
-                                'relative_volume': fast_scan_params['min_relative_volume'] is not None,
-                                'volume': fast_scan_params['min_volume'] is not None,
-                                'percentage_change': fast_scan_params['min_percentage_change'] is not None
-                            }
-                            
-                            # Filtre bilgilerini Telegram mesajına ekle
-                            telegram_message += "🎯 Aktif Filtreler:\n"
-                            if active_filters['rsi']:
-                                telegram_message += f"• RSI {fast_scan_params['comparison']} {fast_scan_params['rsi_value']}\n"
-                            if active_filters['relative_volume']:
-                                telegram_message += f"• Göreceli Hacim > {fast_scan_params['min_relative_volume']}\n"
-                            if active_filters['volume']:
-                                telegram_message += f"• Hacim > {fast_scan_params['min_volume']}\n"
-                            if active_filters['percentage_change']:
-                                telegram_message += f"• Değişim > %{fast_scan_params['min_percentage_change']}\n"
                             telegram_message += "\n📊 Sonuçlar:\n"
                             
                             for result in results:
@@ -302,25 +327,13 @@ def auto_scan_worker(timeframes, scan_params, client_id):
                                 
                                 telegram_message += " | ".join(telegram_coin_info) + "\n"
                             
-                            telegram_message += f"\n🎯 Toplam {len(results)} coin bulundu."
-                            
-                            # Telegram'a gönder
-                            send_telegram_message(telegram_message)
+                            telegram_message += f"\n🎯 Bu bölümde {len(results)} coin, toplam {len(results)} coin bulundu."
                         else:
-                            # Sonuç bulunamadığında
-                            telegram_message += "❌ Filtre kriterlerine uygun coin bulunamadı."
-                            
-                            # Telegram'a gönder
-                            send_telegram_message(telegram_message)
+                            telegram_message += "\n❌ Filtre kriterlerine uygun coin bulunamadı."
                         
-                        # Sonucu gönder (emit hatalarından etkilenmesin)
-                        try:
-                            socketio.emit('auto_scan_result', {'message': message, 'timeframe': str(timeframe)}, room=client_id)
-                        except Exception as emit_error:
-                            emit_errors += 1
-                            logging.warning(f"Sonuç gönderilemedi - {timeframe} dakika, Client: {client_id}, Emit Hata: {emit_errors}/{max_emit_errors}, Hata: {str(emit_error)}")
-                            # Emit hatası taramayı durdurmaz, sadece log yapar
-                            
+                        # Telegram'a gönder
+                        send_telegram_message(telegram_message)
+                        
                     except Exception as scan_error:
                         consecutive_errors += 1
                         logging.error(f"Tarama hatası - {timeframe} dakika, Client: {client_id}, Genel Hata: {consecutive_errors}/{max_consecutive_errors}, Hata: {str(scan_error)}")
@@ -337,7 +350,7 @@ def auto_scan_worker(timeframes, scan_params, client_id):
             if consecutive_errors >= max_consecutive_errors:
                 logging.error(f"Çok fazla ardışık genel hata - Worker durduruluyor - Client: {client_id}")
                 break
-            time.sleep(2)  # Hata durumunda biraz daha bekle
+            time.sleep(2)
     
     # Worker sonlandırılıyor
     logging.info(f"AUTO SCAN WORKER SONLANDI - Client: {client_id}, Toplam tarama: {scan_count}")
@@ -442,7 +455,7 @@ def handle_auto_scan(data):
         stop_auto_scan[client_id] = False
         auto_scan_threads[client_id] = threading.Thread(
             target=auto_scan_worker,
-            args=(timeframes, scan_params, client_id)
+            args=(timeframes, scan_params.copy(), client_id)  # scan_params'ın bir kopyasını gönder
         )
         auto_scan_threads[client_id].daemon = True
         auto_scan_threads[client_id].start()
