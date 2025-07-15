@@ -8,6 +8,7 @@ import sys
 import os
 import threading
 import time
+import json
 from datetime import datetime
 from werkzeug.middleware.proxy_fix import ProxyFix
 import requests  # Telegram API için requests kütüphanesi
@@ -16,10 +17,26 @@ import requests  # Telegram API için requests kütüphanesi
 TELEGRAM_BOT_TOKEN = "8136016388:AAEfuAAaFPTBIGWReXzsta3C1VrA7lgkM80"
 TELEGRAM_CHANNEL_ID = "@kriptotaramaoto"  # Telegram kanal ID'si
 
+def load_parameters():
+    try:
+        if os.path.exists('parameters.json'):
+            with open('parameters.json', 'r') as f:
+                return json.load(f)
+    except Exception as e:
+        logging.error(f"Parametre yükleme hatası: {str(e)}")
+    return None
+
+def save_parameters(params):
+    try:
+        with open('parameters.json', 'w') as f:
+            json.dump(params, f, indent=4)
+    except Exception as e:
+        logging.error(f"Parametre kaydetme hatası: {str(e)}")
+
 def send_telegram_message(message):
     """Telegram kanalına mesaj gönderen yardımcı fonksiyon"""
     if not TELEGRAM_CHANNEL_ID:
-        logging.warning("Telegram kanal ID'si ayarlanmamış!")
+        logging.error("Telegram kanal ID'si ayarlanmamış!")
         return
         
     try:
@@ -27,13 +44,21 @@ def send_telegram_message(message):
         data = {
             "chat_id": TELEGRAM_CHANNEL_ID,
             "text": message,
-            "parse_mode": "HTML"  # HTML formatında mesaj gönderimi
+            "parse_mode": "HTML"
         }
+        logging.info(f"Telegram mesajı gönderiliyor: {message[:100]}...")
         response = requests.post(url, json=data)
-        response.raise_for_status()  # HTTP hatalarını kontrol et
-        logging.info(f"Telegram mesajı başarıyla gönderildi: {message[:50]}...")
+        
+        if response.status_code == 200:
+            logging.info("Telegram mesajı başarıyla gönderildi!")
+            logging.info(f"Telegram API yanıtı: {response.json()}")
+        else:
+            logging.error(f"Telegram API hata kodu: {response.status_code}")
+            logging.error(f"Telegram API yanıtı: {response.text}")
+            
     except Exception as e:
-        logging.error(f"Telegram mesajı gönderilemedi: {str(e)}")
+        logging.error(f"Telegram mesajı gönderilirken hata oluştu: {str(e)}")
+        logging.exception("Tam hata detayı:")
 
 # Loglama ayarları
 logging.basicConfig(
@@ -294,26 +319,44 @@ def handle_auto_scan(data):
     """Otomatik taramayı başlat"""
     try:
         client_id = request.sid
+        if not client_id:
+            raise ValueError("Client ID bulunamadı!")
+            
         timeframes = data.get('times', [])
         filter_states = data.get('filterStates', {})
         
         logging.info(f"Gelen veri: {data}")
         logging.info(f"Client bağlantı ID'si: {client_id}")
         
-        # Önce mevcut taramayı tamamen durdur ve temizle
-        if client_id in auto_scan_threads:
-            logging.info(f"Mevcut tarama durduruluyor - Client: {client_id}")
-            stop_auto_scan[client_id] = True
-            thread = auto_scan_threads[client_id]
-            if thread and thread.is_alive():
-                thread.join(timeout=5)
-            
-            # Thread referanslarını temizle
-            del auto_scan_threads[client_id]
-            if client_id in stop_auto_scan:
-                del stop_auto_scan[client_id]
-            
-            logging.info(f"Eski tarama durduruldu - Client: {client_id}")
+        # TÜM aktif taramaları durdur
+        logging.info("Tüm aktif taramaları durdurma başlatılıyor...")
+        
+        # Thread'leri güvenli bir şekilde durdur
+        threads_to_stop = list(auto_scan_threads.keys())
+        for cid in threads_to_stop:
+            try:
+                logging.info(f"Tarama durduruluyor - Client: {cid}")
+                stop_auto_scan[cid] = True
+                
+                if cid in auto_scan_threads:
+                    thread = auto_scan_threads[cid]
+                    if thread and thread.is_alive():
+                        thread.join(timeout=5)
+                        if thread.is_alive():
+                            logging.warning(f"Thread {cid} zamanında durdurulamadı!")
+                    
+                    # Thread referanslarını temizle
+                    del auto_scan_threads[cid]
+                
+                if cid in stop_auto_scan:
+                    del stop_auto_scan[cid]
+                if cid in active_scan_params:
+                    del active_scan_params[cid]
+                
+                logging.info(f"Eski tarama durduruldu - Client: {cid}")
+            except Exception as thread_error:
+                logging.error(f"Thread durdurma hatası - Client: {cid}, Hata: {str(thread_error)}")
+                continue
         
         # RSI değerini belirle (RSI1 veya RSI2'den hangisi aktifse)
         rsi_value = None
@@ -334,7 +377,7 @@ def handle_auto_scan(data):
             'coin_list': data.get('coinList')
         }
         
-        # Yeni parametreleri sakla (eski parametreleri üzerine yaz)
+        # Yeni parametreleri sakla
         active_scan_params[client_id] = {
             'times': timeframes,
             'filterStates': filter_states,
@@ -417,15 +460,34 @@ def handle_auto_scan(data):
         else:
             start_message += 'Hiçbir filtre seçilmedi'
             
-        socketio.emit('auto_scan_started', {
-            'message': start_message,
-            'is_running': True,
-            'params': active_scan_params[client_id]  # Yeni parametreleri gönder
-        }, room=client_id)
+        try:
+            socketio.emit('auto_scan_started', {
+                'message': start_message,
+                'is_running': True,
+                'params': active_scan_params[client_id]
+            }, room=client_id)
+        except Exception as emit_error:
+            logging.error(f"Emit hatası - Client: {client_id}, Hata: {str(emit_error)}")
+            # Emit hatası durumunda thread'i temizle
+            if client_id in auto_scan_threads:
+                del auto_scan_threads[client_id]
+            if client_id in stop_auto_scan:
+                del stop_auto_scan[client_id]
+            if client_id in active_scan_params:
+                del active_scan_params[client_id]
+            raise emit_error
         
     except Exception as e:
         logging.error(f"Otomatik tarama başlatma hatası: {str(e)}")
-        socketio.emit('auto_scan_error', {'error': str(e)}, room=client_id)
+        # Hata durumunda tüm kaynakları temizle
+        if 'client_id' in locals():
+            if client_id in auto_scan_threads:
+                del auto_scan_threads[client_id]
+            if client_id in stop_auto_scan:
+                del stop_auto_scan[client_id]
+            if client_id in active_scan_params:
+                del active_scan_params[client_id]
+        socketio.emit('auto_scan_error', {'error': 'Tarama başlatılamadı: ' + str(e)}, room=client_id)
 
 @socketio.on('stop_auto_scan')
 def handle_stop_auto_scan():
