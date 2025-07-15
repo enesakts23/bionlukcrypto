@@ -40,21 +40,66 @@ def send_telegram_message(message):
         return
         
     try:
-        url = f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/sendMessage"
-        data = {
-            "chat_id": TELEGRAM_CHANNEL_ID,
-            "text": message,
-            "parse_mode": "HTML"
-        }
-        logging.info(f"Telegram mesajı gönderiliyor: {message[:100]}...")
-        response = requests.post(url, json=data)
-        
-        if response.status_code == 200:
-            logging.info("Telegram mesajı başarıyla gönderildi!")
-            logging.info(f"Telegram API yanıtı: {response.json()}")
-        else:
-            logging.error(f"Telegram API hata kodu: {response.status_code}")
-            logging.error(f"Telegram API yanıtı: {response.text}")
+        # Mesajı parçalara böl (maksimum 30 coin her mesajda)
+        if message.startswith("🔍"):  # Tarama sonuçları mesajı
+            # Header kısmını ayır (ilk 3 satır)
+            lines = message.split("\n")
+            header = "\n".join(lines[:3])
+            filters = ""
+            results = []
+            
+            # Filtreler ve sonuçları ayır
+            for line in lines[3:]:
+                if line.startswith("🎯 Aktif Filtreler:"):
+                    filters = line
+                elif line.startswith("📊 Sonuçlar:"):
+                    continue
+                elif line.startswith("💰"):  # Coin sonucu
+                    results.append(line)
+                elif line.startswith("🎯 Toplam"):  # Son satır
+                    continue
+            
+            # Sonuçları 30'ar coinlik gruplara böl
+            chunk_size = 30
+            result_chunks = [results[i:i + chunk_size] for i in range(0, len(results), chunk_size)]
+            
+            # Her chunk için mesaj oluştur ve gönder
+            for i, chunk in enumerate(result_chunks, 1):
+                chunk_message = f"{header}\n\n"
+                if i == 1:  # İlk mesajda filtreleri göster
+                    chunk_message += f"{filters}\n\n"
+                chunk_message += "📊 Sonuçlar (Bölüm {}/{}):".format(i, len(result_chunks))
+                chunk_message += "\n" + "\n".join(chunk)
+                chunk_message += f"\n\n🎯 Bu bölümde {len(chunk)} coin, toplam {len(results)} coin bulundu."
+                
+                url = f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/sendMessage"
+                data = {
+                    "chat_id": TELEGRAM_CHANNEL_ID,
+                    "text": chunk_message,
+                    "parse_mode": "HTML"
+                }
+                response = requests.post(url, json=data)
+                
+                if response.status_code != 200:
+                    logging.error(f"Telegram API hata kodu: {response.status_code}")
+                    logging.error(f"Telegram API yanıtı: {response.text}")
+                    
+                # Mesajlar arası 1 saniye bekle
+                if i < len(result_chunks):
+                    time.sleep(1)
+                    
+        else:  # Normal mesajlar için
+            url = f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/sendMessage"
+            data = {
+                "chat_id": TELEGRAM_CHANNEL_ID,
+                "text": message,
+                "parse_mode": "HTML"
+            }
+            response = requests.post(url, json=data)
+            
+            if response.status_code != 200:
+                logging.error(f"Telegram API hata kodu: {response.status_code}")
+                logging.error(f"Telegram API yanıtı: {response.text}")
             
     except Exception as e:
         logging.error(f"Telegram mesajı gönderilirken hata oluştu: {str(e)}")
@@ -229,7 +274,7 @@ def auto_scan_worker(timeframes, scan_params, client_id):
                             }
                             
                             # Filtre bilgilerini Telegram mesajına ekle
-                            telegram_message += "<b>🎯 Aktif Filtreler:</b>\n"
+                            telegram_message += "🎯 Aktif Filtreler:\n"
                             if active_filters['rsi']:
                                 telegram_message += f"• RSI {fast_scan_params['comparison']} {fast_scan_params['rsi_value']}\n"
                             if active_filters['relative_volume']:
@@ -238,43 +283,32 @@ def auto_scan_worker(timeframes, scan_params, client_id):
                                 telegram_message += f"• Hacim > {fast_scan_params['min_volume']}\n"
                             if active_filters['percentage_change']:
                                 telegram_message += f"• Değişim > %{fast_scan_params['min_percentage_change']}\n"
-                            telegram_message += "\n<b>📊 Sonuçlar:</b>\n"
+                            telegram_message += "\n📊 Sonuçlar:\n"
                             
                             for result in results:
-                                coin_info = [f"Sembol: {result['symbol']}"]
                                 telegram_coin_info = [f"💰 <b>{result['symbol']}</b>"]
                                 
                                 if active_filters['rsi'] and 'rsi' in result:
-                                    coin_info.append(f"RSI: {result['rsi']:.2f}")
                                     telegram_coin_info.append(f"RSI: {result['rsi']:.2f}")
                                 
                                 if active_filters['relative_volume'] and 'relative_volume' in result:
-                                    coin_info.append(f"Göreceli Hacim: {result['relative_volume']:.2f}")
                                     telegram_coin_info.append(f"Göreceli Hacim: {result['relative_volume']:.2f}x")
                                 
                                 if active_filters['volume'] and 'volume' in result:
-                                    coin_info.append(f"Hacim: {result['volume']:.2f}")
                                     telegram_coin_info.append(f"Hacim: {result['volume']:.2f}")
                                 
                                 if active_filters['percentage_change'] and 'percentage_change' in result:
-                                    coin_info.append(f"Değişim: %{result['percentage_change']:.2f}")
                                     telegram_coin_info.append(f"Değişim: %{result['percentage_change']:.2f}")
                                 
-                                message += ", ".join(coin_info) + "\n"
                                 telegram_message += " | ".join(telegram_coin_info) + "\n"
                             
-                            message += "-" * 50 + "\n"
                             telegram_message += f"\n🎯 Toplam {len(results)} coin bulundu."
-                            logging.info(f"TARAMA TAMAMLANDI - {timeframe} dakika, {len(results)} sonuç, Client: {client_id}")
                             
                             # Telegram'a gönder
                             send_telegram_message(telegram_message)
                         else:
                             # Sonuç bulunamadığında
-                            message += "Filtre kriterlerine uygun coin bulunamadı.\n"
-                            message += "-" * 50 + "\n"
                             telegram_message += "❌ Filtre kriterlerine uygun coin bulunamadı."
-                            logging.info(f"TARAMA TAMAMLANDI - {timeframe} dakika, sonuç yok, Client: {client_id}")
                             
                             # Telegram'a gönder
                             send_telegram_message(telegram_message)
