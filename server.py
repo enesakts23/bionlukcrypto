@@ -12,6 +12,8 @@ import json
 from datetime import datetime
 from werkzeug.middleware.proxy_fix import ProxyFix
 import requests  # Telegram API için requests kütüphanesi
+import subprocess
+import signal
 
 # Telegram Bot Konfigürasyonu
 TELEGRAM_BOT_TOKEN = "8136016388:AAEfuAAaFPTBIGWReXzsta3C1VrA7lgkM80"
@@ -744,6 +746,37 @@ def handle_connect():
             'params': params  # Son parametreleri gönder
         }, room=client_id)
         logging.info(f"Client {client_id} yeniden bağlandı, mevcut tarama durumu ve parametreler gönderildi")
+
+@app.route('/restart', methods=['POST'])
+def restart_server():
+    """Server'ı yeniden başlatma endpoint'i"""
+    try:
+        # Mevcut process ID'sini al
+        current_pid = os.getpid()
+        current_dir = os.path.dirname(os.path.abspath(__file__))
+        script_path = os.path.join(current_dir, 'server.py')
+        
+        # Python yolunu al
+        python_executable = sys.executable
+        
+        # Yeni bir batch dosyası oluştur
+        batch_path = os.path.join(current_dir, 'restart.bat')
+        with open(batch_path, 'w') as f:
+            f.write(f'''@echo off
+timeout /t 2 /nobreak
+taskkill /F /PID {current_pid}
+start "" "{python_executable}" "{script_path}"
+del "%~f0"
+''')
+        
+        # Batch dosyasını çalıştır
+        subprocess.Popen(['start', 'restart.bat'], shell=True)
+        
+        return jsonify({'status': 'success', 'message': 'Server yeniden başlatılıyor'})
+        
+    except Exception as e:
+        logging.error(f"Server yeniden başlatma hatası: {str(e)}")
+        return jsonify({'status': 'error', 'message': str(e)}), 500
 
 def main():
     try:

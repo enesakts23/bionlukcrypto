@@ -6,6 +6,22 @@
     <title>Kripto Para Tarayıcı</title>
     <link rel="stylesheet" href="index.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"></script>
+    <style>
+        .restart-server-btn {
+            background-color: #ff4757;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+            font-weight: bold;
+            width: 100%;
+        }
+        .restart-server-btn:hover {
+            background-color: #ff6b81;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
@@ -113,6 +129,7 @@
                 </div>
                 <button class="filter-btn">FILTRELE</button>
                 <button class="auto-scan-btn">OTOMATİK TARAMA</button>
+                <button class="restart-server-btn" onclick="restartServer()">SUNUCUYU YENİDEN BAŞLAT</button>
             </div>
         </div>
         <!-- Sadece durum mesajları için minimal bir alan -->

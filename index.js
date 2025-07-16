@@ -1063,3 +1063,40 @@ window.addEventListener('beforeunload', (e) => {
         socket.disconnect();
     }
 });
+
+// Server'ı yeniden başlatma fonksiyonu
+async function restartServer() {
+    try {
+        // Kullanıcıya onay sor
+        if (!confirm('Sunucuyu yeniden başlatmak istediğinize emin misiniz?')) {
+            return;
+        }
+
+        showMessage('info', 'Sunucu yeniden başlatılıyor...');
+        
+        // Mevcut socket bağlantısını kapat
+        if (socket) {
+            socket.disconnect();
+        }
+
+        // Server'a restart isteği gönder
+        const response = await fetch(`${SERVER_URL}/restart`, {
+            method: 'POST'
+        });
+
+        if (!response.ok) {
+            throw new Error('Sunucu yeniden başlatılamadı');
+        }
+
+        showMessage('success', 'Sunucu yeniden başlatma isteği gönderildi');
+        
+        // 5 saniye bekle ve sayfayı yenile
+        setTimeout(() => {
+            window.location.reload();
+        }, 5000);
+
+    } catch (error) {
+        console.error('Sunucu yeniden başlatma hatası:', error);
+        showMessage('error', 'Sunucu yeniden başlatılamadı: ' + error.message);
+    }
+}
