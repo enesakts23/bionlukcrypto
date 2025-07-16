@@ -35,8 +35,8 @@ def save_parameters(params):
 
 def send_telegram_message(message):
     """Telegram kanalına mesaj gönderen yardımcı fonksiyon"""
-    if not TELEGRAM_CHANNEL_ID:
-        logging.error("Telegram kanal ID'si ayarlanmamış!")
+    if not TELEGRAM_BOT_TOKEN or not TELEGRAM_CHANNEL_ID:
+        logging.error("Telegram bot token veya kanal ID'si ayarlanmamış!")
         return
         
     try:
@@ -616,27 +616,62 @@ def filter():
         coin_list = data.get('coinList')
         all_results = {}
         
+        # Telegram mesajı için başlık
+        now = datetime.now()
+        telegram_message = f"🔍 <b>Manuel Tarama Sonuçları</b>\n"
+        telegram_message += f"⏰ <i>{now.strftime('%H:%M:%S')}</i>\n\n"
+        
+        # Aktif filtreleri belirle
+        filter_states = data.get('filterStates', {})
+        
+        # Filtre bilgilerini Telegram mesajına ekle
+        telegram_message += "🎯 Aktif Filtreler:\n"
+        filters_added = False
+        
+        # RSI kontrolü
+        rsi1_active = filter_states.get('rsi1', False)
+        rsi2_active = filter_states.get('rsi2', False)
+        rsi1_val = float(data.get('rsi1')) if rsi1_active and data.get('rsi1') is not None else None
+        rsi2_val = float(data.get('rsi2')) if rsi2_active and data.get('rsi2') is not None else None
+        rsi_value = rsi1_val if rsi1_active else (rsi2_val if rsi2_active else None)
+        
+        if rsi_value is not None:
+            telegram_message += f"• RSI Periyodu: 13\n"
+            telegram_message += f"• RSI {comparison} {rsi_value}\n"
+            filters_added = True
+        
+        # Diğer filtreler
+        hacim_active = filter_states.get('hacim', False)
+        volume_active = filter_states.get('volume', False)
+        artis_active = filter_states.get('artis', False)
+        
+        # Aktif filtrelerin değerlerini al
+        hacim_val = float(data.get('hacim')) if hacim_active and data.get('hacim') is not None else None
+        volume_val = float(data.get('volume')) if volume_active and data.get('volume') is not None else None
+        artis_val = float(data.get('artis')) if artis_active and data.get('artis') is not None else None
+        
+        if hacim_val is not None:
+            telegram_message += f"• Göreceli Hacim ≥ {hacim_val}x\n"
+            filters_added = True
+        if volume_val is not None:
+            telegram_message += f"• Minimum Hacim ≥ {volume_val} USDT\n"
+            filters_added = True
+        if artis_val is not None:
+            telegram_message += f"• Minimum Değişim ≥ %{artis_val}\n"
+            filters_added = True
+            
+        if not filters_added:
+            telegram_message += "• Filtre seçilmedi\n"
+        
+        # Tarama parametrelerini ekle
+        telegram_message += "\n📊 Tarama Parametreleri:\n"
+        telegram_message += f"• Zaman Dilimi: {', '.join(times)} dakika\n"
+        if coin_list:
+            telegram_message += f"• Liste Modu: Özel Liste ({len(coin_list)} coin)\n"
+        else:
+            telegram_message += "• Liste Modu: Tüm Coinler\n"
+        
         for t in times:
-            # Hangi filtreler aktif?
-            filter_states = data.get('filterStates', {})
-            
-            # RSI kontrolü
-            rsi1_active = filter_states.get('rsi1', False)
-            rsi2_active = filter_states.get('rsi2', False)
-            rsi1_val = float(data.get('rsi1')) if rsi1_active and data.get('rsi1') is not None else None
-            rsi2_val = float(data.get('rsi2')) if rsi2_active and data.get('rsi2') is not None else None
-            rsi_value = rsi1_val if rsi1_active else (rsi2_val if rsi2_active else None)
-            
-            # Diğer filtreler
-            hacim_active = filter_states.get('hacim', False)
-            volume_active = filter_states.get('volume', False)
-            artis_active = filter_states.get('artis', False)
-            
-            # Aktif filtrelerin değerlerini al
-            hacim_val = float(data.get('hacim')) if hacim_active and data.get('hacim') is not None else None
-            volume_val = float(data.get('volume')) if volume_active and data.get('volume') is not None else None
-            artis_val = float(data.get('artis')) if artis_active and data.get('artis') is not None else None
-            
             # Tarama yap
             results = scanner.scan_market(
                 timeframe=t,
@@ -651,6 +686,35 @@ def filter():
             )
             all_results[t] = results
             
+            # Telegram mesajına sonuçları ekle
+            if results:
+                telegram_message += f"\n📊 {t} dk Sonuçları:\n"
+                for result in results:
+                    coin_info = [f"💰 <b>{result['symbol']}</b>"]
+                    
+                    if rsi_value is not None and 'rsi' in result:
+                        coin_info.append(f"RSI: {result['rsi']:.2f}")
+                    
+                    if hacim_active and 'relative_volume' in result:
+                        coin_info.append(f"Göreceli Hacim: {result['relative_volume']:.2f}x")
+                    
+                    if volume_active and 'volume' in result:
+                        coin_info.append(f"Hacim: {result['volume']:.2f}")
+                    
+                    if artis_active and 'percentage_change' in result:
+                        coin_info.append(f"Değişim: %{result['percentage_change']:.2f}")
+                    
+                    telegram_message += " | ".join(coin_info) + "\n"
+            else:
+                telegram_message += f"\n❌ {t} dk için filtre kriterlerine uygun coin bulunamadı."
+        
+        # Toplam sonuç sayısını ekle
+        total_coins = sum(len(results) for results in all_results.values())
+        telegram_message += f"\n🎯 Toplam {total_coins} coin bulundu."
+        
+        # Telegram'a gönder
+        send_telegram_message(telegram_message)
+        
         # Sonuçları kaydet
         app.config['LAST_RESULTS'] = all_results
         return jsonify({'status': 'success', 'results': all_results})

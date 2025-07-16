@@ -673,7 +673,17 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         // Önceki sonuçları temizle
-        document.querySelector('.multi-time-results-container').innerHTML = '';
+        clearResults();
+        
+        // Multi-time container'ı oluştur veya temizle
+        let multiTimeContainer = document.querySelector('.multi-time-results-container');
+        if (!multiTimeContainer) {
+            multiTimeContainer = document.createElement('div');
+            multiTimeContainer.className = 'multi-time-results-container';
+            document.querySelector('.container').appendChild(multiTimeContainer);
+        } else {
+            multiTimeContainer.innerHTML = '';
+        }
         addClearResultsButton();
 
         // Filtre butonunu devre dışı bırak
@@ -718,9 +728,51 @@ document.addEventListener('DOMContentLoaded', () => {
             if (result.status !== 'success') {
                 throw new Error(result.message);
             }
+
+            // Sonuçları göster
+            Object.entries(result.results).forEach(([timeframe, results]) => {
+                if (results && results.length > 0) {
+                    const tableDiv = document.createElement('div');
+                    tableDiv.className = 'multi-time-table';
+                    tableDiv.setAttribute('data-time', timeframe);
+                    
+                    // Tablo başlığı ve yapısını oluştur
+                    let headers = '<th>Sembol</th>';
+                    if ('rsi' in results[0]) headers += '<th>RSI</th>';
+                    if ('relative_volume' in results[0]) headers += '<th>Göreceli Hacim</th>';
+                    if ('volume' in results[0]) headers += '<th>Hacim</th>';
+                    if ('percentage_change' in results[0]) headers += '<th>Yüzde Değişim</th>';
+                    
+                    tableDiv.innerHTML = `
+                        <div class="table-header">${timeframe} dk Sonuçları</div>
+                        <table class="results-table">
+                            <thead><tr>${headers}</tr></thead>
+                            <tbody></tbody>
+                        </table>
+                    `;
+                    
+                    const tbody = tableDiv.querySelector('tbody');
+                    results.forEach(result => {
+                        let rowHtml = `<td>${result.symbol}</td>`;
+                        if ('rsi' in result) rowHtml += `<td>${result.rsi.toFixed(2)}</td>`;
+                        if ('relative_volume' in result) rowHtml += `<td>${result.relative_volume.toFixed(2)}x</td>`;
+                        if ('volume' in result) rowHtml += `<td>${Number(result.volume).toLocaleString('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>`;
+                        if ('percentage_change' in result) rowHtml += `<td>${result.percentage_change.toFixed(2)}%</td>`;
+                        
+                        const row = document.createElement('tr');
+                        row.innerHTML = rowHtml;
+                        tbody.appendChild(row);
+                    });
+                    
+                    multiTimeContainer.appendChild(tableDiv);
+                }
+            });
+
+            showMessage('success', 'Tarama tamamlandı!');
         } catch (error) {
             console.error('Hata:', error);
             showMessage('error', 'Tarama sırasında bir hata oluştu! Lütfen tekrar deneyin.');
+        } finally {
             filterButton.disabled = false;
             filterButton.textContent = 'FILTRELE';
             isScanning = false;
