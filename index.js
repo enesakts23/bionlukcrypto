@@ -492,7 +492,7 @@ function setComparison(id, operator) {
 function toggleClosingScan(button) {
     isClosingScanActive = !isClosingScanActive;
     button.textContent = isClosingScanActive ? 'Aktif' : 'Pasif';
-    button.classList.toggle('active', isClosingScanActive);
+    button.style.backgroundColor = isClosingScanActive ? '#4CAF50' : '#ff4d4d';
 }
 
 function listenMultiTimeEvents(times) {
@@ -1014,7 +1014,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     artis: filterStates.artis ? document.getElementById('artis-value').textContent : null,
                     times: [...selectedTimes].sort((a, b) => parseInt(a) - parseInt(b)),
                     coinList: coinList,
-                    filterStates: {...filterStates}
+                    filterStates: {...filterStates},
+                    includePreviousCandle: isClosingScanActive  // Geçmiş mumu dahil et parametresi eklendi
                 };
 
                 console.log('Starting new scan with parameters:', filterData);

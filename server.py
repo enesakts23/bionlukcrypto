@@ -204,6 +204,109 @@ def auto_scan_worker(timeframes, scan_params, client_id):
     emit_errors = 0
     max_emit_errors = 15  # Emit hataları için ayrı sayaç
     
+    # Eğer geçmiş mum dahil edilecekse, ilk başta son kapanan mumları tara
+    if scan_params.get('include_previous_candle', False):
+        try:
+            now = datetime.now()
+            for timeframe in timeframes:
+                # Son kapanan mumun zamanını hesapla
+                current_minute = now.minute
+                last_candle_minute = (current_minute // timeframe) * timeframe
+                last_candle_hour = now.hour
+                
+                # Eğer current_minute daha küçükse, bir önceki saate bakmalıyız
+                if last_candle_minute > current_minute:
+                    last_candle_minute = ((timeframe * ((60 // timeframe) - 1)))  # Bir önceki saatin son mumu
+                    last_candle_hour = (last_candle_hour - 1) % 24
+                
+                logging.info(f"Son kapanan mum zamanı hesaplandı - {timeframe} dk için: {last_candle_hour:02d}:{last_candle_minute:02d}")
+                
+                # Tarama parametrelerini kopyala
+                current_scan_params = scan_params.copy()
+                
+                results = scanner.scan_market(
+                    timeframe=str(timeframe),
+                    rsi_length=current_scan_params['rsi_length'],
+                    rsi_value=current_scan_params['rsi_value'],
+                    comparison=current_scan_params['comparison'],
+                    min_relative_volume=current_scan_params['min_relative_volume'],
+                    min_volume=current_scan_params['min_volume'],
+                    min_percentage_change=current_scan_params['min_percentage_change'],
+                    closing_scan=True,
+                    coin_list=current_scan_params['coin_list']
+                )
+                
+                # Telegram mesajını hazırla
+                telegram_message = f"🔍 <b>{timeframe} Dakikalık Tarama Sonuçları (Son Kapanan Mum)</b>\n"
+                telegram_message += f"⏰ <i>{last_candle_hour:02d}:{last_candle_minute:02d}</i>\n\n"
+                
+                # Aktif filtreleri belirle
+                active_filters = {
+                    'rsi': current_scan_params['rsi_value'] is not None,
+                    'relative_volume': current_scan_params['min_relative_volume'] is not None,
+                    'volume': current_scan_params['min_volume'] is not None,
+                    'percentage_change': current_scan_params['min_percentage_change'] is not None
+                }
+                
+                # Filtre bilgilerini ekle
+                telegram_message += "🎯 Aktif Filtreler:\n"
+                filters_added = False
+                
+                if active_filters['rsi']:
+                    telegram_message += f"• RSI Periyodu: {current_scan_params['rsi_length']}\n"
+                    telegram_message += f"• RSI {current_scan_params['comparison']} {current_scan_params['rsi_value']}\n"
+                    filters_added = True
+                if active_filters['relative_volume']:
+                    telegram_message += f"• Göreceli Hacim ≥ {current_scan_params['min_relative_volume']}x\n"
+                    filters_added = True
+                if active_filters['volume']:
+                    telegram_message += f"• Minimum Hacim ≥ {current_scan_params['min_volume']} USDT\n"
+                    filters_added = True
+                if active_filters['percentage_change']:
+                    telegram_message += f"• Minimum Değişim ≥ %{current_scan_params['min_percentage_change']}\n"
+                    filters_added = True
+                
+                if not filters_added:
+                    telegram_message += "• Filtre seçilmedi\n"
+                
+                # Tarama parametrelerini ekle
+                telegram_message += "\n📊 Tarama Parametreleri:\n"
+                telegram_message += f"• Zaman Dilimi: {timeframe} dakika\n"
+                if current_scan_params['coin_list']:
+                    telegram_message += f"• Liste Modu: Özel Liste ({len(current_scan_params['coin_list'])} coin)\n"
+                else:
+                    telegram_message += "• Liste Modu: Tüm Coinler\n"
+                
+                if results:
+                    telegram_message += "\n📊 Sonuçlar:\n"
+                    
+                    for result in results:
+                        coin_info = [f"💰 <b>{result['symbol']}</b>"]
+                        
+                        if active_filters['rsi'] and 'rsi' in result:
+                            coin_info.append(f"RSI: {result['rsi']:.2f}")
+                        
+                        if active_filters['relative_volume'] and 'relative_volume' in result:
+                            coin_info.append(f"Göreceli Hacim: {result['relative_volume']:.2f}x")
+                        
+                        if active_filters['volume'] and 'volume' in result:
+                            coin_info.append(f"Hacim: {result['volume']:.2f}")
+                        
+                        if active_filters['percentage_change'] and 'percentage_change' in result:
+                            coin_info.append(f"Değişim: %{result['percentage_change']:.2f}")
+                        
+                        telegram_message += " | ".join(coin_info) + "\n"
+                    
+                    telegram_message += f"\n🎯 Bu bölümde {len(results)} coin bulundu."
+                else:
+                    telegram_message += "\n❌ Filtre kriterlerine uygun coin bulunamadı."
+                
+                # Telegram'a gönder
+                send_telegram_message(telegram_message)
+                
+        except Exception as e:
+            logging.error(f"Geçmiş mum taraması sırasında hata: {str(e)}")
+    
     while not stop_auto_scan.get(client_id, False):
         try:
             now = datetime.now()
@@ -318,23 +421,23 @@ def auto_scan_worker(timeframes, scan_params, client_id):
                             telegram_message += "\n📊 Sonuçlar:\n"
                             
                             for result in results:
-                                telegram_coin_info = [f"💰 <b>{result['symbol']}</b>"]
+                                coin_info = [f"💰 <b>{result['symbol']}</b>"]
                                 
                                 if active_filters['rsi'] and 'rsi' in result:
-                                    telegram_coin_info.append(f"RSI: {result['rsi']:.2f}")
+                                    coin_info.append(f"RSI: {result['rsi']:.2f}")
                                 
                                 if active_filters['relative_volume'] and 'relative_volume' in result:
-                                    telegram_coin_info.append(f"Göreceli Hacim: {result['relative_volume']:.2f}x")
+                                    coin_info.append(f"Göreceli Hacim: {result['relative_volume']:.2f}x")
                                 
                                 if active_filters['volume'] and 'volume' in result:
-                                    telegram_coin_info.append(f"Hacim: {result['volume']:.2f}")
+                                    coin_info.append(f"Hacim: {result['volume']:.2f}")
                                 
                                 if active_filters['percentage_change'] and 'percentage_change' in result:
-                                    telegram_coin_info.append(f"Değişim: %{result['percentage_change']:.2f}")
+                                    coin_info.append(f"Değişim: %{result['percentage_change']:.2f}")
                                 
-                                telegram_message += " | ".join(telegram_coin_info) + "\n"
+                                telegram_message += " | ".join(coin_info) + "\n"
                             
-                            telegram_message += f"\n🎯 Bu bölümde {len(results)} coin, toplam {len(results)} coin bulundu."
+                            telegram_message += f"\n🎯 Bu bölümde {len(results)} coin bulundu."
                         else:
                             telegram_message += "\n❌ Filtre kriterlerine uygun coin bulunamadı."
                         
@@ -378,9 +481,11 @@ def handle_auto_scan(data):
             
         timeframes = data.get('times', [])
         filter_states = data.get('filterStates', {})
+        include_previous_candle = data.get('includePreviousCandle', False)  # Geçmiş mumu dahil et parametresi
         
         logging.info(f"Gelen veri: {data}")
         logging.info(f"Client bağlantı ID'si: {client_id}")
+        logging.info(f"Geçmiş mum dahil edilecek mi: {include_previous_candle}")  # Log ekledik
         
         # TÜM aktif taramaları durdur
         logging.info("Tüm aktif taramaları durdurma başlatılıyor...")
@@ -428,7 +533,8 @@ def handle_auto_scan(data):
             'min_volume': float(data['volume']) if filter_states.get('volume') and data.get('volume') else None,
             'min_percentage_change': float(data['artis']) if filter_states.get('artis') and data.get('artis') else None,
             'closing_scan': True,
-            'coin_list': data.get('coinList')
+            'coin_list': data.get('coinList'),
+            'include_previous_candle': include_previous_candle  # Geçmiş mumu dahil et parametresi
         }
         
         # Yeni parametreleri sakla
@@ -441,7 +547,8 @@ def handle_auto_scan(data):
             'hacim': data.get('hacim'),
             'volume': data.get('volume'),
             'artis': data.get('artis'),
-            'coinList': data.get('coinList')
+            'coinList': data.get('coinList'),
+            'includePreviousCandle': include_previous_candle
         }
         
         # Log parametreleri
