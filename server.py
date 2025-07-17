@@ -42,6 +42,11 @@ def send_telegram_message(message):
         return
         
     try:
+        # Eğer mesajda "Filtre kriterlerine uygun coin bulunamadı" ifadesi varsa, mesajı gönderme
+        if "Filtre kriterlerine uygun coin bulunamadı" in message:
+            logging.info("Coin bulunamadı mesajı gönderilmedi.")
+            return
+            
         # Mesajı parçalara böl (maksimum 30 coin her mesajda)
         lines = message.split("\n")
         header_lines = []
